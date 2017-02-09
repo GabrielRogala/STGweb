@@ -260,7 +260,217 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Teachers" EntityType="Model.Teachers" />
+          <EntitySet Name="Groups" EntityType="Model.Groups" />
+          <EntitySet Name="Rooms" EntityType="Model.Rooms" />
+          <EntitySet Name="Schools" EntityType="Model.Schools" />
+          <EntitySet Name="RoomTypes" EntityType="Model.RoomTypes" />
+          <EntitySet Name="SubjectTypes" EntityType="Model.SubjectTypes" />
+          <AssociationSet Name="RoomTypesRooms" Association="Model.RoomTypesRooms">
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="SchoolsTeachers" Association="Model.SchoolsTeachers">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="SchoolsGroups" Association="Model.SchoolsGroups">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="SchoolsRooms" Association="Model.SchoolsRooms">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="SchoolsRoomTypes" Association="Model.SchoolsRoomTypes">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+          </AssociationSet>
+          <AssociationSet Name="SchoolsSubjectTypes" Association="Model.SchoolsSubjectTypes">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="SubjectTypes" EntitySet="SubjectTypes" />
+          </AssociationSet>
+          <EntitySet Name="Subjects" EntityType="Model.Subjects" />
+          <AssociationSet Name="SchoolsSubjects" Association="Model.SchoolsSubjects">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="Subjects" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="SubjectTypesSubjects" Association="Model.SubjectTypesSubjects">
+            <End Role="SubjectTypes" EntitySet="SubjectTypes" />
+            <End Role="Subjects" EntitySet="Subjects" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Schools" Relationship="Model.SchoolsTeachers" FromRole="Teachers" ToRole="Schools" />
+          <Property Name="SchoolsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Schools" Relationship="Model.SchoolsGroups" FromRole="Groups" ToRole="Schools" />
+          <Property Name="SchoolsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="RoomTypes" Relationship="Model.RoomTypesRooms" FromRole="Rooms" ToRole="RoomTypes" />
+          <Property Name="RoomTypesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Schools" Relationship="Model.SchoolsRooms" FromRole="Rooms" ToRole="Schools" />
+          <Property Name="SchoolsId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Schools">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Teachers" Relationship="Model.SchoolsTeachers" FromRole="Schools" ToRole="Teachers" />
+          <NavigationProperty Name="Groups" Relationship="Model.SchoolsGroups" FromRole="Schools" ToRole="Groups" />
+          <NavigationProperty Name="Rooms" Relationship="Model.SchoolsRooms" FromRole="Schools" ToRole="Rooms" />
+          <NavigationProperty Name="RoomTypes" Relationship="Model.SchoolsRoomTypes" FromRole="Schools" ToRole="RoomTypes" />
+          <NavigationProperty Name="SubjectTypes" Relationship="Model.SchoolsSubjectTypes" FromRole="Schools" ToRole="SubjectTypes" />
+          <NavigationProperty Name="Subjects" Relationship="Model.SchoolsSubjects" FromRole="Schools" ToRole="Subjects" />
+        </EntityType>
+        <EntityType Name="RoomTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Rooms" Relationship="Model.RoomTypesRooms" FromRole="RoomTypes" ToRole="Rooms" />
+          <NavigationProperty Name="Schools" Relationship="Model.SchoolsRoomTypes" FromRole="RoomTypes" ToRole="Schools" />
+          <Property Name="SchoolsId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubjectTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Priority" Type="String" Nullable="false" />
+          <NavigationProperty Name="Schools" Relationship="Model.SchoolsSubjectTypes" FromRole="SubjectTypes" ToRole="Schools" />
+          <Property Name="SchoolsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Subjects" Relationship="Model.SubjectTypesSubjects" FromRole="SubjectTypes" ToRole="Subjects" />
+        </EntityType>
+        <Association Name="RoomTypesRooms">
+          <End Type="Model.RoomTypes" Role="RoomTypes" Multiplicity="1" />
+          <End Type="Model.Rooms" Role="Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="RoomTypesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SchoolsTeachers">
+          <End Type="Model.Schools" Role="Schools" Multiplicity="1" />
+          <End Type="Model.Teachers" Role="Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="SchoolsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SchoolsGroups">
+          <End Type="Model.Schools" Role="Schools" Multiplicity="1" />
+          <End Type="Model.Groups" Role="Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="SchoolsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SchoolsRooms">
+          <End Type="Model.Schools" Role="Schools" Multiplicity="1" />
+          <End Type="Model.Rooms" Role="Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="SchoolsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SchoolsRoomTypes">
+          <End Type="Model.Schools" Role="Schools" Multiplicity="1" />
+          <End Type="Model.RoomTypes" Role="RoomTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomTypes">
+              <PropertyRef Name="SchoolsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SchoolsSubjectTypes">
+          <End Type="Model.Schools" Role="Schools" Multiplicity="1" />
+          <End Type="Model.SubjectTypes" Role="SubjectTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubjectTypes">
+              <PropertyRef Name="SchoolsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Schools" Relationship="Model.SchoolsSubjects" FromRole="Subjects" ToRole="Schools" />
+          <Property Name="SchoolsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SubjectTypes" Relationship="Model.SubjectTypesSubjects" FromRole="Subjects" ToRole="SubjectTypes" />
+          <Property Name="SubjectTypesId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="SchoolsSubjects">
+          <End Type="Model.Schools" Role="Schools" Multiplicity="1" />
+          <End Type="Model.Subjects" Role="Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subjects">
+              <PropertyRef Name="SchoolsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SubjectTypesSubjects">
+          <End Type="Model.SubjectTypes" Role="SubjectTypes" Multiplicity="1" />
+          <End Type="Model.Subjects" Role="Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subjects">
+              <PropertyRef Name="SubjectTypesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

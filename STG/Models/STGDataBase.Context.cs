@@ -30,5 +30,12 @@ namespace STG.Models
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<Teachers> Teachers { get; set; }
+        public virtual DbSet<Groups> Groups { get; set; }
+        public virtual DbSet<Rooms> Rooms { get; set; }
+        public virtual DbSet<Schools> Schools { get; set; }
+        public virtual DbSet<RoomTypes> RoomTypes { get; set; }
+        public virtual DbSet<SubjectTypes> SubjectTypes { get; set; }
+        public virtual DbSet<Subjects> Subjects { get; set; }
     }
 }

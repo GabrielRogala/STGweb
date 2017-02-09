@@ -234,8 +234,20 @@
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>STGDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Groups.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rooms.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoomTypes.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Schools.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\STGDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -250,6 +262,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>STGDataBase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Subjects.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubjectTypes.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Teachers.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
