@@ -238,6 +238,9 @@
       <DependentUpon>STGDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Lessons.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rooms.cs">
       <DependentUpon>STGDataBase.tt</DependentUpon>
@@ -263,6 +266,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>STGDataBase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SubGroupTypes.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Subjects.cs">
       <DependentUpon>STGDataBase.tt</DependentUpon>
     </Compile>
@@ -287,6 +293,7 @@
       <DependentUpon>STGDataBase.edmx</DependentUpon>
       <LastGenOutput>STGDataBase.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\STGDataBase.edmx.sql" />
     <Content Include="Models\STGDataBase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>STGDataBase.edmx</DependentUpon>

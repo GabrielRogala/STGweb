@@ -26,6 +26,7 @@ namespace STG.Models
         }
     
         public int Id { get; set; }
+        public string AspNetUsersId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Teachers> Teachers { get; set; }
@@ -39,5 +40,6 @@ namespace STG.Models
         public virtual ICollection<SubjectTypes> SubjectTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subjects> Subjects { get; set; }
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

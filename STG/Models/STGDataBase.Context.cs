@@ -37,5 +37,7 @@ namespace STG.Models
         public virtual DbSet<RoomTypes> RoomTypes { get; set; }
         public virtual DbSet<SubjectTypes> SubjectTypes { get; set; }
         public virtual DbSet<Subjects> Subjects { get; set; }
+        public virtual DbSet<SubGroupTypes> SubGroupTypes { get; set; }
+        public virtual DbSet<Lessons> Lessons { get; set; }
     }
 }

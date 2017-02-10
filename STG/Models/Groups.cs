@@ -14,11 +14,26 @@ namespace STG.Models
     
     public partial class Groups
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Groups()
+        {
+            this.SubGroupTypes = new HashSet<SubGroupTypes>();
+            this.Groups1 = new HashSet<Groups>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public int Amount { get; set; }
         public int SchoolsId { get; set; }
+        public Nullable<int> ParentGroup { get; set; }
+        public Nullable<int> SubGroupTypesId { get; set; }
     
         public virtual Schools Schools { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SubGroupTypes> SubGroupTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Groups> Groups1 { get; set; }
+        public virtual Groups Groups2 { get; set; }
+        public virtual SubGroupTypes SubGroupTypes1 { get; set; }
     }
 }
