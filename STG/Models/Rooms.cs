@@ -14,13 +14,25 @@ namespace STG.Models
     
     public partial class Rooms
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Rooms()
+        {
+            this.Lessons = new HashSet<Lessons>();
+            this.Timetables = new HashSet<Timetables>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public int RoomTypesId { get; set; }
         public int SchoolsId { get; set; }
         public int Amount { get; set; }
+        public string BlockedHours { get; set; }
     
         public virtual RoomTypes RoomTypes { get; set; }
         public virtual Schools Schools { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lessons> Lessons { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Timetables> Timetables { get; set; }
     }
 }

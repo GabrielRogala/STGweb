@@ -18,6 +18,7 @@ namespace STG.Models
         public RoomTypes()
         {
             this.Rooms = new HashSet<Rooms>();
+            this.Lessons = new HashSet<Lessons>();
         }
     
         public int Id { get; set; }
@@ -27,5 +28,7 @@ namespace STG.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rooms> Rooms { get; set; }
         public virtual Schools Schools { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lessons> Lessons { get; set; }
     }
 }

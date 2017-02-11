@@ -14,10 +14,19 @@ namespace STG.Models
     
     public partial class Teachers
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Teachers()
+        {
+            this.Lessons = new HashSet<Lessons>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public int SchoolsId { get; set; }
+        public string BlockedHours { get; set; }
     
         public virtual Schools Schools { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lessons> Lessons { get; set; }
     }
 }

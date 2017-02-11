@@ -14,6 +14,12 @@ namespace STG.Models
     
     public partial class Subjects
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Subjects()
+        {
+            this.Lessons = new HashSet<Lessons>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public int SchoolsId { get; set; }
@@ -21,5 +27,7 @@ namespace STG.Models
     
         public virtual Schools Schools { get; set; }
         public virtual SubjectTypes SubjectTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lessons> Lessons { get; set; }
     }
 }

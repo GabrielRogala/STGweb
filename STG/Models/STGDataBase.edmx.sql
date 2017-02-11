@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/10/2017 14:44:10
+-- Date Created: 02/11/2017 10:57:51
 -- Generated from EDMX file: C:\Users\Gabriel Rogala\Dropbox\INŻ\Projekt\STGweb\STG\Models\STGDataBase.edmx
 -- --------------------------------------------------
 
@@ -23,19 +23,55 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[AspNetUserLogins] DROP CONSTRAINT [FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId];
 GO
-IF OBJECT_ID(N'[dbo].[FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId];
+IF OBJECT_ID(N'[dbo].[FK_AspNetUserRoles_AspNetRoles]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetRoles];
 GO
-IF OBJECT_ID(N'[dbo].[FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId];
+IF OBJECT_ID(N'[dbo].[FK_AspNetUserRoles_AspNetUsers]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetUsers];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RoomTypesRooms]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Rooms] DROP CONSTRAINT [FK_RoomTypesRooms];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolsTeachers]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Teachers] DROP CONSTRAINT [FK_SchoolsTeachers];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolsGroups]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Groups] DROP CONSTRAINT [FK_SchoolsGroups];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolsRooms]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Rooms] DROP CONSTRAINT [FK_SchoolsRooms];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolsRoomTypes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RoomTypes] DROP CONSTRAINT [FK_SchoolsRoomTypes];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolsSubjectTypes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SubjectTypes] DROP CONSTRAINT [FK_SchoolsSubjectTypes];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolsSubjects]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Subjects] DROP CONSTRAINT [FK_SchoolsSubjects];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SubjectTypesSubjects]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Subjects] DROP CONSTRAINT [FK_SubjectTypesSubjects];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AspNetUsersSchools]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Schools] DROP CONSTRAINT [FK_AspNetUsersSchools];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GroupsSubGroupTypes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SubGroupTypes] DROP CONSTRAINT [FK_GroupsSubGroupTypes];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GroupsGroups]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Groups] DROP CONSTRAINT [FK_GroupsGroups];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SubGroupTypesGroups]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Groups] DROP CONSTRAINT [FK_SubGroupTypesGroups];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[__MigrationHistory]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[__MigrationHistory];
+IF OBJECT_ID(N'[dbo].[C__MigrationHistory]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[C__MigrationHistory];
 GO
 IF OBJECT_ID(N'[dbo].[AspNetRoles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AspNetRoles];
@@ -46,11 +82,38 @@ GO
 IF OBJECT_ID(N'[dbo].[AspNetUserLogins]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AspNetUserLogins];
 GO
-IF OBJECT_ID(N'[dbo].[AspNetUserRoles]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[AspNetUserRoles];
-GO
 IF OBJECT_ID(N'[dbo].[AspNetUsers]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AspNetUsers];
+GO
+IF OBJECT_ID(N'[dbo].[Teachers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Teachers];
+GO
+IF OBJECT_ID(N'[dbo].[Groups]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Groups];
+GO
+IF OBJECT_ID(N'[dbo].[Rooms]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Rooms];
+GO
+IF OBJECT_ID(N'[dbo].[Schools]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Schools];
+GO
+IF OBJECT_ID(N'[dbo].[RoomTypes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RoomTypes];
+GO
+IF OBJECT_ID(N'[dbo].[SubjectTypes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SubjectTypes];
+GO
+IF OBJECT_ID(N'[dbo].[Subjects]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Subjects];
+GO
+IF OBJECT_ID(N'[dbo].[SubGroupTypes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SubGroupTypes];
+GO
+IF OBJECT_ID(N'[dbo].[Lessons]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Lessons];
+GO
+IF OBJECT_ID(N'[dbo].[AspNetUserRoles]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AspNetUserRoles];
 GO
 
 -- --------------------------------------------------
@@ -111,7 +174,8 @@ GO
 CREATE TABLE [dbo].[Teachers] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [SchoolsId] int  NOT NULL
+    [SchoolsId] int  NOT NULL,
+    [BlockedHours] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -122,7 +186,8 @@ CREATE TABLE [dbo].[Groups] (
     [Amount] int  NOT NULL,
     [SchoolsId] int  NOT NULL,
     [ParentGroup] int  NULL,
-    [SubGroupTypesId] int  NULL
+    [SubGroupTypesId] int  NULL,
+    [BlockedHours] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -132,14 +197,18 @@ CREATE TABLE [dbo].[Rooms] (
     [Name] nvarchar(max)  NOT NULL,
     [RoomTypesId] int  NOT NULL,
     [SchoolsId] int  NOT NULL,
-    [Amount] int  NOT NULL
+    [Amount] int  NOT NULL,
+    [BlockedHours] nvarchar(max)  NOT NULL
 );
 GO
 
 -- Creating table 'Schools'
 CREATE TABLE [dbo].[Schools] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [AspNetUsersId] nvarchar(128)  NOT NULL
+    [AspNetUsersId] nvarchar(128)  NOT NULL,
+    [NumberOfDays] int  NOT NULL,
+    [NumberOfHours] int  NOT NULL,
+    [STGConfigId] int  NOT NULL
 );
 GO
 
@@ -179,7 +248,39 @@ GO
 
 -- Creating table 'Lessons'
 CREATE TABLE [dbo].[Lessons] (
-    [Id] int IDENTITY(1,1) NOT NULL
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [SubjectsId] int  NOT NULL,
+    [TeachersId] int  NOT NULL,
+    [GroupsId] int  NOT NULL,
+    [RoomsId] int  NULL,
+    [RoomTypesId] int  NOT NULL,
+    [Schedule] nvarchar(max)  NOT NULL,
+    [SchoolsId] int  NOT NULL
+);
+GO
+
+-- Creating table 'Timetables'
+CREATE TABLE [dbo].[Timetables] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [SchoolsId] int  NOT NULL,
+    [LessonsId] int  NOT NULL,
+    [Day] int  NOT NULL,
+    [Hour] int  NOT NULL,
+    [RoomsId] int  NOT NULL,
+    [Size] int  NOT NULL,
+    [Part] int  NOT NULL
+);
+GO
+
+-- Creating table 'STGConfig'
+CREATE TABLE [dbo].[STGConfig] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [PopulationSize] int  NOT NULL,
+    [EpocheSize] int  NOT NULL,
+    [NumberOfLessonToPositioning] int  NOT NULL,
+    [BottomBorderOfBestSlots] int  NOT NULL,
+    [TopBorderOfBestSlots] int  NOT NULL,
+    [ProbabilityOfMutation] int  NOT NULL
 );
 GO
 
@@ -275,6 +376,18 @@ GO
 -- Creating primary key on [Id] in table 'Lessons'
 ALTER TABLE [dbo].[Lessons]
 ADD CONSTRAINT [PK_Lessons]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Timetables'
+ALTER TABLE [dbo].[Timetables]
+ADD CONSTRAINT [PK_Timetables]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'STGConfig'
+ALTER TABLE [dbo].[STGConfig]
+ADD CONSTRAINT [PK_STGConfig]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -520,6 +633,156 @@ GO
 CREATE INDEX [IX_FK_SubGroupTypesGroups]
 ON [dbo].[Groups]
     ([SubGroupTypesId]);
+GO
+
+-- Creating foreign key on [SubjectsId] in table 'Lessons'
+ALTER TABLE [dbo].[Lessons]
+ADD CONSTRAINT [FK_SubjectsLessons]
+    FOREIGN KEY ([SubjectsId])
+    REFERENCES [dbo].[Subjects]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SubjectsLessons'
+CREATE INDEX [IX_FK_SubjectsLessons]
+ON [dbo].[Lessons]
+    ([SubjectsId]);
+GO
+
+-- Creating foreign key on [TeachersId] in table 'Lessons'
+ALTER TABLE [dbo].[Lessons]
+ADD CONSTRAINT [FK_TeachersLessons]
+    FOREIGN KEY ([TeachersId])
+    REFERENCES [dbo].[Teachers]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TeachersLessons'
+CREATE INDEX [IX_FK_TeachersLessons]
+ON [dbo].[Lessons]
+    ([TeachersId]);
+GO
+
+-- Creating foreign key on [GroupsId] in table 'Lessons'
+ALTER TABLE [dbo].[Lessons]
+ADD CONSTRAINT [FK_GroupsLessons]
+    FOREIGN KEY ([GroupsId])
+    REFERENCES [dbo].[Groups]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_GroupsLessons'
+CREATE INDEX [IX_FK_GroupsLessons]
+ON [dbo].[Lessons]
+    ([GroupsId]);
+GO
+
+-- Creating foreign key on [RoomsId] in table 'Lessons'
+ALTER TABLE [dbo].[Lessons]
+ADD CONSTRAINT [FK_RoomsLessons]
+    FOREIGN KEY ([RoomsId])
+    REFERENCES [dbo].[Rooms]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RoomsLessons'
+CREATE INDEX [IX_FK_RoomsLessons]
+ON [dbo].[Lessons]
+    ([RoomsId]);
+GO
+
+-- Creating foreign key on [RoomTypesId] in table 'Lessons'
+ALTER TABLE [dbo].[Lessons]
+ADD CONSTRAINT [FK_RoomTypesLessons]
+    FOREIGN KEY ([RoomTypesId])
+    REFERENCES [dbo].[RoomTypes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RoomTypesLessons'
+CREATE INDEX [IX_FK_RoomTypesLessons]
+ON [dbo].[Lessons]
+    ([RoomTypesId]);
+GO
+
+-- Creating foreign key on [SchoolsId] in table 'Timetables'
+ALTER TABLE [dbo].[Timetables]
+ADD CONSTRAINT [FK_SchoolsTimetables]
+    FOREIGN KEY ([SchoolsId])
+    REFERENCES [dbo].[Schools]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SchoolsTimetables'
+CREATE INDEX [IX_FK_SchoolsTimetables]
+ON [dbo].[Timetables]
+    ([SchoolsId]);
+GO
+
+-- Creating foreign key on [SchoolsId] in table 'Lessons'
+ALTER TABLE [dbo].[Lessons]
+ADD CONSTRAINT [FK_SchoolsLessons]
+    FOREIGN KEY ([SchoolsId])
+    REFERENCES [dbo].[Schools]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SchoolsLessons'
+CREATE INDEX [IX_FK_SchoolsLessons]
+ON [dbo].[Lessons]
+    ([SchoolsId]);
+GO
+
+-- Creating foreign key on [LessonsId] in table 'Timetables'
+ALTER TABLE [dbo].[Timetables]
+ADD CONSTRAINT [FK_LessonsTimetables]
+    FOREIGN KEY ([LessonsId])
+    REFERENCES [dbo].[Lessons]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LessonsTimetables'
+CREATE INDEX [IX_FK_LessonsTimetables]
+ON [dbo].[Timetables]
+    ([LessonsId]);
+GO
+
+-- Creating foreign key on [RoomsId] in table 'Timetables'
+ALTER TABLE [dbo].[Timetables]
+ADD CONSTRAINT [FK_RoomsTimetables]
+    FOREIGN KEY ([RoomsId])
+    REFERENCES [dbo].[Rooms]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RoomsTimetables'
+CREATE INDEX [IX_FK_RoomsTimetables]
+ON [dbo].[Timetables]
+    ([RoomsId]);
+GO
+
+-- Creating foreign key on [STGConfigId] in table 'Schools'
+ALTER TABLE [dbo].[Schools]
+ADD CONSTRAINT [FK_STGConfigSchools]
+    FOREIGN KEY ([STGConfigId])
+    REFERENCES [dbo].[STGConfig]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_STGConfigSchools'
+CREATE INDEX [IX_FK_STGConfigSchools]
+ON [dbo].[Schools]
+    ([STGConfigId]);
 GO
 
 -- --------------------------------------------------

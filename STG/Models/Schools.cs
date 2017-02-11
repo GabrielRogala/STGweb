@@ -17,16 +17,23 @@ namespace STG.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Schools()
         {
+            this.NumberOfDays = 5;
+            this.NumberOfHours = 8;
             this.Teachers = new HashSet<Teachers>();
             this.Groups = new HashSet<Groups>();
             this.Rooms = new HashSet<Rooms>();
             this.RoomTypes = new HashSet<RoomTypes>();
             this.SubjectTypes = new HashSet<SubjectTypes>();
             this.Subjects = new HashSet<Subjects>();
+            this.Timetables = new HashSet<Timetables>();
+            this.Lessons = new HashSet<Lessons>();
         }
     
         public int Id { get; set; }
         public string AspNetUsersId { get; set; }
+        public int NumberOfDays { get; set; }
+        public int NumberOfHours { get; set; }
+        public int STGConfigId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Teachers> Teachers { get; set; }
@@ -41,5 +48,10 @@ namespace STG.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subjects> Subjects { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Timetables> Timetables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lessons> Lessons { get; set; }
+        public virtual STGConfig STGConfig { get; set; }
     }
 }

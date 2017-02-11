@@ -207,7 +207,7 @@
     <Compile Include="Controllers\Engine\Room.cs" />
     <Compile Include="Controllers\Engine\SchoolTimetable.cs" />
     <Compile Include="Controllers\Engine\Slot.cs" />
-    <Compile Include="Controllers\Engine\STTConfig.cs" />
+    <Compile Include="Controllers\Engine\STGConfig.cs" />
     <Compile Include="Controllers\Engine\Subject.cs" />
     <Compile Include="Controllers\Engine\SubjectType.cs" />
     <Compile Include="Controllers\Engine\Teacher.cs" />
@@ -251,6 +251,9 @@
     <Compile Include="Models\Schools.cs">
       <DependentUpon>STGDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\STGConfig.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\STGDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -276,6 +279,9 @@
       <DependentUpon>STGDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teachers.cs">
+      <DependentUpon>STGDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Timetables.cs">
       <DependentUpon>STGDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

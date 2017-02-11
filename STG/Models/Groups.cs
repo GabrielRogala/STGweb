@@ -19,6 +19,7 @@ namespace STG.Models
         {
             this.SubGroupTypes = new HashSet<SubGroupTypes>();
             this.Groups1 = new HashSet<Groups>();
+            this.Lessons = new HashSet<Lessons>();
         }
     
         public int Id { get; set; }
@@ -27,6 +28,7 @@ namespace STG.Models
         public int SchoolsId { get; set; }
         public Nullable<int> ParentGroup { get; set; }
         public Nullable<int> SubGroupTypesId { get; set; }
+        public string BlockedHours { get; set; }
     
         public virtual Schools Schools { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -35,5 +37,7 @@ namespace STG.Models
         public virtual ICollection<Groups> Groups1 { get; set; }
         public virtual Groups Groups2 { get; set; }
         public virtual SubGroupTypes SubGroupTypes1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lessons> Lessons { get; set; }
     }
 }

@@ -20,6 +20,8 @@
     <EntitySet Name="Subjects" EntityType="Model.Store.Subjects" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SubGroupTypes" EntityType="Model.Store.SubGroupTypes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Lessons" EntityType="Model.Store.Lessons" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Timetables" EntityType="Model.Store.Timetables" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="STGConfig" EntityType="Model.Store.STGConfig" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AspNetUserRoles" EntityType="Model.Store.AspNetUserRoles" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Model.Store.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -85,6 +87,46 @@
       <End Role="SubGroupTypes" EntitySet="SubGroupTypes" />
       <End Role="Groups" EntitySet="Groups" />
     </AssociationSet>
+    <AssociationSet Name="SubjectsLessons" Association="Model.Store.SubjectsLessons">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="TeachersLessons" Association="Model.Store.TeachersLessons">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="GroupsLessons" Association="Model.Store.GroupsLessons">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="RoomsLessons" Association="Model.Store.RoomsLessons">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="RoomTypesLessons" Association="Model.Store.RoomTypesLessons">
+      <End Role="RoomTypes" EntitySet="RoomTypes" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="SchoolsTimetables" Association="Model.Store.SchoolsTimetables">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="Timetables" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="SchoolsLessons" Association="Model.Store.SchoolsLessons">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="LessonsTimetables" Association="Model.Store.LessonsTimetables">
+      <End Role="Lessons" EntitySet="Lessons" />
+      <End Role="Timetables" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="RoomsTimetables" Association="Model.Store.RoomsTimetables">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="Timetables" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="STGConfigSchools" Association="Model.Store.STGConfigSchools">
+      <End Role="STGConfig" EntitySet="STGConfig" />
+      <End Role="Schools" EntitySet="Schools" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
@@ -146,6 +188,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SchoolsId" Type="int" Nullable="false" />
+    <Property Name="BlockedHours" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Groups">
     <Key>
@@ -157,6 +200,7 @@
     <Property Name="SchoolsId" Type="int" Nullable="false" />
     <Property Name="ParentGroup" Type="int" Nullable="true" />
     <Property Name="SubGroupTypesId" Type="int" Nullable="true" />
+    <Property Name="BlockedHours" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Rooms">
     <Key>
@@ -167,6 +211,7 @@
     <Property Name="RoomTypesId" Type="int" Nullable="false" />
     <Property Name="SchoolsId" Type="int" Nullable="false" />
     <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="BlockedHours" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Schools">
     <Key>
@@ -174,6 +219,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AspNetUsersId" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="NumberOfDays" Type="int" Nullable="false" DefaultValue="5" />
+    <Property Name="NumberOfHours" Type="int" Nullable="false" DefaultValue="8" />
+    <Property Name="STGConfigId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RoomTypes">
     <Key>
@@ -214,6 +262,38 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectsId" Type="int" Nullable="false" />
+    <Property Name="TeachersId" Type="int" Nullable="false" />
+    <Property Name="GroupsId" Type="int" Nullable="false" />
+    <Property Name="RoomsId" Type="int" Nullable="true" />
+    <Property Name="RoomTypesId" Type="int" Nullable="false" />
+    <Property Name="Schedule" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SchoolsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Timetables">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SchoolsId" Type="int" Nullable="false" />
+    <Property Name="LessonsId" Type="int" Nullable="false" />
+    <Property Name="Day" Type="int" Nullable="false" />
+    <Property Name="Hour" Type="int" Nullable="false" />
+    <Property Name="RoomsId" Type="int" Nullable="false" />
+    <Property Name="Size" Type="int" Nullable="false" DefaultValue="1" />
+    <Property Name="Part" Type="int" Nullable="false" DefaultValue="1" />
+  </EntityType>
+  <EntityType Name="STGConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PopulationSize" Type="int" Nullable="false" DefaultValue="100" />
+    <Property Name="EpocheSize" Type="int" Nullable="false" DefaultValue="500" />
+    <Property Name="NumberOfLessonToPositioning" Type="int" Nullable="false" DefaultValue="5" />
+    <Property Name="BottomBorderOfBestSlots" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="TopBorderOfBestSlots" Type="int" Nullable="false" DefaultValue="6" />
+    <Property Name="ProbabilityOfMutation" Type="int" Nullable="false" DefaultValue="5" />
   </EntityType>
   <EntityType Name="AspNetUserRoles">
     <Key>
@@ -392,6 +472,126 @@
       </Principal>
       <Dependent Role="Groups">
         <PropertyRef Name="SubGroupTypesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubjectsLessons">
+    <End Role="Subjects" Type="Model.Store.Subjects" Multiplicity="1" />
+    <End Role="Lessons" Type="Model.Store.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="SubjectsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TeachersLessons">
+    <End Role="Teachers" Type="Model.Store.Teachers" Multiplicity="1" />
+    <End Role="Lessons" Type="Model.Store.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="TeachersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupsLessons">
+    <End Role="Groups" Type="Model.Store.Groups" Multiplicity="1" />
+    <End Role="Lessons" Type="Model.Store.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="GroupsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomsLessons">
+    <End Role="Rooms" Type="Model.Store.Rooms" Multiplicity="0..1" />
+    <End Role="Lessons" Type="Model.Store.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="RoomsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomTypesLessons">
+    <End Role="RoomTypes" Type="Model.Store.RoomTypes" Multiplicity="1" />
+    <End Role="Lessons" Type="Model.Store.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="RoomTypesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SchoolsTimetables">
+    <End Role="Schools" Type="Model.Store.Schools" Multiplicity="1" />
+    <End Role="Timetables" Type="Model.Store.Timetables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Timetables">
+        <PropertyRef Name="SchoolsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SchoolsLessons">
+    <End Role="Schools" Type="Model.Store.Schools" Multiplicity="1" />
+    <End Role="Lessons" Type="Model.Store.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="SchoolsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LessonsTimetables">
+    <End Role="Lessons" Type="Model.Store.Lessons" Multiplicity="1" />
+    <End Role="Timetables" Type="Model.Store.Timetables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lessons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Timetables">
+        <PropertyRef Name="LessonsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomsTimetables">
+    <End Role="Rooms" Type="Model.Store.Rooms" Multiplicity="1" />
+    <End Role="Timetables" Type="Model.Store.Timetables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Timetables">
+        <PropertyRef Name="RoomsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="STGConfigSchools">
+    <End Role="STGConfig" Type="Model.Store.STGConfig" Multiplicity="1" />
+    <End Role="Schools" Type="Model.Store.Schools" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STGConfig">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schools">
+        <PropertyRef Name="STGConfigId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -590,6 +790,48 @@
             <End Role="Groups" EntitySet="Groups" />
           </AssociationSet>
           <EntitySet Name="Lessons" EntityType="Model.Lessons" />
+          <AssociationSet Name="SubjectsLessons" Association="Model.SubjectsLessons">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="TeachersLessons" Association="Model.TeachersLessons">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="GroupsLessons" Association="Model.GroupsLessons">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="RoomsLessons" Association="Model.RoomsLessons">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="RoomTypesLessons" Association="Model.RoomTypesLessons">
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <EntitySet Name="Timetables" EntityType="Model.Timetables" />
+          <AssociationSet Name="SchoolsTimetables" Association="Model.SchoolsTimetables">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="Timetables" EntitySet="Timetables" />
+          </AssociationSet>
+          <AssociationSet Name="SchoolsLessons" Association="Model.SchoolsLessons">
+            <End Role="Schools" EntitySet="Schools" />
+            <End Role="Lessons" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="LessonsTimetables" Association="Model.LessonsTimetables">
+            <End Role="Lessons" EntitySet="Lessons" />
+            <End Role="Timetables" EntitySet="Timetables" />
+          </AssociationSet>
+          <AssociationSet Name="RoomsTimetables" Association="Model.RoomsTimetables">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Timetables" EntitySet="Timetables" />
+          </AssociationSet>
+          <EntitySet Name="STGConfig" EntityType="Model.STGConfig" />
+          <AssociationSet Name="STGConfigSchools" Association="Model.STGConfigSchools">
+            <End Role="STGConfig" EntitySet="STGConfig" />
+            <End Role="Schools" EntitySet="Schools" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Teachers">
           <Key>
@@ -599,6 +841,8 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <NavigationProperty Name="Schools" Relationship="Model.SchoolsTeachers" FromRole="Teachers" ToRole="Schools" />
           <Property Name="SchoolsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lessons" Relationship="Model.TeachersLessons" FromRole="Teachers" ToRole="Lessons" />
+          <Property Name="BlockedHours" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Groups">
           <Key>
@@ -615,6 +859,8 @@
           <Property Name="ParentGroup" Type="Int32" Nullable="true" />
           <NavigationProperty Name="SubGroupTypes1" Relationship="Model.SubGroupTypesGroups" FromRole="Groups" ToRole="SubGroupTypes" />
           <Property Name="SubGroupTypesId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Lessons" Relationship="Model.GroupsLessons" FromRole="Groups" ToRole="Lessons" />
+          <Property Name="BlockedHours" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Rooms">
           <Key>
@@ -627,6 +873,9 @@
           <NavigationProperty Name="Schools" Relationship="Model.SchoolsRooms" FromRole="Rooms" ToRole="Schools" />
           <Property Name="SchoolsId" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lessons" Relationship="Model.RoomsLessons" FromRole="Rooms" ToRole="Lessons" />
+          <NavigationProperty Name="Timetables" Relationship="Model.RoomsTimetables" FromRole="Rooms" ToRole="Timetables" />
+          <Property Name="BlockedHours" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Schools">
           <Key>
@@ -641,6 +890,12 @@
           <NavigationProperty Name="Subjects" Relationship="Model.SchoolsSubjects" FromRole="Schools" ToRole="Subjects" />
           <NavigationProperty Name="AspNetUsers" Relationship="Model.AspNetUsersSchools" FromRole="Schools" ToRole="AspNetUsers" />
           <Property Name="AspNetUsersId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Timetables" Relationship="Model.SchoolsTimetables" FromRole="Schools" ToRole="Timetables" />
+          <NavigationProperty Name="Lessons" Relationship="Model.SchoolsLessons" FromRole="Schools" ToRole="Lessons" />
+          <Property Name="NumberOfDays" Type="Int32" Nullable="false" DefaultValue="5" />
+          <Property Name="NumberOfHours" Type="Int32" Nullable="false" DefaultValue="8" />
+          <NavigationProperty Name="STGConfig" Relationship="Model.STGConfigSchools" FromRole="Schools" ToRole="STGConfig" />
+          <Property Name="STGConfigId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="RoomTypes">
           <Key>
@@ -651,6 +906,7 @@
           <NavigationProperty Name="Schools" Relationship="Model.SchoolsRoomTypes" FromRole="RoomTypes" ToRole="Schools" />
           <Property Name="SchoolsId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Lessons" Relationship="Model.RoomTypesLessons" FromRole="RoomTypes" ToRole="Lessons" />
         </EntityType>
         <EntityType Name="SubjectTypes">
           <Key>
@@ -745,6 +1001,7 @@
           <Property Name="SchoolsId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SubjectTypes" Relationship="Model.SubjectTypesSubjects" FromRole="Subjects" ToRole="SubjectTypes" />
           <Property Name="SubjectTypesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lessons" Relationship="Model.SubjectsLessons" FromRole="Subjects" ToRole="Lessons" />
         </EntityType>
         <Association Name="SchoolsSubjects">
           <End Type="Model.Schools" Role="Schools" Multiplicity="1" />
@@ -833,7 +1090,170 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Subjects" Relationship="Model.SubjectsLessons" FromRole="Lessons" ToRole="Subjects" />
+          <Property Name="SubjectsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Teachers" Relationship="Model.TeachersLessons" FromRole="Lessons" ToRole="Teachers" />
+          <Property Name="TeachersId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Model.GroupsLessons" FromRole="Lessons" ToRole="Groups" />
+          <Property Name="GroupsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rooms" Relationship="Model.RoomsLessons" FromRole="Lessons" ToRole="Rooms" />
+          <Property Name="RoomsId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="RoomTypes" Relationship="Model.RoomTypesLessons" FromRole="Lessons" ToRole="RoomTypes" />
+          <Property Name="RoomTypesId" Type="Int32" Nullable="false" />
+          <Property Name="Schedule" Type="String" Nullable="false" />
+          <NavigationProperty Name="Schools" Relationship="Model.SchoolsLessons" FromRole="Lessons" ToRole="Schools" />
+          <Property Name="SchoolsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Timetables" Relationship="Model.LessonsTimetables" FromRole="Lessons" ToRole="Timetables" />
         </EntityType>
+        <Association Name="SubjectsLessons">
+          <End Type="Model.Subjects" Role="Subjects" Multiplicity="1" />
+          <End Type="Model.Lessons" Role="Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="SubjectsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TeachersLessons">
+          <End Type="Model.Teachers" Role="Teachers" Multiplicity="1" />
+          <End Type="Model.Lessons" Role="Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="TeachersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GroupsLessons">
+          <End Type="Model.Groups" Role="Groups" Multiplicity="1" />
+          <End Type="Model.Lessons" Role="Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="GroupsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoomsLessons">
+          <End Type="Model.Rooms" Role="Rooms" Multiplicity="0..1" />
+          <End Type="Model.Lessons" Role="Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="RoomsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoomTypesLessons">
+          <End Type="Model.RoomTypes" Role="RoomTypes" Multiplicity="1" />
+          <End Type="Model.Lessons" Role="Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="RoomTypesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Timetables">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Schools" Relationship="Model.SchoolsTimetables" FromRole="Timetables" ToRole="Schools" />
+          <Property Name="SchoolsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lessons" Relationship="Model.LessonsTimetables" FromRole="Timetables" ToRole="Lessons" />
+          <Property Name="LessonsId" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="Int32" Nullable="false" />
+          <Property Name="Hour" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rooms" Relationship="Model.RoomsTimetables" FromRole="Timetables" ToRole="Rooms" />
+          <Property Name="RoomsId" Type="Int32" Nullable="false" />
+          <Property Name="Size" Type="Int32" Nullable="false" DefaultValue="1" />
+          <Property Name="Part" Type="Int32" Nullable="false" DefaultValue="1" />
+        </EntityType>
+        <Association Name="SchoolsTimetables">
+          <End Type="Model.Schools" Role="Schools" Multiplicity="1" />
+          <End Type="Model.Timetables" Role="Timetables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetables">
+              <PropertyRef Name="SchoolsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SchoolsLessons">
+          <End Type="Model.Schools" Role="Schools" Multiplicity="1" />
+          <End Type="Model.Lessons" Role="Lessons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schools">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lessons">
+              <PropertyRef Name="SchoolsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LessonsTimetables">
+          <End Type="Model.Lessons" Role="Lessons" Multiplicity="1" />
+          <End Type="Model.Timetables" Role="Timetables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lessons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetables">
+              <PropertyRef Name="LessonsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoomsTimetables">
+          <End Type="Model.Rooms" Role="Rooms" Multiplicity="1" />
+          <End Type="Model.Timetables" Role="Timetables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetables">
+              <PropertyRef Name="RoomsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="STGConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PopulationSize" Type="Int32" Nullable="false" DefaultValue="100" />
+          <Property Name="EpocheSize" Type="Int32" Nullable="false" DefaultValue="500" />
+          <NavigationProperty Name="Schools" Relationship="Model.STGConfigSchools" FromRole="STGConfig" ToRole="Schools" />
+          <Property Name="NumberOfLessonToPositioning" Type="Int32" Nullable="false" DefaultValue="5" />
+          <Property Name="BottomBorderOfBestSlots" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="TopBorderOfBestSlots" Type="Int32" Nullable="false" DefaultValue="6" />
+          <Property Name="ProbabilityOfMutation" Type="Int32" Nullable="false" DefaultValue="5" />
+        </EntityType>
+        <Association Name="STGConfigSchools">
+          <End Type="Model.STGConfig" Role="STGConfig" Multiplicity="1" />
+          <End Type="Model.Schools" Role="Schools" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STGConfig">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schools">
+              <PropertyRef Name="STGConfigId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -901,6 +1321,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SchoolsId" ColumnName="SchoolsId" />
+          <ScalarProperty Name="BlockedHours" ColumnName="BlockedHours" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -913,6 +1334,7 @@
           <ScalarProperty Name="SchoolsId" ColumnName="SchoolsId" />
           <ScalarProperty Name="ParentGroup" ColumnName="ParentGroup" />
           <ScalarProperty Name="SubGroupTypesId" ColumnName="SubGroupTypesId" />
+          <ScalarProperty Name="BlockedHours" ColumnName="BlockedHours" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -924,6 +1346,7 @@
           <ScalarProperty Name="RoomTypesId" ColumnName="RoomTypesId" />
           <ScalarProperty Name="SchoolsId" ColumnName="SchoolsId" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="BlockedHours" ColumnName="BlockedHours" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -932,6 +1355,9 @@
         <MappingFragment StoreEntitySet="Schools">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
+          <ScalarProperty Name="NumberOfDays" ColumnName="NumberOfDays" />
+          <ScalarProperty Name="NumberOfHours" ColumnName="NumberOfHours" />
+          <ScalarProperty Name="STGConfigId" ColumnName="STGConfigId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -977,6 +1403,40 @@
       <EntityTypeMapping TypeName="IsTypeOf(Model.Lessons)">
         <MappingFragment StoreEntitySet="Lessons">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubjectsId" ColumnName="SubjectsId" />
+          <ScalarProperty Name="TeachersId" ColumnName="TeachersId" />
+          <ScalarProperty Name="GroupsId" ColumnName="GroupsId" />
+          <ScalarProperty Name="RoomsId" ColumnName="RoomsId" />
+          <ScalarProperty Name="RoomTypesId" ColumnName="RoomTypesId" />
+          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+          <ScalarProperty Name="SchoolsId" ColumnName="SchoolsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timetables">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Timetables)">
+        <MappingFragment StoreEntitySet="Timetables">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SchoolsId" ColumnName="SchoolsId" />
+          <ScalarProperty Name="LessonsId" ColumnName="LessonsId" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="RoomsId" ColumnName="RoomsId" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Part" ColumnName="Part" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STGConfig">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.STGConfig)">
+        <MappingFragment StoreEntitySet="STGConfig">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PopulationSize" ColumnName="PopulationSize" />
+          <ScalarProperty Name="EpocheSize" ColumnName="EpocheSize" />
+          <ScalarProperty Name="NumberOfLessonToPositioning" ColumnName="NumberOfLessonToPositioning" />
+          <ScalarProperty Name="BottomBorderOfBestSlots" ColumnName="BottomBorderOfBestSlots" />
+          <ScalarProperty Name="TopBorderOfBestSlots" ColumnName="TopBorderOfBestSlots" />
+          <ScalarProperty Name="ProbabilityOfMutation" ColumnName="ProbabilityOfMutation" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

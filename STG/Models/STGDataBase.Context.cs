@@ -39,5 +39,7 @@ namespace STG.Models
         public virtual DbSet<Subjects> Subjects { get; set; }
         public virtual DbSet<SubGroupTypes> SubGroupTypes { get; set; }
         public virtual DbSet<Lessons> Lessons { get; set; }
+        public virtual DbSet<Timetables> Timetables { get; set; }
+        public virtual DbSet<STGConfig> STGConfig { get; set; }
     }
 }
