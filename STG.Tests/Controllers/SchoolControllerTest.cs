@@ -12,17 +12,17 @@ namespace STG.Tests.Controllers
     [TestClass]
     public class SchoolControllerTest
     {
-        [TestMethod]
-        public void TestGenerating()
-        {
-            // Arrange
-            SchoolsController controller = new SchoolsController();
+        //[TestMethod]
+        //public void TestGenerating()
+        //{
+        //    // Arrange
+        //    SchoolsController controller = new SchoolsController();
 
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
+        //    // Act
+        //    ViewResult result = controller.Index() as ViewResult;
 
-            // Assert
-            Assert.IsNotNull(result);
-        }
+        //    // Assert
+        //    Assert.IsNotNull(result);
+        //}
     }
 }

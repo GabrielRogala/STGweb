@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Collections;
 
 namespace STG.Controllers.Engine
 {
@@ -159,6 +160,7 @@ namespace STG.Controllers.Engine
                 tmp += "|\n";
             }
             tmp += "============================================\n";
+            tmp += "fitness : " + fitness() + "\n";
             return tmp.Replace("\n",Environment.NewLine); ;
         }
 
@@ -233,6 +235,7 @@ namespace STG.Controllers.Engine
             return freeSlots;
         }
 
+        //to slow
         public int fitness()
         {
             int value = 0;
@@ -241,6 +244,7 @@ namespace STG.Controllers.Engine
             if (group != null)
             {
                 value += fitnessType();
+                value += fitnessSubjectInDay();
             }
 
             return value;
@@ -269,39 +273,97 @@ namespace STG.Controllers.Engine
         public int fitnessType()
         {
             int value = 0;
+            List<Dictionary<SubjectType, int>> maps = new List<Dictionary<SubjectType, int>>();
+            Dictionary<SubjectType, int> mapsAll = new Dictionary<SubjectType, int>();
 
-            //int sizeOfSubjectType = Enum.GetNames(typeof(SubjectType)).Length;
-            //if (this.group != null)
-            //{
-            //    foreach (Day d in days)
-            //    {
-            //        int[] numberOfType = new int[sizeOfSubjectType];
-            //        for (int i = 0; i < sizeOfSubjectType; i++)
-            //        {
-            //            numberOfType[i] = 0;
-            //        }
-            //        int count = 0;
+            if (this.group != null)
+            {
+                foreach (Day d in days)
+                {
+                    maps.Add(new Dictionary<SubjectType, int>());
+                    
+                    for (int i = 0; i < d.getSlots().Count;)
+                    {
+                        if (!d.getSlots()[i].isEmpty())
+                        {
+                            foreach (Lesson l in d.getSlots()[i].getLessons())
+                            {
+                                if (maps.Last().ContainsKey(l.getSubject().getSubjectType()))
+                                {
+                                    maps.Last()[l.getSubject().getSubjectType()]++;
+                                }
+                                else
+                                {
+                                    maps.Last().Add(l.getSubject().getSubjectType(), 1);
+                                }
 
-            //        for (int i = 0; i < d.getSlots().Count; i++)
-            //        {
-            //            if (!d.getSlots()[i].isEmpty())
-            //            {
-            //                count++;
-            //                numberOfType[(int)d.getSlots()[i].getLesson(0).getSubject().getSubjectType()]++;
-            //            }
-            //        }
+                                if (mapsAll.ContainsKey(l.getSubject().getSubjectType()))
+                                {
+                                    mapsAll[l.getSubject().getSubjectType()]++;
+                                }
+                                else
+                                {
+                                    mapsAll.Add(l.getSubject().getSubjectType(), 1);
+                                }
+                            }
+                            i += d.getSlots()[i].getLessons()[0].getSize();
+                        }
+                        else {
+                            i++;
+                        }
+                    }
+                }
 
-            //        count = count / sizeOfSubjectType;
-            //        for (int i = 0; i < sizeOfSubjectType; i++)
-            //        {
-            //            numberOfType[i] = numberOfType[i] - count;
-            //            if (numberOfType[i] > 0)
-            //            {
-            //                value += (int)(Math.Pow(numberOfType[i], 2));
-            //            }
-            //        }
-            //    }
-            //}
+
+                foreach (Dictionary<SubjectType, int> map in maps) {
+                    foreach (KeyValuePair<SubjectType, int> m in map)
+                    {
+                        if (m.Value > 0)
+                        {
+                            value += (int)Math.Pow(1, Math.Abs(m.Value - (mapsAll[m.Key]/days.Count) ));
+                        }
+                    }
+                }
+                
+            }
+            return value;
+        }
+        
+        public int fitnessSubjectInDay() {
+            int value = 0;
+            Dictionary<Subject, int> maps = new Dictionary<Subject, int>();
+
+            foreach (Day d in days) {
+                for (int i = 0; i< d.getSlots().Count;) {
+                   
+                    if (!d.getSlots()[i].isEmpty())
+                    {
+                        foreach (Lesson l in d.getSlots()[i].getLessons())
+                        {
+                            if (maps.ContainsKey(l.getSubject()))
+                            {
+                                maps[l.getSubject()]++;
+                            }
+                            else
+                            {
+                                maps.Add(l.getSubject(), 0);
+                            }
+                        }
+                        i += d.getSlots()[i].getLessons()[0].getSize();
+                    } else {
+                        i++;
+                    }
+                }
+
+                foreach (KeyValuePair<Subject,int> map in maps) {
+                    if (map.Value > 0) {
+                        value += (int)Math.Pow(5,map.Value);
+                    }
+                }
+
+                maps.Clear();
+            }
+
             return value;
         }
 

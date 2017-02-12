@@ -46,7 +46,7 @@ namespace STG.Controllers.Engine
             this.numberOfSlots = numberOfSlots;
         }
 
-        // wygenerowanie takiego samego planu jak w s   
+        // to do   
         public SchoolTimetable(SchoolTimetable s) : this(s.getTeachers(), s.getGroups(), s.getRooms(), s.getLessons(), s.getNumberOfDays(), s.getNumberOfSlots() ,s.getConfig())
         {
                       
@@ -773,9 +773,18 @@ namespace STG.Controllers.Engine
             }
         }
 
-        // to do 
         public int fitness() {
-            return 0;
+            int value = 0;
+
+            foreach (Timetable tt in groupsTimetables) {
+                value += tt.fitness();
+            }
+            foreach (Timetable tt in teachersTimetables)
+            {
+                value += tt.fitness();
+            }
+
+            return value;
         }
 
         public List<Lesson> getLessonsForGroup(Group gr) {

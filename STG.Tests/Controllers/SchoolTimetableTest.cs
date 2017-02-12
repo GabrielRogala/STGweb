@@ -148,7 +148,7 @@ namespace STG.Tests.Controllers
             SchoolTimetable stt = new SchoolTimetable(teachers, groups, rooms, lessons, 5, 9,config);
             stt.generateSchoolTimetable();
             stt.print();
-            Console.WriteLine(stt.isCorrect());
+            Console.WriteLine(stt.isCorrect() +" " + stt.fitness());
             stt.genWeb("test1");
         }
 
@@ -193,7 +193,8 @@ namespace STG.Tests.Controllers
 
             SchoolTimetable stt = new SchoolTimetable(teachers, groups, rooms, lessons, 3, 3,config);
             stt.generateSchoolTimetable();
-            stt.print();
+            //stt.print();
+            Console.WriteLine(stt.isCorrect() + " " + stt.fitness());
 
             stt.genWeb("subGroupTest");
 
