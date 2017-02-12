@@ -153,8 +153,8 @@ namespace STG.Controllers
             List<SubjectType> subjectTypes = getSubjectTypes(school);
             List<Subject> subjects = getSubjects(school,subjectTypes);
 
-            List<Lesson> lessons = getLessons(school,subjects,roomTypes);
-
+            List<Lesson> lessons = getLessons(school,subjects,roomTypes,groups,teachers);
+            Population population = null;
 
         }
 
@@ -224,7 +224,14 @@ namespace STG.Controllers
                 }
             }
 
-
+            for (int i = 0; i < tmp.Count;) {
+                if (tmp[i].getParent() != null)
+                {
+                    tmp.Remove(tmp[i]);
+                } else {
+                    i++;
+                }
+            }
 
             return tmp;
         }
@@ -311,8 +318,68 @@ namespace STG.Controllers
             return tmp;
         }
 
-        private List<Lesson> getLessons(Schools school, List<Subject> subjects, List<RoomType> roomTypes) {
+        private List<Lesson> getLessons(Schools school, List<Subject> subjects, List<RoomType> roomTypes, List<Group> groups, List<Teacher> teachers) {
             List<Lesson> tmp = new List<Lesson>();
+            Subject subject = null;
+            RoomType roomType = null;
+            Group group = null;
+            Teacher teacher = null;
+
+            List<Lessons> lessons = db.Lessons.Where(g => g.SchoolsId == school.Id).ToList();
+            
+            foreach (Lessons l in lessons) {
+
+                foreach (Subject s in subjects)
+                {
+                    if (s.getName().Equals(l.Subjects.Name))
+                    {
+                        subject = s;
+                        break;
+                    }
+                }
+
+                foreach (Teacher t in teachers) {
+                    if (t.getName().Equals(l.Teachers.Name)) {
+                        teacher = t;
+                        break;
+                    }
+                }
+
+                foreach (Group g in groups)
+                {
+                    if (g.getName().Equals(l.Groups.Name))
+                    {
+                        group = g;
+                        break;
+                    }
+                }
+
+                foreach (RoomType rt in roomTypes)
+                {
+                    if (rt.getName().Equals(l.RoomTypes.Name))
+                    {
+                        roomType = rt;
+                        break;
+                    }
+                }
+
+                List<Int32> schedule = new List<Int32>();
+                int amount = 0;
+                for (int i = 0; i < l.Schedule.Count(); i++) {
+                    if (l.Schedule[i] != '-') {
+                        schedule.Add(Int32.Parse(l.Schedule[i].ToString()));
+                        amount += schedule.Last();
+                        //if (Int32.TryParse(l.Schedule[i].ToString(),out size)) {
+                        //    size = Int32.Parse(l.Schedule[i].ToString());
+                        //}   
+                    }
+                }
+               
+                foreach (Int32 s in schedule) {
+                    tmp.Add(new Lesson(teacher,group,subject,roomType,amount,s));
+                }
+                
+            }
 
             return tmp;
         }
