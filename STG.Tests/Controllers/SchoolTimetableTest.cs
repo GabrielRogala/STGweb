@@ -2,6 +2,13 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using STG.Controllers.Engine;
 using System.Collections.Generic;
+using STG.Models;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
 
 namespace STG.Tests.Controllers
 {
@@ -16,7 +23,8 @@ namespace STG.Tests.Controllers
             List<Group> groups = new List<Group>();
             List<Subject> subjects = new List<Subject>();
             List<Room> rooms = new List<Room>();
-            List<String> subjectTypes = new List<String>();
+            List<RoomType> roomTypes = new List<RoomType>();
+            List<SubjectType> subjectTypes = new List<SubjectType>();
 
             for (int j = 0; j < 7; j++)
             {
@@ -31,36 +39,41 @@ namespace STG.Tests.Controllers
                 groups.Add(new Group("g" + j, 25 + j,subGroups));
                 
             }
-            int nr = 0;
-            rooms.Add(new Room("nr" + nr++, 25, "A"));
-            rooms.Add(new Room("nr" + nr++, 40, "A"));
-            rooms.Add(new Room("nr" + nr++, 40, "A"));
-            rooms.Add(new Room("nr" + nr++, 40, "A"));
-            rooms.Add(new Room("nr" + nr++, 40, "B"));
-            rooms.Add(new Room("nr" + nr++, 40, "B"));
-            rooms.Add(new Room("nr" + nr++, 40, "C"));
-            rooms.Add(new Room("nr" + nr++, 40, "C"));
 
-            subjectTypes.Add("HUM");
-            subjectTypes.Add("SCI");
-            subjectTypes.Add("JEZ");
-            subjectTypes.Add("SPE");
-            subjectTypes.Add("SPO");
-            subjectTypes.Add("INN");
+            roomTypes.Add(new RoomType("A"));
+            roomTypes.Add(new RoomType("B"));
+            roomTypes.Add(new RoomType("C"));
+
+            int nr = 0;
+            rooms.Add(new Room("nr" + nr++, 25, roomTypes[0]));
+            rooms.Add(new Room("nr" + nr++, 40, roomTypes[0]));
+            rooms.Add(new Room("nr" + nr++, 40, roomTypes[0]));
+            rooms.Add(new Room("nr" + nr++, 40, roomTypes[0]));
+            rooms.Add(new Room("nr" + nr++, 40, roomTypes[1]));
+            rooms.Add(new Room("nr" + nr++, 40, roomTypes[1]));
+            rooms.Add(new Room("nr" + nr++, 40, roomTypes[2]));
+            rooms.Add(new Room("nr" + nr++, 40, roomTypes[2]));
+
+            subjectTypes.Add(new SubjectType("HUM", 7));
+            subjectTypes.Add(new SubjectType("SCI", 8));
+            subjectTypes.Add(new SubjectType("JEZ", 6));
+            subjectTypes.Add(new SubjectType("SPE", 9));
+            subjectTypes.Add(new SubjectType("SPO", 3));
+            subjectTypes.Add(new SubjectType("INN", 3));
 
             int i = 0;
-            subjects.Add(new Subject("pol", subjectTypes[0], "A"));
-            subjects.Add(new Subject("ang", subjectTypes[2], "A"));
-            subjects.Add(new Subject("mat", subjectTypes[1], "A"));
-            subjects.Add(new Subject("his", subjectTypes[0], "A"));
-            subjects.Add(new Subject("wos", subjectTypes[0], "A"));
-            subjects.Add(new Subject("fiz", subjectTypes[1], "A"));
-            //subjects.Add(new Subject("bio", subjectTypes[1], "A"));
-            subjects.Add(new Subject("geo", subjectTypes[1], "A"));
-            subjects.Add(new Subject("w-f", subjectTypes[4], "C"));
-            subjects.Add(new Subject("rel", subjectTypes[5], "A"));
-            subjects.Add(new Subject("inf", subjectTypes[3], "B"));
-            subjects.Add(new Subject("PRO", subjectTypes[3], "B"));
+            subjects.Add(new Subject("pol", subjectTypes[0], roomTypes[0]));
+            subjects.Add(new Subject("ang", subjectTypes[2], roomTypes[0]));
+            subjects.Add(new Subject("mat", subjectTypes[1], roomTypes[0]));
+            subjects.Add(new Subject("his", subjectTypes[0], roomTypes[0]));
+            subjects.Add(new Subject("wos", subjectTypes[0], roomTypes[0]));
+            subjects.Add(new Subject("fiz", subjectTypes[1], roomTypes[0]));
+            //subjects.Add(new Subject("bio", subjectTypes[1], roomTypes[0]));
+            subjects.Add(new Subject("geo", subjectTypes[1], roomTypes[0]));
+            subjects.Add(new Subject("w-f", subjectTypes[4], roomTypes[2]));
+            subjects.Add(new Subject("rel", subjectTypes[5], roomTypes[0]));
+            subjects.Add(new Subject("inf", subjectTypes[3], roomTypes[1]));
+            subjects.Add(new Subject("PRO", subjectTypes[3], roomTypes[1]));
 
             foreach (Group g in groups)
             {
@@ -145,7 +158,8 @@ namespace STG.Tests.Controllers
             List<Group> groups = new List<Group>();
             List<Subject> subjects = new List<Subject>();
             List<Room> rooms = new List<Room>();
-            List<String> subjectTypes = new List<String>();
+            List<SubjectType> subjectTypes = new List<SubjectType>();
+            List<RoomType> roomTypes = new List<RoomType>();
 
             teachers.Add(new Teacher("t0"));
             teachers.Add(new Teacher("t1"));
@@ -155,12 +169,14 @@ namespace STG.Tests.Controllers
             subGroups.Add(new Group("g0WFk", 15, 1,2));
             groups.Add(new Group("g0", 25, subGroups));
 
-            rooms.Add(new Room("nr0", 40, "C"));
-            rooms.Add(new Room("nr1", 40, "C"));
+            roomTypes.Add(new RoomType("C"));
 
-            subjectTypes.Add("SPO");
+            rooms.Add(new Room("nr0", 40, roomTypes[0]));
+            rooms.Add(new Room("nr1", 40, roomTypes[0]));
+
+            subjectTypes.Add(new SubjectType("SPO", 2) );
             
-            subjects.Add(new Subject("w-f", subjectTypes[0], "C"));
+            subjects.Add(new Subject("w-f", subjectTypes[0], roomTypes[0]));
 
 
             foreach (Group g in groups)
@@ -176,8 +192,73 @@ namespace STG.Tests.Controllers
             stt.generateSchoolTimetable();
             stt.print();
 
-            stt.genWeb("subGroupTEst");
+            stt.genWeb("subGroupTest");
             
         }
+
+
+        private Entities db = new Entities();
+        [TestMethod]
+        public void GenerateObjectWithDataBase() {
+
+            Schools schools = db.Schools.Find(1);
+            Console.WriteLine(schools.AspNetUsersId);
+
+            List<Teacher> teachers = new List<Teacher>();
+            List<Group> groups = new List<Group>();
+
+            List<RoomType> roomTypes = new List<RoomType>();
+            List<Room> rooms = new List<Room>();
+            
+            List<SubjectType> subjectTypes = new List<SubjectType>();
+            List<Subject> subjects = new List<Subject>();
+            
+            
+
+            List<Lesson> lessons = new List<Lesson>();
+        }
+
+        private List<Group> getGroups(Schools school) {
+            List<Group> tmp = new List<Group>();
+
+            return tmp;
+        }
+
+        private List<Teacher> getTeachers(Schools school)
+        {
+            List<Teacher> tmp = new List<Teacher>();
+
+            return tmp;
+        }
+
+        private List<Room> getRooms(Schools school, List<String> roomTypes)
+        {
+            List<Room> tmp = new List<Room>();
+
+            return tmp;
+        }
+
+        private List<String> getRoomTypes(Schools school)
+        {
+            List<String> tmp = new List<String>();
+
+            return tmp;
+        }
+
+        private List<String> getSubjectTypes(Schools school)
+        {
+            List<String> tmp = new List<String>();
+
+            return tmp;
+        }
+
+        private List<Subject> getSubjects(Schools school, List<String> subjectTypes)
+        {
+            List<Subject> tmp = new List<Subject>();
+
+            return tmp;
+        }
+
+
     }
 }

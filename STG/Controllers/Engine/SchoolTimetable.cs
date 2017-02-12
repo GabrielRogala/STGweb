@@ -17,7 +17,7 @@ namespace STG.Controllers.Engine
         private List<Timetable> teachersTimetables;
         private List<Timetable> groupsTimetables;
         private List<Timetable> roomsTimetables;
-        private SubjectType subjectTypes;
+        private List<SubjectType> subjectTypes;
         private const int NUMBER_OF_LESSONS_TO_POSITIONING = 5;
         private const int BOTTOM_BORDER_OF_BEST_SLOTS = 1;
         private const int TOP_BORDER_OF_BEST_SLOTS = 7;
@@ -31,30 +31,32 @@ namespace STG.Controllers.Engine
             teachersTimetables = new List<Timetable>();
             groupsTimetables = new List<Timetable>();
             roomsTimetables = new List<Timetable>();
-            subjectTypes = SubjectType.getInstance();
+            subjectTypes = new List<SubjectType>();
         }
 
-        public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons, List<String> subjectTypes) : this()
+        public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons, List<SubjectType> subjectTypes) : this()
         {
             this.teachers = teachers;
             this.groups = groups;
             this.rooms = rooms;
             this.lessons = lessons;
-            this.subjectTypes.getTypes().Clear();
-            foreach (String s in subjectTypes) {
-                this.subjectTypes.addTypes(s);
-            }
+            this.subjectTypes = subjectTypes;
         }
 
-        public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons, List<String> subjectTypes, int numberOfDays, int numberOfSlots) : this(teachers, groups, rooms, lessons, subjectTypes)
+        public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons, List<SubjectType> subjectTypes, int numberOfDays, int numberOfSlots) : this(teachers, groups, rooms, lessons, subjectTypes)
         {
             this.numberOfDays = numberOfDays;
             this.numberOfSlots = numberOfSlots;
         }
 
-        public SchoolTimetable(SchoolTimetable s) : this(s.getTeachers(), s.getGroups(), s.getRooms(), s.getLessons(), SubjectType.getInstance().getTypes(), s.getNumberOfDays(), s.getNumberOfSlots())
+        public SchoolTimetable(SchoolTimetable s) : this(s.getTeachers(), s.getGroups(), s.getRooms(), s.getLessons(), s.getSubjectTypes(), s.getNumberOfDays(), s.getNumberOfSlots())
         {
               // wygenerowanie takiego samego planu jak w s               
+        }
+
+        public List<SubjectType> getSubjectTypes()
+        {
+            return subjectTypes;
         }
 
         public List<Teacher> getTeachers() {
@@ -704,11 +706,11 @@ namespace STG.Controllers.Engine
 
         public int typeLessonComparator(Lesson l1, Lesson l2)
         {
-            if (subjectTypes.getIndexOf(l1.getSubject().getSubjectType()) < subjectTypes.getIndexOf(l2.getSubject().getSubjectType()))
+            if (l1.getSubject().getSubjectType().getPriority() > l2.getSubject().getSubjectType().getPriority())
             {
                 return 1;
             }
-            else if (subjectTypes.getIndexOf(l1.getSubject().getSubjectType()) > subjectTypes.getIndexOf(l2.getSubject().getSubjectType()))
+            else if(l1.getSubject().getSubjectType().getPriority() < l2.getSubject().getSubjectType().getPriority())
             {
                 return -1;
             }

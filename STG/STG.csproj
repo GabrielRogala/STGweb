@@ -205,6 +205,7 @@
     <Compile Include="Controllers\Engine\Lesson.cs" />
     <Compile Include="Controllers\Engine\Population.cs" />
     <Compile Include="Controllers\Engine\Room.cs" />
+    <Compile Include="Controllers\Engine\RoomType.cs" />
     <Compile Include="Controllers\Engine\SchoolTimetable.cs" />
     <Compile Include="Controllers\Engine\Slot.cs" />
     <Compile Include="Controllers\Engine\STGConfig.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Controllers\Engine\Timetable.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SchoolsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -313,7 +315,6 @@
     <Content Include="ClassDiagram1.cd" />
     <EntityDeploy Include="Models\STGDataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>STGDataBase.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\STGDataBase.edmx.diagram">
       <DependentUpon>STGDataBase.edmx</DependentUpon>
@@ -364,6 +365,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Schools\Create.cshtml" />
+    <Content Include="Views\Schools\Delete.cshtml" />
+    <Content Include="Views\Schools\Details.cshtml" />
+    <Content Include="Views\Schools\Edit.cshtml" />
+    <Content Include="Views\Schools\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

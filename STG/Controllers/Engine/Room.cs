@@ -10,16 +10,16 @@ namespace STG.Controllers.Engine
         private String name;
         private Timetable timetable;
         private int amount;
-        private String roomType;
+        private RoomType roomType;
 
         public Room()
         {
             this.name = "NULL";
             this.amount = 0;
-            this.roomType = "NONE";
+            this.roomType = null;
         }
 
-        public Room(string name, int amount, string roomType) : this()
+        public Room(string name, int amount, RoomType roomType) : this()
         {
             this.name = name;
             this.amount = amount;
@@ -36,7 +36,7 @@ namespace STG.Controllers.Engine
             return amount;
         }
 
-        public String getRoomType() {
+        public RoomType getRoomType() {
             return roomType;
         }
 
@@ -52,7 +52,7 @@ namespace STG.Controllers.Engine
 
         public override string ToString()
         {
-            return name+"("+amount+"/"+roomType+")";
+            return name+"("+amount+"/"+roomType.getName()+")";
         }
     }
 }

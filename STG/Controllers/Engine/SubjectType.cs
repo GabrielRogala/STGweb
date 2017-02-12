@@ -7,30 +7,20 @@ namespace STG.Controllers.Engine
 {
     public class SubjectType
     {
-        private static SubjectType instance;
-        private List<String> types;
+        private int priority;
+        private string name;
 
-        private SubjectType() {
-            types = new List<String>();
+        public SubjectType(string name, int priority) {
+            this.name = name;
+            this.priority = priority;
         }
 
-        public static SubjectType getInstance() {
-            if (instance == null) {
-                instance = new SubjectType();
-            } 
-            return instance;
+        public string getName() {
+            return name;
         }
 
-        public void addTypes(String type) {
-            types.Add(type);
-        }
-
-        public List<String> getTypes() {
-            return types;
-        }
-
-        public int getIndexOf(String type) {
-            return types.IndexOf(type);
+        public int getPriority() {
+            return priority;
         }
     }
 }

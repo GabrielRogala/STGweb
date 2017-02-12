@@ -8,17 +8,17 @@ namespace STG.Controllers.Engine
     public class Subject
     {
         private String name;
-        private String subjectType;
-        private String roomType;
+        private SubjectType subjectType;
+        private RoomType roomType;
 
         public Subject()
         {
             this.name = "name";
-            this.subjectType = "subjectType";
-            this.roomType = "roomType";
+            this.subjectType = null;
+            this.roomType = null;
         }
 
-        public Subject(string name, string subjectType, string roomType) : this()
+        public Subject(string name, SubjectType subjectType, RoomType roomType) : this()
         {
             this.name = name;
             this.subjectType = subjectType;
@@ -29,17 +29,17 @@ namespace STG.Controllers.Engine
             return name;
         }
 
-        public String getSubjectType() {
+        public SubjectType getSubjectType() {
             return subjectType;
         }
 
-        public String getRoomType() {
+        public RoomType getRoomType() {
             return roomType;
         }
 
         public override string ToString()
         {
-            return name + "(" +subjectType+ "/" +roomType+ ")";
+            return name + "(" +subjectType.getName()+ "/" +roomType.getName()+ ")";
         }
     }
 }

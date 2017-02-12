@@ -20,7 +20,7 @@ namespace STG.Controllers.Engine
             size = 0;
         }
 
-        public void generatePopulation(int size, List<Lesson> lessons, List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<String> subjectTypes, int numberOfDays, int numberOfSlots)
+        public void generatePopulation(int size, List<Lesson> lessons, List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<SubjectType> subjectTypes, int numberOfDays, int numberOfSlots)
         {
             this.size = size;
             this.groups = groups;
