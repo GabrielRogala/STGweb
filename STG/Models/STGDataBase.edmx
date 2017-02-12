@@ -237,7 +237,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Priority" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Priority" Type="int" Nullable="false" DefaultValue="5" />
     <Property Name="SchoolsId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Subjects">
@@ -914,7 +914,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Priority" Type="String" Nullable="false" />
+          <Property Name="Priority" Type="Int32" Nullable="false" DefaultValue="5" />
           <NavigationProperty Name="Schools" Relationship="Model.SchoolsSubjectTypes" FromRole="SubjectTypes" ToRole="Schools" />
           <Property Name="SchoolsId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Subjects" Relationship="Model.SubjectTypesSubjects" FromRole="SubjectTypes" ToRole="Subjects" />

@@ -77,9 +77,24 @@ namespace STG.Controllers.Engine
             return null;
         }
 
-        private int getSubGroupsIndex()
+        public int getSubGroupsIndex()
         {
             return subGroupsIndex;
+        }
+
+        public void setSubGroupsIndex(int subGroupsIndex)
+        {
+            this.subGroupsIndex = subGroupsIndex;
+        }
+
+        public int getSubGroupId()
+        {
+            return subGroupId;
+        }
+
+        public void setSubGroupId(int subGroupId)
+        {
+            this.subGroupId = subGroupId;
         }
 
         public String getName() {

@@ -271,6 +271,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>STGDataBase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\STGDataBase1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>STGDataBase.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\SubGroupTypes.cs">
       <DependentUpon>STGDataBase.tt</DependentUpon>
     </Compile>
@@ -315,6 +320,7 @@
     <Content Include="ClassDiagram1.cd" />
     <EntityDeploy Include="Models\STGDataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>STGDataBase1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\STGDataBase.edmx.diagram">
       <DependentUpon>STGDataBase.edmx</DependentUpon>

@@ -17,12 +17,13 @@ namespace STG.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SubjectTypes()
         {
+            this.Priority = 5;
             this.Subjects = new HashSet<Subjects>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Priority { get; set; }
+        public int Priority { get; set; }
         public int SchoolsId { get; set; }
     
         public virtual Schools Schools { get; set; }

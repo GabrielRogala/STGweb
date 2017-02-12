@@ -13,6 +13,7 @@ namespace STG.Controllers.Engine
         private Group group;
         private Teacher teacher;
         private Room room;
+        private RoomType roomType;
         private List<TimeSlot> slots;
 
         public Lesson()
@@ -25,15 +26,20 @@ namespace STG.Controllers.Engine
             slots = new List<TimeSlot>();
         }
 
-        public Lesson(Teacher teacher, Group group, Subject subject, int amount) : this(teacher, group, subject, amount,1) {}
+        public Lesson(Teacher teacher, Group group, Subject subject, RoomType roomType, int amount) : this(teacher, group, subject, roomType, amount,1) {}
 
-        public Lesson(Teacher teacher, Group group, Subject subject, int amount, int size): this()
+        public Lesson(Teacher teacher, Group group, Subject subject, RoomType roomType, int amount, int size): this()
         {
             this.subject = subject;
             this.amount = amount;
             this.size = size;
             this.group = group;
             this.teacher = teacher;
+            this.roomType = roomType;
+        }
+
+        public RoomType getRoomType() {
+            return roomType;
         }
 
         public Group getGroup() {
@@ -79,8 +85,12 @@ namespace STG.Controllers.Engine
         public override string ToString()
         {
             String tmp = "";
-            if (room != null) {
+            if (room != null)
+            {
                 tmp = ":" + room.ToString();
+            }
+            else {
+                tmp = ":" + roomType.getName();
             }
             return group.ToString() + "/" + teacher.ToString() + "/" + subject.ToString() + "(" + amount + "/" + size + ")" + tmp;
         }

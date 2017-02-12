@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using STG.Models;
+using STG.Controllers.Engine;
 
 namespace STG.Controllers
 {
@@ -18,6 +19,9 @@ namespace STG.Controllers
         public ActionResult Index()
         {
             var schools = db.Schools.Include(s => s.AspNetUsers).Include(s => s.STGConfig);
+
+            GenerateObjectWithDataBase();
+
             return View(schools.ToList());
         }
 
@@ -131,6 +135,186 @@ namespace STG.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        //-------------------------------------------
+        public void GenerateObjectWithDataBase()
+        {
+            Schools school = db.Schools.Find(1);
+
+            List<Teacher> teachers = getTeachers(school);
+
+            List<Group> groups = getGroups(school);
+
+            List<RoomType> roomTypes = getRoomTypes(school);
+            List<Room> rooms = getRooms(school,roomTypes);
+
+            List<SubjectType> subjectTypes = getSubjectTypes(school);
+            List<Subject> subjects = getSubjects(school,subjectTypes);
+
+            List<Lesson> lessons = getLessons(school,subjects,roomTypes);
+
+
+        }
+
+        class SubGroupIndex {
+            public int id;
+            public int index;
+
+            public SubGroupIndex(int id, int index) {
+                this.id = id;
+                this.index = index;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return id.Equals(((SubGroupIndex)obj).id);
+            }
+        }
+
+        private List<Group> getGroups(Schools school)
+        {
+            List<Groups> groups = db.Groups.Where(g => g.SchoolsId == school.Id).ToList();
+
+            List<Group> tmp = new List<Group>();
+
+            foreach (Groups g in groups) {
+                tmp.Add(new Group(g.Name,g.Amount));
+            }
+
+            List<SubGroupIndex> subGroupIndexs = new List<SubGroupIndex>();
+
+            for (int i =0; i<groups.Count; i++)
+            {
+                if (groups[i].ParentGroup != null) {
+                    Group parent = null;
+                    foreach (Group g in tmp) {
+                        Groups parentGroup = db.Groups.Find(groups[i].ParentGroup);
+
+                        if (g.getName().Equals(parentGroup.Name)) {
+                            parent = g;
+                            break;
+                        }
+                    }
+                    tmp[i].setParent(parent);
+
+                    bool result = false;
+                    SubGroupIndex subGroupIndex = null;
+
+                    foreach (SubGroupIndex s in subGroupIndexs) {
+                        if (s.id == groups[i].SubGroupTypesId.Value) {
+                            subGroupIndex = s;
+                            result = true;
+                            break;
+                        }
+                    }
+
+                    if (result) {
+                        subGroupIndex.index++; 
+                    }else { 
+                        subGroupIndexs.Add(new SubGroupIndex(groups[i].SubGroupTypesId.Value, 1));
+                        subGroupIndex = subGroupIndexs.Last();
+                    }
+
+                    tmp[i].setSubGroupId(subGroupIndex.id);
+                    tmp[i].setSubGroupsIndex(subGroupIndex.index);
+
+                    parent.getSubGroup().Add(tmp[i]);
+                }
+            }
+
+
+
+            return tmp;
+        }
+
+        private List<Teacher> getTeachers(Schools school)
+        {
+            List<Teacher> tmp = new List<Teacher>();
+            List<Teachers> teachers = db.Teachers.Where(g => g.SchoolsId == school.Id).ToList();
+
+            foreach (Teachers t in teachers) {
+                tmp.Add(new Teacher(t.Name));
+            }
+
+            return tmp;
+        }
+
+        private List<Room> getRooms(Schools school, List<RoomType> roomTypes)
+        {
+            List<Room> tmp = new List<Room>();
+            List<Rooms> rooms = db.Rooms.Where(g => g.SchoolsId == school.Id).ToList();
+
+            foreach (Rooms r in rooms) {
+                RoomType type = null;
+                foreach (RoomType rt in roomTypes) {
+                    if (r.RoomTypes.Name.Equals(rt.getName())) {
+                        type = rt;
+                        break;
+                    }
+                }
+                tmp.Add(new Room(r.Name,r.Amount,type));
+            }
+
+            return tmp;
+        }
+
+        private List<RoomType> getRoomTypes(Schools school)
+        {
+            List<RoomType> tmp = new List<RoomType>();
+            List<RoomTypes> roomTypes = db.RoomTypes.Where(g => g.SchoolsId == school.Id).ToList();
+
+            foreach (RoomTypes r in roomTypes)
+            {
+                tmp.Add(new RoomType(r.Name));
+            }
+
+            return tmp;
+        }
+
+        private List<SubjectType> getSubjectTypes(Schools school)
+        {
+            List<SubjectType> tmp = new List<SubjectType>();
+            List<SubjectTypes> subjectTypes = db.SubjectTypes.Where(g => g.SchoolsId == school.Id).ToList();
+
+            foreach (SubjectTypes s in subjectTypes)
+            {
+                tmp.Add(new SubjectType(s.Name,s.Priority));
+            }
+
+            return tmp;
+        }
+
+        private List<Subject> getSubjects(Schools school, List<SubjectType> subjectTypes)
+        {
+            List<Subject> tmp = new List<Subject>();
+            List<Subjects> subjects = db.Subjects.Where(g => g.SchoolsId == school.Id).ToList();
+
+            foreach (Subjects s in subjects)
+            {
+
+                SubjectType subjectType = null;
+                foreach (SubjectType st in subjectTypes)
+                {
+                    if (s.SubjectTypes.Name.Equals(st.getName()))
+                    {
+                        subjectType = st;
+                        break;
+                    }
+                }
+
+                tmp.Add(new Subject(s.Name, subjectType));
+            }
+
+
+            return tmp;
+        }
+
+        private List<Lesson> getLessons(Schools school, List<Subject> subjects, List<RoomType> roomTypes) {
+            List<Lesson> tmp = new List<Lesson>();
+
+            return tmp;
         }
     }
 }

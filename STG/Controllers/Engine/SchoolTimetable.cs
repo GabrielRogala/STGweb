@@ -175,7 +175,7 @@ namespace STG.Controllers.Engine
                 List<FreeSlotsInRoomToLesson> freeSlotsInRoomToLesson = new List<FreeSlotsInRoomToLesson>();
                 foreach (Timetable tt in roomsTimetables)
                 {
-                    if (tt.getRoom().getRoomType().Equals(l.getSubject().getRoomType()) && tt.getRoom().getAmount() >= group.getAmount())
+                    if (tt.getRoom().getRoomType().Equals(l.getRoomType()) && tt.getRoom().getAmount() >= group.getAmount())
                     {
                         freeSlotsInRoomToLesson.Add(new FreeSlotsInRoomToLesson(tt.getFreeSlotsToLesson(l), tt.getRoom()));
                     }

@@ -9,20 +9,26 @@ namespace STG.Controllers.Engine
     {
         private String name;
         private SubjectType subjectType;
-        private RoomType roomType;
+        //private RoomType roomType;
 
         public Subject()
         {
             this.name = "name";
             this.subjectType = null;
-            this.roomType = null;
+            //this.roomType = null;
         }
 
-        public Subject(string name, SubjectType subjectType, RoomType roomType) : this()
+        //public Subject(string name, SubjectType subjectType, RoomType roomType) : this()
+        //{
+        //    this.name = name;
+        //    this.subjectType = subjectType;
+        //    this.roomType = roomType;
+        //}
+
+        public Subject(string name, SubjectType subjectType) : this()
         {
             this.name = name;
             this.subjectType = subjectType;
-            this.roomType = roomType;
         }
 
         public String getName() {
@@ -33,13 +39,13 @@ namespace STG.Controllers.Engine
             return subjectType;
         }
 
-        public RoomType getRoomType() {
-            return roomType;
-        }
+        //public RoomType getRoomType() {
+        //    return roomType;
+        //}
 
         public override string ToString()
         {
-            return name + "(" +subjectType.getName()+ "/" +roomType.getName()+ ")";
+            return name + "(" +subjectType.getName()+ ")";
         }
     }
 }

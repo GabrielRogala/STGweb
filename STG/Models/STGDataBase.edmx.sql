@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/11/2017 10:57:51
+-- Date Created: 02/12/2017 13:20:29
 -- Generated from EDMX file: C:\Users\Gabriel Rogala\Dropbox\INŻ\Projekt\STGweb\STG\Models\STGDataBase.edmx
 -- --------------------------------------------------
 
@@ -65,6 +65,36 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SubGroupTypesGroups]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Groups] DROP CONSTRAINT [FK_SubGroupTypesGroups];
 GO
+IF OBJECT_ID(N'[dbo].[FK_SubjectsLessons]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Lessons] DROP CONSTRAINT [FK_SubjectsLessons];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TeachersLessons]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Lessons] DROP CONSTRAINT [FK_TeachersLessons];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GroupsLessons]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Lessons] DROP CONSTRAINT [FK_GroupsLessons];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RoomsLessons]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Lessons] DROP CONSTRAINT [FK_RoomsLessons];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RoomTypesLessons]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Lessons] DROP CONSTRAINT [FK_RoomTypesLessons];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolsTimetables]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Timetables] DROP CONSTRAINT [FK_SchoolsTimetables];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolsLessons]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Lessons] DROP CONSTRAINT [FK_SchoolsLessons];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LessonsTimetables]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Timetables] DROP CONSTRAINT [FK_LessonsTimetables];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RoomsTimetables]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Timetables] DROP CONSTRAINT [FK_RoomsTimetables];
+GO
+IF OBJECT_ID(N'[dbo].[FK_STGConfigSchools]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Schools] DROP CONSTRAINT [FK_STGConfigSchools];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -111,6 +141,12 @@ IF OBJECT_ID(N'[dbo].[SubGroupTypes]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Lessons]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Lessons];
+GO
+IF OBJECT_ID(N'[dbo].[Timetables]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Timetables];
+GO
+IF OBJECT_ID(N'[dbo].[STGConfig]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[STGConfig];
 GO
 IF OBJECT_ID(N'[dbo].[AspNetUserRoles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AspNetUserRoles];
@@ -224,7 +260,7 @@ GO
 CREATE TABLE [dbo].[SubjectTypes] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [Priority] nvarchar(max)  NOT NULL,
+    [Priority] int  NOT NULL,
     [SchoolsId] int  NOT NULL
 );
 GO
