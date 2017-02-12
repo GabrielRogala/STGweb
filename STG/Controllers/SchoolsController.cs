@@ -142,7 +142,7 @@ namespace STG.Controllers
         public void GenerateObjectWithDataBase()
         {
             Schools school = db.Schools.Find(1);
-
+            STGCfg config = getSTGCfg(school);
             List<Teacher> teachers = getTeachers(school);
 
             List<Group> groups = getGroups(school);
@@ -154,8 +154,19 @@ namespace STG.Controllers
             List<Subject> subjects = getSubjects(school,subjectTypes);
 
             List<Lesson> lessons = getLessons(school,subjects,roomTypes,groups,teachers);
-            Population population = null;
+            Population population = new Population(lessons,teachers,groups,rooms,school.NumberOfDays,school.NumberOfHours, config);
 
+        }
+
+        private STGCfg getSTGCfg(Schools school)
+        {
+            STGConfig c = school.STGConfig;
+            return new STGCfg(c.PopulationSize,
+                c.EpocheSize,
+                c.NumberOfLessonToPositioning,
+                c.BottomBorderOfBestSlots,
+                c.TopBorderOfBestSlots,
+                c.ProbabilityOfMutation);
         }
 
         class SubGroupIndex {

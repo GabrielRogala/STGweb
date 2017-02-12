@@ -11,25 +11,40 @@ namespace STG.Controllers.Engine
         private List<Lesson> lessons;
         private List<Teacher> teachers;
         private List<Group> groups;
-        private int size;
+        private List<Room> rooms;
+        private STGCfg config;
+        private int numberOfDays;
+        private int numberOfSlots;
         private Random rand = new Random();
 
         public Population()
         {
             schoolTimeTables = new List<SchoolTimetable>();
-            size = 0;
+            lessons = new List<Lesson>();
+            teachers = new List<Teacher>();
+            groups = new List<Group>();
+            rooms = new List<Room>();
+            config = null;
+            numberOfDays = 0;
+            numberOfSlots = 0;
         }
 
-        public void generatePopulation(int size, List<Lesson> lessons, List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<SubjectType> subjectTypes, int numberOfDays, int numberOfSlots)
+        public Population(List<Lesson> lessons, List<Teacher> teachers, List<Group> groups, List<Room> rooms, int numberOfDays, int numberOfSlots, STGCfg config) : this()
         {
-            this.size = size;
-            this.groups = groups;
             this.lessons = lessons;
             this.teachers = teachers;
+            this.groups = groups;
+            this.rooms = rooms;
+            this.config = config;
+            this.numberOfDays = numberOfDays;
+            this.numberOfSlots = numberOfSlots;
+        }
 
-            for (int i = 0; i < this.size; ++i)
+        public void generatePopulation()
+        {
+            for (int i = 0; i < this.config.populationSize; ++i)
             {
-                schoolTimeTables.Add(new SchoolTimetable(teachers, groups, rooms, lessons, subjectTypes, numberOfDays, numberOfSlots));
+                schoolTimeTables.Add(new SchoolTimetable(teachers, groups, rooms, lessons, numberOfDays,numberOfSlots,config));
                 schoolTimeTables[i].generateSchoolTimetable();
                 //schoolTimeTables[i].setId(i);
                 //Console.WriteLine(i + ": " + "[" + schoolTimeTables[i].getId() + "] " + schoolTimeTables[i].fitness());
@@ -42,15 +57,15 @@ namespace STG.Controllers.Engine
 
             schoolTimeTables.Sort(new Comparison<SchoolTimetable>(schoolTimeTableComparator));
             //Console.WriteLine("gnp---------------------------v");
-            for (int i = 0; i < this.size; ++i)
+            for (int i = 0; i < config.populationSize; ++i)
             {
                 //  Console.WriteLine(i + ": " + "[" + schoolTimeTables[i].getId() + "] " + schoolTimeTables[i].getValue());
             }
             //Console.WriteLine("------------------------------");
-            for (int i = 0; i < this.size; ++i)
+            for (int i = 0; i < config.populationSize; ++i)
             {
 
-                if (i < size * 0.2)
+                if (i < config.populationSize * 0.2)
                 {
                     //schoolTimeTables_tmp.Add(new SchoolTimetable(lessons, teachers, groups, schoolTimeTables[i]));
                     if (rand.NextDouble() > 0.1)
@@ -69,7 +84,7 @@ namespace STG.Controllers.Engine
                         }
                     }
                 }
-                else if (i < size * 0.8)
+                else if (i < config.populationSize * 0.8)
                 {
                     //schoolTimeTables_tmp.Add(new SchoolTimetable(lessons, teachers, groups));
                     //schoolTimeTables_tmp[i].crossSchoolTimeTables(schoolTimeTables[i], schoolTimeTables[rand.Next((int)(size * 0.2))]);
@@ -88,7 +103,7 @@ namespace STG.Controllers.Engine
                 schoolTimeTables_tmp[i].fitness();
             }
 
-            for (int i = 0; i < this.size; ++i)
+            for (int i = 0; i < config.populationSize; ++i)
             {
                 //  Console.WriteLine(i + ": "+"["+ schoolTimeTables_tmp[i].getId()+ "] " + schoolTimeTables_tmp[i].fitness());
             }
@@ -98,9 +113,9 @@ namespace STG.Controllers.Engine
             //Console.WriteLine("gnp---------------------------^");
         }
 
-        public void start(int epoch)
+        public void start()
         {
-            for (int i = 0; i < epoch; ++i)
+            for (int i = 0; i < config.epocheSize; ++i)
             {
                 Console.WriteLine("E:" + i + "-------------------------");
                 this.generateNewPopulation();

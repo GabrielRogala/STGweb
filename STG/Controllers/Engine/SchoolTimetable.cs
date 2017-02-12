@@ -17,10 +17,7 @@ namespace STG.Controllers.Engine
         private List<Timetable> teachersTimetables;
         private List<Timetable> groupsTimetables;
         private List<Timetable> roomsTimetables;
-        private List<SubjectType> subjectTypes;
-        private const int NUMBER_OF_LESSONS_TO_POSITIONING = 5;
-        private const int BOTTOM_BORDER_OF_BEST_SLOTS = 1;
-        private const int TOP_BORDER_OF_BEST_SLOTS = 7;
+        private STGCfg config;
         private static Random rand = new Random();
 
         public SchoolTimetable() {
@@ -31,32 +28,40 @@ namespace STG.Controllers.Engine
             teachersTimetables = new List<Timetable>();
             groupsTimetables = new List<Timetable>();
             roomsTimetables = new List<Timetable>();
-            subjectTypes = new List<SubjectType>();
+            config = null;
         }
 
-        public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons, List<SubjectType> subjectTypes) : this()
+        public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons) : this()
         {
             this.teachers = teachers;
             this.groups = groups;
             this.rooms = rooms;
             this.lessons = lessons;
-            this.subjectTypes = subjectTypes;
         }
 
-        public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons, List<SubjectType> subjectTypes, int numberOfDays, int numberOfSlots) : this(teachers, groups, rooms, lessons, subjectTypes)
+        public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons, int numberOfDays, int numberOfSlots, STGCfg config) : this(teachers, groups, rooms, lessons)
         {
+            this.config = config;
             this.numberOfDays = numberOfDays;
             this.numberOfSlots = numberOfSlots;
         }
 
-        public SchoolTimetable(SchoolTimetable s) : this(s.getTeachers(), s.getGroups(), s.getRooms(), s.getLessons(), s.getSubjectTypes(), s.getNumberOfDays(), s.getNumberOfSlots())
+        // wygenerowanie takiego samego planu jak w s   
+        public SchoolTimetable(SchoolTimetable s) : this(s.getTeachers(), s.getGroups(), s.getRooms(), s.getLessons(), s.getNumberOfDays(), s.getNumberOfSlots() ,s.getConfig())
         {
-              // wygenerowanie takiego samego planu jak w s               
+                      
         }
 
-        public List<SubjectType> getSubjectTypes()
-        {
-            return subjectTypes;
+        public STGCfg getConfig() {
+            return config;
+        }
+
+        public int getNumberOfDays() {
+            return numberOfDays;
+        }
+
+        public int getNumberOfSlots() {
+            return numberOfSlots;
         }
 
         public List<Teacher> getTeachers() {
@@ -76,14 +81,6 @@ namespace STG.Controllers.Engine
         public List<Lesson> getLessons()
         {
             return lessons;
-        }
-
-        public int getNumberOfDays() {
-            return numberOfDays;
-        }
-
-        public int getNumberOfSlots() {
-            return numberOfSlots;
         }
 
         public void generateTeachersTimetables(List<Teacher> teachers) {
@@ -593,7 +590,7 @@ namespace STG.Controllers.Engine
             //podział slotów na 2 kategorie
             foreach (TimeSlot ts in slots)
             {
-                if (ts.hour > BOTTOM_BORDER_OF_BEST_SLOTS && ts.hour < TOP_BORDER_OF_BEST_SLOTS) {
+                if (ts.hour >= config.bottomBorderOfBestSlots && ts.hour <= config.topBorderOfBestSlots) {
                     bestTimeSlots.Add(ts);
                 } else {
                     worstTimeSlots.Add(ts);
@@ -632,7 +629,7 @@ namespace STG.Controllers.Engine
 
             for (int i = lessons.Count - 1; i >= 0; i--)
             {
-                if (tmpLessons.Count < NUMBER_OF_LESSONS_TO_POSITIONING)
+                if (tmpLessons.Count < config.numberOfLessonToPositioning)
                 {
                     if (lessons[i].getGroup().Equals(tmpLessons[0].getGroup()))
                     {
@@ -776,6 +773,7 @@ namespace STG.Controllers.Engine
             }
         }
 
+        // to do 
         public int fitness() {
             return 0;
         }
@@ -808,10 +806,12 @@ namespace STG.Controllers.Engine
             return true;
         }
 
+        // to do
         public void cross(SchoolTimetable s1, SchoolTimetable s2) {
 
         }
 
+        // to do
         public void mutate() {
 
         }

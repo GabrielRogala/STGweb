@@ -26,6 +26,7 @@ namespace STG.Tests.Controllers
             List<Room> rooms = new List<Room>();
             List<RoomType> roomTypes = new List<RoomType>();
             List<SubjectType> subjectTypes = new List<SubjectType>();
+            STGCfg config = new STGCfg(1,1,5,1,5,10);
 
             for (int j = 0; j < 7; j++)
             {
@@ -144,7 +145,7 @@ namespace STG.Tests.Controllers
 
             }
 
-            SchoolTimetable stt = new SchoolTimetable(teachers, groups, rooms, lessons, subjectTypes, 5, 9);
+            SchoolTimetable stt = new SchoolTimetable(teachers, groups, rooms, lessons, 5, 9,config);
             stt.generateSchoolTimetable();
             stt.print();
             Console.WriteLine(stt.isCorrect());
@@ -161,6 +162,7 @@ namespace STG.Tests.Controllers
             List<Room> rooms = new List<Room>();
             List<SubjectType> subjectTypes = new List<SubjectType>();
             List<RoomType> roomTypes = new List<RoomType>();
+            STGCfg config = new STGCfg(1, 1, 2, 1, 5, 10);
 
             teachers.Add(new Teacher("t0"));
             teachers.Add(new Teacher("t1"));
@@ -189,7 +191,7 @@ namespace STG.Tests.Controllers
                 lessons.Add(new Lesson(teachers[1], g.getSubGroup()[1], subjects[0], roomTypes[0], 2));
             }
 
-            SchoolTimetable stt = new SchoolTimetable(teachers, groups, rooms, lessons, subjectTypes, 3, 3);
+            SchoolTimetable stt = new SchoolTimetable(teachers, groups, rooms, lessons, 3, 3,config);
             stt.generateSchoolTimetable();
             stt.print();
 
