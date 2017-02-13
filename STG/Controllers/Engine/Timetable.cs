@@ -169,31 +169,6 @@ namespace STG.Controllers.Engine
             return days[day].getSlot(slot).getLesson(i);
         }
 
-        //public List<TimeSlot> getFreeSlots(int size = 1) {
-        //    List<TimeSlot> freeSlots = new List<TimeSlot>();
-
-        //    for (int h = 0; h < numberOfSlots - (size - 1); ++h)
-        //    {
-        //        for (int d = 0; d < numberOfDays; ++d)
-        //        {
-
-        //            bool result = true;
-
-        //            for (int i = 0; i < size; ++i)
-        //            {
-        //                result = result && days[d].getSlot(h + i).isEmpty() && !days[d].getSlot(h + i).isLocked();
-        //            }
-
-        //            if (result)
-        //            {
-        //                freeSlots.Add(new TimeSlot(d, h));
-        //            }
-        //        }
-        //    }
-
-        //    return freeSlots;
-        //}
-
         public List<TimeSlot> getFreeSlotsToLesson(Lesson lesson)
         {
             List<TimeSlot> freeSlots = new List<TimeSlot>();
@@ -235,7 +210,6 @@ namespace STG.Controllers.Engine
             return freeSlots;
         }
 
-        //to slow
         public int fitness()
         {
             int value = 0;
@@ -244,7 +218,7 @@ namespace STG.Controllers.Engine
             if (group != null)
             {
                 value += fitnessType();
-                value += fitnessSubjectInDay();
+                value += fitnessSubject();
             }
 
             return value;
@@ -329,7 +303,7 @@ namespace STG.Controllers.Engine
             return value;
         }
         
-        public int fitnessSubjectInDay() {
+        public int fitnessSubject() {
             int value = 0;
             Dictionary<Subject, int> maps = new Dictionary<Subject, int>();
 
@@ -395,9 +369,6 @@ namespace STG.Controllers.Engine
                 {
                     if (!days[d].getSlot(h).isEmpty())
                     {
-                        //tylko jedna lekcja w slocie
-                        //tmpLessons.Add(days[d].getSlot(h).getLesson(0));
-                        //wszystkie lekcje w slocie
                         tmpLessons.AddRange(days[d].getSlot(h).getLessons());
                     }
                 }

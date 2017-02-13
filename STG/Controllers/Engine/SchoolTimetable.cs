@@ -816,7 +816,7 @@ namespace STG.Controllers.Engine
         }
 
         // to do
-        public void cross(SchoolTimetable s1, SchoolTimetable s2) {
+        public void crossover(SchoolTimetable s1, SchoolTimetable s2) {
 
         }
 
