@@ -46,8 +46,8 @@ namespace STG.Controllers.Engine
             {
                 schoolTimeTables.Add(new SchoolTimetable(teachers, groups, rooms, lessons, numberOfDays,numberOfSlots,config));
                 schoolTimeTables[i].generateSchoolTimetable();
-                //schoolTimeTables[i].setId(i);
-                //Console.WriteLine(i + ": " + "[" + schoolTimeTables[i].getId() + "] " + schoolTimeTables[i].fitness());
+                schoolTimeTables[i].fitness();
+                Console.WriteLine(i + ": " + schoolTimeTables[i].getFitnessValue());
             }
         }
 
@@ -56,23 +56,24 @@ namespace STG.Controllers.Engine
             List<SchoolTimetable> schoolTimeTables_tmp = new List<SchoolTimetable>();
 
             schoolTimeTables.Sort(new Comparison<SchoolTimetable>(schoolTimeTableComparator));
-            //Console.WriteLine("gnp---------------------------v");
+            Console.WriteLine("gnp---------------------------v");
             for (int i = 0; i < config.populationSize; ++i)
             {
-                //  Console.WriteLine(i + ": " + "[" + schoolTimeTables[i].getId() + "] " + schoolTimeTables[i].getValue());
+                Console.WriteLine(i + ": " + schoolTimeTables[i].getFitnessValue());
             }
-            //Console.WriteLine("------------------------------");
+            Console.WriteLine("------------------------------");
+
             for (int i = 0; i < config.populationSize; ++i)
             {
 
                 if (i < config.populationSize * 0.2)
                 {
-                    //schoolTimeTables_tmp.Add(new SchoolTimetable(lessons, teachers, groups, schoolTimeTables[i]));
-                    if (rand.NextDouble() > 0.1)
+                    schoolTimeTables_tmp.Add(new SchoolTimetable(schoolTimeTables[i]));
+                    if (rand.NextDouble() > config.probabilityOfMutation/100)
                     {
-
-                        //schoolTimeTables_tmp.Add(new SchoolTimetable(lessons, teachers, groups, schoolTimeTables[i]));
-                        //schoolTimeTables_tmp[i + 1].mutate();
+                        Console.WriteLine("mutate");
+                        schoolTimeTables_tmp.Add(new SchoolTimetable(schoolTimeTables[i]));
+                        schoolTimeTables_tmp[i + 1].mutate();
 
                         if (schoolTimeTables_tmp[i].fitness() <= schoolTimeTables_tmp[i + 1].fitness())
                         {
@@ -86,31 +87,30 @@ namespace STG.Controllers.Engine
                 }
                 else if (i < config.populationSize * 0.8)
                 {
-                    //schoolTimeTables_tmp.Add(new SchoolTimetable(lessons, teachers, groups));
-                    //schoolTimeTables_tmp[i].crossSchoolTimeTables(schoolTimeTables[i], schoolTimeTables[rand.Next((int)(size * 0.2))]);
-                    if (rand.NextDouble() > 0.1)
+                    schoolTimeTables_tmp.Add(schoolTimeTables[i]);
+                    schoolTimeTables_tmp[i].crossover(schoolTimeTables[rand.Next(0 , (int)(config.populationSize * 0.2) - 1)]);
+                    if (rand.NextDouble() > config.probabilityOfMutation / 100)
                     {
-                       // schoolTimeTables_tmp[i].mutate();
+                       schoolTimeTables_tmp[i].mutate();
                     }
                 }
                 else
                 {
-                    //schoolTimeTables_tmp.Add(new SchoolTimeTable(lessons, teachers, groups));
-                    //schoolTimeTables_tmp[i].generateSchoolTimeTable();
+                    schoolTimeTables_tmp.Add(new SchoolTimetable(teachers, groups,rooms,lessons,numberOfDays,numberOfSlots,config));
+                    schoolTimeTables_tmp[i].generateSchoolTimetable();
                 }
 
-                //schoolTimeTables_tmp[i].setId(i);
                 schoolTimeTables_tmp[i].fitness();
             }
 
             for (int i = 0; i < config.populationSize; ++i)
             {
-                //  Console.WriteLine(i + ": "+"["+ schoolTimeTables_tmp[i].getId()+ "] " + schoolTimeTables_tmp[i].fitness());
+                Console.WriteLine(i + ": " + schoolTimeTables_tmp[i].getFitnessValue());
             }
 
             schoolTimeTables = schoolTimeTables_tmp;
 
-            //Console.WriteLine("gnp---------------------------^");
+            Console.WriteLine("gnp---------------------------^");
         }
 
         public void start()
@@ -118,15 +118,22 @@ namespace STG.Controllers.Engine
             for (int i = 0; i < config.epocheSize; ++i)
             {
                 Console.WriteLine("E:" + i + "-------------------------");
-                this.generateNewPopulation();
-                Console.WriteLine(getBestSchoolTimeTable().fitness());
+                if (i == 0)
+                {
+                    this.generatePopulation();
+                }
+                else
+                {
+                    this.generateNewPopulation();
+                }
+
+                Console.WriteLine(getBestSchoolTimeTable().getFitnessValue());
             }
         }
 
         public int schoolTimeTableComparator(SchoolTimetable l1, SchoolTimetable l2)
         {
-            return 0;
-            //return l1.getValue().CompareTo(l2.getValue());
+            return l1.getFitnessValue().CompareTo(l2.getFitnessValue());
         }
 
         public SchoolTimetable getBestSchoolTimeTable()

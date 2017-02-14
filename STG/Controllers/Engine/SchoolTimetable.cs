@@ -19,6 +19,7 @@ namespace STG.Controllers.Engine
         private List<Timetable> roomsTimetables;
         private STGCfg config;
         private static Random rand = new Random();
+        private int fitnessValue;
 
         public SchoolTimetable() {
             teachers = new List<Teacher>();
@@ -29,6 +30,7 @@ namespace STG.Controllers.Engine
             groupsTimetables = new List<Timetable>();
             roomsTimetables = new List<Timetable>();
             config = null;
+            fitnessValue = 0;
         }
 
         public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons) : this()
@@ -46,10 +48,21 @@ namespace STG.Controllers.Engine
             this.numberOfSlots = numberOfSlots;
         }
 
-        // to do   
         public SchoolTimetable(SchoolTimetable s) : this(s.getTeachers(), s.getGroups(), s.getRooms(), s.getLessons(), s.getNumberOfDays(), s.getNumberOfSlots() ,s.getConfig())
         {
-                      
+            foreach (Lesson l in this.lessons) {
+                List<TimeSlot> ts = l.getSlots();
+                
+                l.removeAllSlots();
+
+                foreach (TimeSlot t in ts) {
+                    l.addLessonToTimetable(t.day, t.hour);
+                }
+            }      
+        }
+
+        public int getFitnessValue() {
+            return fitnessValue;
         }
 
         public STGCfg getConfig() {
@@ -116,6 +129,7 @@ namespace STG.Controllers.Engine
             generateRoomsTimetables(rooms);
             generateTeachersTimetables(teachers);
             genereteTimetable(lessons);
+            unlockAllSlots();
         }
 
         public void genereteTimetable(List<Lesson> lessons)
@@ -129,13 +143,13 @@ namespace STG.Controllers.Engine
 
             sortLessons(tmpLessons);
 
-            foreach (Lesson l in tmpLessons){
-                Console.WriteLine(l.ToString());
-            }
+            //foreach (Lesson l in tmpLessons){
+            //    Console.WriteLine(l.ToString());
+            //}
 
             while (tmpLessons.Count > 0) {
                 choosenLesson.AddRange(findDifferentSubjectTheSameGroup(tmpLessons.Last(), tmpLessons));
-                Console.WriteLine(tmpLessons.Count);
+                //Console.WriteLine(tmpLessons.Count);
                 findAndSetBestPositionToLessons(choosenLesson, tmpLessons);
 
                 foreach (Lesson l in choosenLesson) {
@@ -148,7 +162,7 @@ namespace STG.Controllers.Engine
 
         private void findAndSetBestPositionToLessons(List<Lesson> choosenLesson, List<Lesson> allLesson)
         {
-            Console.WriteLine("=================================");
+            //Console.WriteLine("=================================");
             //foreach (Lesson l in choosenLesson)
             //{
             //    Console.WriteLine(l.ToString());
@@ -201,7 +215,7 @@ namespace STG.Controllers.Engine
 
             foreach (FreeSlotsToLesson fstl in freeSlotsToLesson)
             {
-                Console.WriteLine(fstl.lesson.ToString());
+                //Console.WriteLine(fstl.lesson.ToString());
 
                 if (fstl.slots.Count > 0) {
                     List<int> indexOfSlotsWithMaxCount = new List<int>();
@@ -233,17 +247,15 @@ namespace STG.Controllers.Engine
                     {
                         if (fstl.lesson.getGroup().getTimetable().getLessons(bestSlot.day,bestSlot.hour + i).Count == 0) // czy oby na pewno jest wolny slot
                         {
-                            fstl.lesson.getSlots().Add(new TimeSlot(bestSlot.day, bestSlot.hour + i));
                             fstl.lesson.setRoom(bestRoom);
-                            //fstl.lesson.addLessonToTimetable(bestSlot.day, bestSlot.hour + i);
-
-                            fstl.lesson.getGroup().addLesson(fstl.lesson, bestSlot.day, bestSlot.hour + i);
-                            fstl.lesson.getTeacher().getTimetable().addLesson(fstl.lesson, bestSlot.day, bestSlot.hour + i);
-                            fstl.lesson.getRoom().getTimetable().addLesson(fstl.lesson, bestSlot.day, bestSlot.hour + i);
+                            fstl.lesson.addLessonToTimetable(bestSlot.day, bestSlot.hour + i);
+                            //fstl.lesson.getGroup().addLesson(fstl.lesson, bestSlot.day, bestSlot.hour + i);
+                            //fstl.lesson.getTeacher().getTimetable().addLesson(fstl.lesson, bestSlot.day, bestSlot.hour + i);
+                            //fstl.lesson.getRoom().getTimetable().addLesson(fstl.lesson, bestSlot.day, bestSlot.hour + i);
                         }
                         else
                         {
-                            allLesson.Add(fstl.lesson);
+                            //allLesson.Add(fstl.lesson);
                             Console.WriteLine("ERROR!!!!!!!!!!!!!!!!"); ////////////////////////wystąpił???!
                         }
                     }
@@ -264,309 +276,136 @@ namespace STG.Controllers.Engine
                 } else {
 
                     Console.WriteLine("REMOVE " + fstl.lesson);
-                    //removeLessonsAndFindNewPosition3(fstl.lesson, ref allLesson);
+                    if (!removeLessonsAndFindNewPosition3(fstl.lesson, ref allLesson))
+                    {
+                        Console.WriteLine(" nie znaleziono ");
+                    }
                 }
             }
 
         }
 
-        //public Boolean removeLessonsAndFindNewPosition3(Lesson lesson, ref List<Lesson> allLesson)
-        //{
-        //    Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition");
-        //    Console.WriteLine("start "+lesson.ToString());
-
-            
-
-        //    Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition");
-        //    return true;
-        //}
-
-        //public Boolean removeLessonsAndFindNewPosition(Lesson lesson)
-        //{
-        //Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition");
-        //    Console.WriteLine(lesson.ToString());
-            
-        //    /////1
-        //    Timetable groupTT = lesson.getGroup().getTimetable();
-        //    List<TimeSlot> groupFreeSlots = groupTT.getFreeSlotsToLesson(lesson);
-        //    /////1
-
-        //    /////2
-        //    List<FreeSlotsInRoomToLesson> freeSlotsInRoomToLesson = new List<FreeSlotsInRoomToLesson>();
-
-        //    foreach (Timetable tt in roomsTimetables) {
-        //        if (tt.getRoom().getRoomType().Equals(lesson.getSubject().getRoomType()) && tt.getRoom().getAmount() >= lesson.getGroup().getAmount()) {
-        //            freeSlotsInRoomToLesson.Add(new FreeSlotsInRoomToLesson(tt.getFreeSlotsToLesson(lesson), tt.getRoom()));
-        //        }
-        //    }
-        //    /////2
-
-        //    /////3
-        //    FreeSlotsToLesson freeSlotsToLesson = new FreeSlotsToLesson(groupFreeSlots, lesson, freeSlotsInRoomToLesson);
-        //    /////3
-
-        //    /////9
-        //    bool result = false;
-        //    if (freeSlotsToLesson.slots.Count == 0) {
-        //        Console.WriteLine("ERROR LVL 1");
-        //        //wolny slot grupy zwalniany jest w losowej sali
-        //        TimeSlot tmpSlot = groupFreeSlots[rand.Next(groupFreeSlots.Count -1)];
-        //        Lesson tmpLesson = freeSlotsToLesson.roomSlots[rand.Next(freeSlotsToLesson.roomSlots.Count - 1)].room.getTimetable().getLesson(tmpSlot.day, tmpSlot.hour);
-
-        //        tmpLesson.getGroup().getTimetable().lockSlot(tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getTeacher().getTimetable().lockSlot(tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getRoom().getTimetable().lockSlot(tmpSlot.day, tmpSlot.hour);
-
-        //        removeLessonsAndFindNewPosition(tmpLesson);
-
-        //        tmpLesson.getGroup().getTimetable().unlockSlot(tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getTeacher().getTimetable().unlockSlot(tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getRoom().getTimetable().unlockSlot(tmpSlot.day, tmpSlot.hour);
-
-        //        tmpLesson.getGroup().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getTeacher().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getRoom().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-
-        //        freeSlotsToLesson.slots.Add(new TimeSlot(tmpSlot.day, tmpSlot.hour));
-        //    }
-        //    /////9
-
-        //    /////4
-        //    Timetable teacherTT = lesson.getGroup().getTimetable();
-        //    List<TimeSlot> teacherSlotsWithLesson = teacherTT.getSlotsWithLesson(1);
-        //    /////4
-
-        //    /////5
-        //    List<TimeSlot> slotsToChange = getTheSameSlots(teacherSlotsWithLesson, freeSlotsToLesson.getSlots());
-        //    /////5
-
-        //    /////10
-        //    if (slotsToChange.Count == 0) {
-        //        Console.WriteLine("ERROR LVL 2");
-
-        //        TimeSlot tmpSlot = teacherSlotsWithLesson[rand.Next(teacherSlotsWithLesson.Count - 1)];
-        //        //sprawdzic czy w slocie jedy odpowiednia lekcja
-        //        Lesson tmpLesson = freeSlotsToLesson.roomSlots[rand.Next(freeSlotsToLesson.roomSlots.Count - 1)].room.getTimetable().getLesson(tmpSlot.day, tmpSlot.hour);
-
-        //        tmpLesson.getGroup().getTimetable().lockSlot(tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getTeacher().getTimetable().lockSlot(tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getRoom().getTimetable().lockSlot(tmpSlot.day, tmpSlot.hour);
-
-        //        removeLessonsAndFindNewPosition(tmpLesson);
-
-        //        tmpLesson.getGroup().getTimetable().unlockSlot(tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getTeacher().getTimetable().unlockSlot(tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getRoom().getTimetable().unlockSlot(tmpSlot.day, tmpSlot.hour);
-
-        //        tmpLesson.getGroup().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getTeacher().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getRoom().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-
-
-        //        teacherSlotsWithLesson = teacherTT.getSlotsWithLesson(1);
-
-        //        slotsToChange = getTheSameSlots(teacherSlotsWithLesson, freeSlotsToLesson.getSlots());
-        //    }
-        //    /////10
-
-        //    /////6
-        //    List<Lesson> choosenLesson = new List<Lesson>();
-        //    foreach (TimeSlot ts in slotsToChange)
-        //    {
-        //        choosenLesson.Add(teacherTT.getLesson(ts.day,ts.hour));
-        //    }
-        //    /////6
-
-        //    /////7
-        //    Group group;
-        //    Teacher teacher;
-        //    Timetable currentTimeTable = new Timetable();
-        //    List<TimeSlot> freeSlots = new List<TimeSlot>();
-        //    List<TimeSlot> groupSlots = new List<TimeSlot>();
-        //    List<TimeSlot> teacherSlots = new List<TimeSlot>();
-        //    List<TimeSlot> theSameSlots = new List<TimeSlot>();
-        //    List<FreeSlotsToLesson> fstl = new List<FreeSlotsToLesson>();
-        //    int i = 0;
-        //    foreach (Lesson l in choosenLesson)
-        //    {
-        //        group = l.getGroup();
-        //        teacher = l.getTeacher();
-
-        //        List<FreeSlotsInRoomToLesson> fsrtl = new List<FreeSlotsInRoomToLesson>();
-        //        foreach (Timetable tt in roomsTimetables)
-        //        {
-        //            if (tt.getRoom().getRoomType().Equals(l.getSubject().getRoomType()) && tt.getRoom().getAmount() >= group.getAmount())
-        //            {
-        //                fsrtl.Add(new FreeSlotsInRoomToLesson(tt.getFreeSlotsToLesson(l), tt.getRoom()));
-        //            }
-        //        }
-
-        //        groupSlots = group.getTimetable().getFreeSlotsToLesson(l);
-        //        teacherSlots = teacher.getTimetable().getFreeSlotsToLesson(l);
-        //        theSameSlots = getTheSameSlots(groupSlots, teacherSlots);
-
-        //        fstl.Add(new FreeSlotsToLesson(theSameSlots, l, fsrtl, slotsToChange[i++]));
-        //    }
-
-        //    fstl.Sort(new Comparison<FreeSlotsToLesson>(BFSComparator));
-        //    /////7
-
-        //    /////11
-        //    if (fstl.Count == 0)
-        //    {
-        //        Console.WriteLine("ERROR LVL 3");
-        //        return false;
-        //        //losowanie lekcji z 6:
-        //        //int index = rand.Next(choosenLesson.Count - 1);
-        //        //Lesson tmpLesson = choosenLesson[index];
-        //        //TimeSlot tmpSlot = slotsToChange[index];
-
-        //        //removeLessonsAndFindNewPosition(tmpLesson);
-
-        //        //tmpLesson.getGroup().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-        //        //tmpLesson.getTeacher().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-        //        //tmpLesson.getRoom().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-
-        //        //freeSlotsToLesson.slots.Add(new TimeSlot(tmpSlot.day, tmpSlot.hour));
-
-        //    }
-        //    /////11
-
-        //    /////8
-
-        //    foreach (TimeSlot ts in slotsToChange)
-        //    {
-        //        choosenLesson.Add(teacherTT.getLesson(ts.day, ts.hour));
-        //    }
-
-        //    TimeSlot bestSlot = null;
-        //    TimeSlot prevSlot = null;
-        //    Room bestRoom = null;
-        //    FreeSlotsToLesson tmpFstl = null;
-        //    Lesson lessonToMove = null;
-
-        //    tmpFstl = fstl[fstl.Count - 1];
-        //    lessonToMove = tmpFstl.lesson;
-
-        //    if (tmpFstl.slots.Count > 0) {
-        //        bestSlot = getBestTimeSlot(tmpFstl.slots, tmpFstl.roomSlots, ref bestRoom);
-        //        tmpFstl.lesson.getSlots().Add(new TimeSlot(bestSlot.day, bestSlot.hour));
-        //        tmpFstl.lesson.setRoom(bestRoom);
-        //        tmpFstl.lesson.setLessonsToTimetable(bestSlot.day, bestSlot.hour);
-        //    } else {
-        //        //remove
-        //        Console.WriteLine("ERROR LVL 4");
-        //        return false;
-        //    }
-
-        //    lessonToMove = groupTT.getLessons(bestSlot.day, bestSlot.hour)[0];
-
-        //    groupTT.removeLesson(lessonToMove, tmpFstl.pravSlot.day, tmpFstl.pravSlot.hour);
-        //    teacherTT.removeLesson(lessonToMove, tmpFstl.pravSlot.day, tmpFstl.pravSlot.hour);
-        //    lessonToMove.getRoom().getTimetable().removeLesson(lessonToMove, tmpFstl.pravSlot.day, tmpFstl.pravSlot.hour);
-
-        //    List<Room> freeRooms = new List<Room>();
-        //    foreach (FreeSlotsInRoomToLesson ro in tmpFstl.roomSlots)
-        //    {
-        //        if (ro.slots.Contains(bestSlot))
-        //        {
-        //            freeRooms.Add(ro.room);
-        //        }
-        //    }
-        //    bestRoom = freeRooms[rand.Next(freeRooms.Count - 1)];
-
-        //    groupTT.addLesson(lesson, tmpFstl.pravSlot.day, tmpFstl.pravSlot.hour);
-        //    teacherTT.addLesson(lesson, tmpFstl.pravSlot.day, tmpFstl.pravSlot.hour);
-        //    lesson.setRoom(bestRoom);
-        //    bestRoom.getTimetable().addLesson(lesson, tmpFstl.pravSlot.day, tmpFstl.pravSlot.hour);
-
-        //    Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition");
-        //    return true;       
-        //}
-
-        //public Boolean removeLessonsAndFindNewPosition2(Lesson lesson,ref List<Lesson> allLesson)
-        //{
-        //    Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition");
-        //    Console.WriteLine(lesson.ToString());
-
-        //    Timetable groupTT = lesson.getGroup().getTimetable();
-        //    Timetable teacherTT = lesson.getTeacher().getTimetable();
-        //    List<TimeSlot> groupFreeSlots = groupTT.getFreeSlotsToLesson(lesson);
-        //    List<TimeSlot> teacherFreeSlots = teacherTT.getFreeSlotsToLesson(lesson);
-        //    Timetable tmpTT;
-        //    FreeSlotsToLesson tmpFreeSlots;
-
-        //    List<FreeSlotsInRoomToLesson> freeSlotsInRoomToLesson = new List<FreeSlotsInRoomToLesson>();
-
-        //    foreach (Timetable tt in roomsTimetables)
-        //    {
-        //        if (tt.getRoom().getRoomType().Equals(lesson.getSubject().getRoomType()) && tt.getRoom().getAmount() >= lesson.getGroup().getAmount())
-        //        {
-        //            freeSlotsInRoomToLesson.Add(new FreeSlotsInRoomToLesson(tt.getFreeSlotsToLesson(lesson), tt.getRoom()));
-        //        }
-        //    }
-
-        //    FreeSlotsToLesson freeSlotsToLessonG = new FreeSlotsToLesson(groupFreeSlots, lesson, freeSlotsInRoomToLesson);
-        //    FreeSlotsToLesson freeSlotsToLessonT = new FreeSlotsToLesson(teacherFreeSlots, lesson, freeSlotsInRoomToLesson);
-
-        //    Console.WriteLine(freeSlotsToLessonG.slots.Count + " < "+ freeSlotsToLessonT.slots.Count);
-
-        //    // losuje slot z sal, zwalnia slot z nauczyciela
-
-        //    if (freeSlotsToLessonG.slots.Count < freeSlotsToLessonT.slots.Count) {
-        //        tmpTT = groupTT;
-        //        tmpFreeSlots = freeSlotsToLessonT;
-        //    } else {
-        //        tmpTT = teacherTT;
-        //        tmpFreeSlots = freeSlotsToLessonG;
-        //    }
-
-        //    if (freeSlotsToLessonG.slots.Count == 0) {
-        //        List<TimeSlot> tmpRoomSlots = freeSlotsToLessonG.getSlotsFromRoomLists();
-        //        TimeSlot ts = tmpRoomSlots[rand.Next(tmpRoomSlots.Count)];
-        //        Lesson tmpL = groupTT.getLesson(ts.day, ts.hour);
-
-        //        allLesson.Add(tmpL);
-
-        //        tmpL.getGroup().getTimetable().removeLesson(tmpL, ts.day, ts.hour);
-        //        tmpL.getTeacher().getTimetable().removeLesson(tmpL, ts.day, ts.hour);
-        //        tmpL.getRoom().getTimetable().removeLesson(tmpL, ts.day, ts.hour);
-
-        //        freeSlotsToLessonG.slots.Add(ts);
-        //        tmpTT = teacherTT;
-        //        tmpFreeSlots = freeSlotsToLessonG;
-        //    }
-
-        //    Room bestRoom = null;
-        //    Lesson tmpLesson = null;
-        //    TimeSlot tmpSlot = getBestTimeSlot(tmpFreeSlots.slots, tmpFreeSlots.roomSlots, ref bestRoom);
-
-        //    if (tmpTT.getLessons(tmpSlot.day, tmpSlot.hour).Count > 0) { // w przypadku gdyby wczesniej usunieta lecka zwolnila slot dla lekcji do wstawienia
-        //        tmpLesson = tmpTT.getLesson(tmpSlot.day, tmpSlot.hour);
-
-        //        Console.WriteLine(tmpSlot.ToString());
-        //        Console.WriteLine(tmpLesson.ToString());
-
-        //        tmpLesson.getGroup().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getTeacher().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-        //        tmpLesson.getRoom().getTimetable().removeLesson(tmpLesson, tmpSlot.day, tmpSlot.hour);
-
-        //        allLesson.Add(tmpLesson);
-        //    }
-                      
-        //    lesson.setRoom(bestRoom);
-
-        //    lesson.getGroup().getTimetable().addLesson(lesson, tmpSlot.day, tmpSlot.hour);
-        //    lesson.getTeacher().getTimetable().addLesson(lesson, tmpSlot.day, tmpSlot.hour);
-        //    lesson.getRoom().getTimetable().addLesson(lesson, tmpSlot.day, tmpSlot.hour);
-
-        //    lesson.getGroup().getTimetable().lockSlot(tmpSlot.day, tmpSlot.hour);
-        //    lesson.getTeacher().getTimetable().lockSlot(tmpSlot.day, tmpSlot.hour);
-        //    lesson.getRoom().getTimetable().lockSlot(tmpSlot.day, tmpSlot.hour);
-
-        //    Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition");
-        //    return true;
-        //}
+        public bool removeLessonsAndFindNewPosition3(Lesson lesson, ref List<Lesson> allLesson, int level = 1)
+        {
+            Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition");
+            Console.WriteLine("start " + lesson.ToString() + " level " + level);
+            bool result = false;
+            Timetable groupTT = lesson.getGroup().getTimetable();
+            //List<TimeSlot> groupFreeSlots = groupTT.getFreeSlotsToLesson(lesson);
+            Timetable teacherTT = lesson.getTeacher().getTimetable();
+            List<TimeSlot> teacherFreeSlots = teacherTT.getFreeSlotsToLesson(lesson);
+            // sloty w salach w które można wstawic daną lekcje
+            List<FreeSlotsInRoomToLesson> freeSlotsInRoomToLesson = new List<FreeSlotsInRoomToLesson>();
+            foreach (Timetable tt in roomsTimetables)
+            {
+                if (tt.getRoom().getRoomType().Equals(lesson.getRoomType()) && tt.getRoom().getAmount() >= lesson.getGroup().getAmount())
+                {
+                    freeSlotsInRoomToLesson.Add(new FreeSlotsInRoomToLesson(tt.getFreeSlotsToLesson(lesson), tt.getRoom()));
+                }
+            }
+            // sloty w sali i w planie nauczyciela w ktorych mozna wstawic dana lekcje
+            FreeSlotsToLesson freeSlotsToLesson = new FreeSlotsToLesson(teacherFreeSlots, lesson, freeSlotsInRoomToLesson);
+
+
+
+            if (freeSlotsToLesson.slots.Count == 0)
+            {
+                TimeSlot slotToChange = null;
+                result = false;
+                foreach (TimeSlot rts in freeSlotsToLesson.getSlotsFromRoomLists()) {
+                    Lesson lessonToChange = teacherTT.getLessons(rts.day, rts.hour)[0];
+                    if (level < 5) {
+                        result = removeLessonsAndFindNewPosition3(lessonToChange, ref allLesson, 4);
+                    }
+                    if (result) {
+                        slotToChange = rts;
+                        break;
+                    }
+                }
+                if (!result) {
+                    Console.WriteLine("error : freeSlotsToLesson.slots.Count = 0");
+                    return result;
+                }
+                freeSlotsToLesson.slots.Add(slotToChange);
+                
+            }
+
+
+
+            // lista slotów skąd może być ściągnięta lekcja w planie dla grupy
+            List<TimeSlot> slots = new List<TimeSlot>();
+            foreach (TimeSlot ts in freeSlotsToLesson.slots)
+            {
+                if (groupTT.getLessons(ts.day, ts.hour).Count == 1)
+                {
+                    if (groupTT.getLessons(ts.day, ts.hour)[0].getSize() == 1)
+                    {
+                        slots.Add(ts);
+                    }
+                }
+            }
+
+
+
+            if (slots.Count == 0) {
+                //slots.Add()
+                return false;
+            }
+
+
+
+            //znajdujemy zastępczy slot dla losowej lekcji
+            while (slots.Count > 0) {
+                TimeSlot slot = slots[rand.Next(0, slots.Count - 1)];
+                slots.Remove(slot);
+                //szukam zastepczego slotu
+                Lesson lessonToChange = groupTT.getLessons(slot.day,slot.hour)[0];
+                List<FreeSlotsInRoomToLesson> freeSlotsInRoomToLessonTMP = new List<FreeSlotsInRoomToLesson>();
+                foreach (Timetable tt in roomsTimetables)
+                {
+                    if (tt.getRoom().getRoomType().Equals(lessonToChange.getRoomType()) && 
+                        tt.getRoom().getAmount() >= lessonToChange.getGroup().getAmount())
+                    {
+                        freeSlotsInRoomToLesson.Add(new FreeSlotsInRoomToLesson(tt.getFreeSlotsToLesson(lessonToChange), tt.getRoom()));
+                    }
+                }
+                List<TimeSlot> groupSlots = groupTT.getFreeSlotsToLesson(lessonToChange);
+                List<TimeSlot> teacherSlots = lessonToChange.getTeacher().getTimetable().getFreeSlotsToLesson(lessonToChange);
+                List<TimeSlot> theSameSlots = getTheSameSlots(groupSlots, teacherSlots);
+                FreeSlotsToLesson freeSlotsToLessonTMP = new FreeSlotsToLesson(theSameSlots, lessonToChange, freeSlotsInRoomToLesson);
+                if (freeSlotsToLessonTMP.slots.Count > 0) {
+                    Room bestRoom = null;
+                    TimeSlot bestSlot = this.getBestTimeSlot(freeSlotsToLessonTMP.slots, freeSlotsToLessonTMP.roomSlots, ref bestRoom);
+                    Console.WriteLine("found : " + lessonToChange.ToString());
+                    lessonToChange.setRoom(bestRoom);
+                    lessonToChange.addLessonToTimetableAndBlockSlot(bestSlot.day, bestSlot.hour);
+                    lessonToChange.removeLessonFromTimetable(slot.day, slot.hour);
+
+                    bestRoom = freeSlotsToLesson.getRoomsFromSlot(slot)[0];
+
+                    lesson.setRoom(bestRoom);
+                    lesson.addLessonToTimetableAndBlockSlot(slot.day, slot.hour);
+                    result = true;
+                    break;
+                }
+            }
+
+
+
+
+            if (!result) {
+                Lesson lessonToChange = null;
+                if (level < 5)
+                {
+                    result = removeLessonsAndFindNewPosition3(lessonToChange, ref allLesson, 3);
+                }
+            }
+
+
+
+            Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition");
+            return result;
+        }
 
         public List<TimeSlot> getTheSameSlots(List<TimeSlot> freeSlots1, List<TimeSlot> freeSlots2)
         {
@@ -783,7 +622,7 @@ namespace STG.Controllers.Engine
             {
                 value += tt.fitness();
             }
-
+            fitnessValue = value;
             return value;
         }
 
@@ -815,14 +654,69 @@ namespace STG.Controllers.Engine
             return true;
         }
 
-        // to do
-        public void crossover(SchoolTimetable s1, SchoolTimetable s2) {
+        public void crossover(SchoolTimetable stt) {
+            List<Lesson> tmp_lessons = new List<Lesson>();
 
+            foreach (Timetable tt in groupsTimetables) {
+                List<TimeSlot> slots = tt.getSlotsWithLesson();
+                Group gr = null;
+
+                foreach (Group g in groups)
+                {
+                    if (tt.getGroup().getName().Equals(g.getName())) {
+                        gr = g;
+                        break;
+                    }
+                }
+
+                foreach (TimeSlot ts in slots) {
+                    if (tt.getLessons(ts.day, ts.hour).Count > 1 || 
+                        !tt.getLessons(ts.day,ts.hour)[0].getSubject().Equals(gr.getTimetable().getLessons(ts.day, ts.hour)[0].getSubject()) )
+                    {
+                        tmp_lessons.AddRange(tt.getLessons(ts.day, ts.hour));
+
+                        foreach (Lesson l in tt.getLessons(ts.day, ts.hour)) {
+                            l.removeLessonFromTimetable(ts.day, ts.hour);
+                        }
+
+                    }
+                }
+            }
+
+            //this.genereteTimetable(tmp_lessons);
         }
 
-        // to do
         public void mutate() {
+            List<Lesson> lessonsToChange = new List<Lesson>();
 
+            foreach (Timetable tt in groupsTimetables)
+            {
+                List<TimeSlot> tmpTimeSlots = tt.getSlotsWithLesson();
+                int amoutToChange = (int)((tmpTimeSlots.Count() * config.probabilityOfMutation)/100);
+
+                for (int i = 0; i < amoutToChange; i++)
+                {
+                    TimeSlot tmp_slot = tmpTimeSlots[rand.Next(tmpTimeSlots.Count() - 1)];
+                    if (tt.getLessons(tmp_slot.day, tmp_slot.hour).Count == 1)
+                    {
+                        Lesson tmp_lesson = tt.getLessons(tmp_slot.day, tmp_slot.hour)[0];
+
+                        lessonsToChange.Add(tmp_lesson);
+                        tmpTimeSlots.Remove(tmp_slot);
+
+                        tmp_lesson.removeLessonFromTimetable(tmp_slot.day, tmp_slot.hour);
+                    }
+                    else
+                    {
+                        tmpTimeSlots.Remove(tmp_slot);
+                        --i;
+                    }
+                }
+            }
+
+            lessons = lessonsToChange;
+
+            this.genereteTimetable(lessonsToChange);
         }
 
         public void genWeb(string fileName = "output")
@@ -990,5 +884,28 @@ namespace STG.Controllers.Engine
 
         }
 
+        public void unlockAllSlots() {
+            foreach (Teacher t in teachers)
+            {
+                t.getTimetable().unlockAllSlots();
+            }
+
+            foreach (Group g in groups)
+            {
+                g.getTimetable().unlockAllSlots();
+                if (g.getSubGroup().Count > 0)
+                {
+                    foreach (Group sg in g.getSubGroup())
+                    {
+                        sg.getTimetable().unlockAllSlots();
+                    }
+                }
+            }
+
+            foreach (Room r in rooms)
+            {
+                r.getTimetable().unlockAllSlots();
+            }
+        }
     }
 }

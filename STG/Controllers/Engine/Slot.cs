@@ -9,10 +9,12 @@ namespace STG.Controllers.Engine
     {
         private List<Lesson> lessons;
         private bool locked;
+        private bool permLock;
 
         public Slot() {
             lessons = new List<Lesson>();
             locked = false;
+            permLock = false;
         }
 
         public void addLesson(Lesson lesson) {
@@ -35,6 +37,14 @@ namespace STG.Controllers.Engine
             return lessons;
         }
 
+        public void setPermLock(bool permLock) {
+            this.permLock = permLock;
+        }
+
+        public bool getPermLock() {
+            return permLock;
+        }
+
         public void lockSlot() {
             locked = true;
         }
@@ -44,7 +54,7 @@ namespace STG.Controllers.Engine
         }
 
         public bool isLocked() {
-            return locked;
+            return locked || permLock;
         }
 
         public bool isEmpty()

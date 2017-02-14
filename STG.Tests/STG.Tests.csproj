@@ -92,6 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\PopulationTest.cs" />
     <Compile Include="Controllers\SchoolControllerTest.cs" />
     <Compile Include="Controllers\SchoolTimetableTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

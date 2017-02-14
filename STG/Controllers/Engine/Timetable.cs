@@ -126,6 +126,14 @@ namespace STG.Controllers.Engine
             days[day].getSlot(slot).unlockSlot();
         }
 
+        public void unlockAllSlots() {
+            foreach (Day d in days) {
+                foreach (Slot s in d.getSlots()) {
+                    s.unlockSlot();
+                }
+            }
+        }
+
         public override string ToString()
         {
             String tmp = "";

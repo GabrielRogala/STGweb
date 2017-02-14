@@ -94,5 +94,18 @@ namespace STG.Controllers.Engine
 
             return freeSlot;
         }
+
+        public List<Room> getRoomsFromSlot(TimeSlot slot)
+        {
+            List<Room> tmp = new List<Room>();
+
+            foreach (FreeSlotsInRoomToLesson fs in roomSlots) {
+                if (fs.slots.Contains(slot)) {
+                    tmp.Add(fs.room);
+                }
+            }
+
+            return tmp;
+        }
     }
 }

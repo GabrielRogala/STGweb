@@ -51,6 +51,8 @@ namespace STG.Tests.Controllers
             rooms.Add(new Room("nr" + nr++, 40, roomTypes[0]));
             rooms.Add(new Room("nr" + nr++, 40, roomTypes[0]));
             rooms.Add(new Room("nr" + nr++, 40, roomTypes[0]));
+            rooms.Add(new Room("nr" + nr++, 40, roomTypes[0]));
+            rooms.Add(new Room("nr" + nr++, 40, roomTypes[1]));
             rooms.Add(new Room("nr" + nr++, 40, roomTypes[1]));
             rooms.Add(new Room("nr" + nr++, 40, roomTypes[1]));
             rooms.Add(new Room("nr" + nr++, 40, roomTypes[2]));
@@ -70,7 +72,7 @@ namespace STG.Tests.Controllers
             subjects.Add(new Subject("his", subjectTypes[0]));
             subjects.Add(new Subject("wos", subjectTypes[0]));
             subjects.Add(new Subject("fiz", subjectTypes[1]));
-            //subjects.Add(new Subject("bio", subjectTypes[1]));
+            subjects.Add(new Subject("bio", subjectTypes[1]));
             subjects.Add(new Subject("geo", subjectTypes[1]));
             subjects.Add(new Subject("w-f", subjectTypes[4]));
             subjects.Add(new Subject("rel", subjectTypes[5]));
@@ -104,22 +106,22 @@ namespace STG.Tests.Controllers
                 lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------his----------
                 tI = 3; sI++; amount = 1;
-                //lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
+                lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------wos----------
                 tI = 3; sI++; amount = 2;
-                //lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
-                //lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
+                lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
+                lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------fiz----------
                 tI = 5; sI++; amount = 2;
                 lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------bio----------
-                //tI = 3; sI++; amount = 1;
-                //lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
+                tI = 3; sI++; amount = 1;
+                lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------geo----------
                 tI = 3; sI++; amount = 2;
-                lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
-                lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
+                //lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
+                //lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------w-f----------
                 tI = 4; sI++; amount = 2;
                 lessons.Add(new Lesson(teachers[tI], g.getSubGroup()[0], subjects[sI], roomTypes[2], amount));
@@ -130,10 +132,10 @@ namespace STG.Tests.Controllers
                 lessons.Add(new Lesson(teachers[tI], g.getSubGroup()[1], subjects[sI], roomTypes[2], amount));
 
                 //----------rel----------
-                tI = 5; sI++; amount = 2;
+                tI = 5; sI++; amount = 3;
                 lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
-                //lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[2], amount));
+                lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------inf----------
                 tI = 4; sI++; amount = 2;
                 lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[1], amount));
@@ -148,6 +150,23 @@ namespace STG.Tests.Controllers
             SchoolTimetable stt = new SchoolTimetable(teachers, groups, rooms, lessons, 5, 9,config);
             stt.generateSchoolTimetable();
             stt.print();
+
+            SchoolTimetable stt2 = new SchoolTimetable(teachers, groups, rooms, lessons, 5, 9, config);
+            stt2.generateSchoolTimetable();
+            stt2.print();
+
+            SchoolTimetable stt3 = new SchoolTimetable(stt);
+            stt3.crossover(stt2);
+            stt3.print();
+
+            //foreach (Lesson l in stt.getLessons())
+            //{
+            //    Console.WriteLine(l.ToString());
+            //}
+
+            //SchoolTimetable stt2 = new SchoolTimetable(stt);
+            //stt2.print();
+
             Console.WriteLine(stt.isCorrect() +" " + stt.fitness());
             stt.genWeb("test1");
         }
@@ -193,7 +212,12 @@ namespace STG.Tests.Controllers
 
             SchoolTimetable stt = new SchoolTimetable(teachers, groups, rooms, lessons, 3, 3,config);
             stt.generateSchoolTimetable();
-            //stt.print();
+            stt.print();
+
+            foreach (Lesson l in stt.getLessons()) {
+                Console.WriteLine(l.ToString());
+            }
+
             Console.WriteLine(stt.isCorrect() + " " + stt.fitness());
 
             stt.genWeb("subGroupTest");

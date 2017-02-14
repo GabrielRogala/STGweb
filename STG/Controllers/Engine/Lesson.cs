@@ -92,6 +92,11 @@ namespace STG.Controllers.Engine
             else {
                 tmp = ":" + roomType.getName();
             }
+
+            foreach (TimeSlot ts in slots) {
+                tmp += "[" + ts.day + "," + ts.hour + "]";
+            }
+
             return group.ToString() + "/" + teacher.ToString() + "/" + subject.ToString() + "(" + amount + "/" + size + ")" + tmp;
         }
 
@@ -107,15 +112,25 @@ namespace STG.Controllers.Engine
 
         public void addLessonToTimetable(int day, int hour)
         {
+            slots.Add(new TimeSlot(day, hour));
             this.getGroup().addLesson(this, day,hour);
             this.getTeacher().getTimetable().addLesson(this, day, hour);
             this.getRoom().getTimetable().addLesson(this, day, hour);
         }
 
         public void removeLessonFromTimetable(int day, int hour) {
+            slots.Remove(new TimeSlot(day, hour));
             this.getGroup().removeLesson(this, day, hour);
             this.getTeacher().getTimetable().removeLesson(this, day, hour);
             this.getRoom().getTimetable().removeLesson(this, day, hour);
+        }
+
+        public void addLessonToTimetableAndBlockSlot(int day, int hour)
+        {
+            addLessonToTimetable(day, hour);
+            this.getGroup().getTimetable().lockSlot(day, hour);
+            this.getTeacher().getTimetable().lockSlot(day, hour);
+            this.getRoom().getTimetable().lockSlot(day, hour);
         }
     }
 }
