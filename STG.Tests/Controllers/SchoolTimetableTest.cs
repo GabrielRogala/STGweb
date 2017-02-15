@@ -106,7 +106,7 @@ namespace STG.Tests.Controllers
                 lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------his----------
                 tI = 3; sI++; amount = 1;
-                lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
+                //lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------wos----------
                 tI = 3; sI++; amount = 2;
                 lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
@@ -117,7 +117,7 @@ namespace STG.Tests.Controllers
                 lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------bio----------
                 tI = 3; sI++; amount = 1;
-                lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
+                //lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
                 //----------geo----------
                 tI = 3; sI++; amount = 2;
                 //lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[0], amount));
@@ -146,28 +146,31 @@ namespace STG.Tests.Controllers
                 lessons.Add(new Lesson(teachers[tI], g, subjects[sI], roomTypes[1], amount, 3));
 
             }
+            Console.WriteLine(lessons.Count);
 
             SchoolTimetable stt = new SchoolTimetable(teachers, groups, rooms, lessons, 5, 9,config);
             stt.generateSchoolTimetable();
-            stt.print();
+            //stt.print();
+
+            Console.WriteLine("###############################");
 
             SchoolTimetable stt2 = new SchoolTimetable(teachers, groups, rooms, lessons, 5, 9, config);
             stt2.generateSchoolTimetable();
-            stt2.print();
-
-            SchoolTimetable stt3 = new SchoolTimetable(stt);
-            stt3.crossover(stt2);
-            stt3.print();
-
-            //foreach (Lesson l in stt.getLessons())
-            //{
-            //    Console.WriteLine(l.ToString());
-            //}
-
-            //SchoolTimetable stt2 = new SchoolTimetable(stt);
             //stt2.print();
 
-            Console.WriteLine(stt.isCorrect() +" " + stt.fitness());
+            Console.WriteLine("###############################");
+
+            SchoolTimetable stt3 = new SchoolTimetable(stt);
+            //stt3.print();
+            //stt3.crossover(stt2);
+            //stt3.print();
+
+            Console.WriteLine("###############################");
+
+            stt2.mutate();
+            stt2.print();
+
+            Console.WriteLine(stt2.isCorrect() +" " + stt2.fitness());
             stt.genWeb("test1");
         }
 
@@ -213,6 +216,9 @@ namespace STG.Tests.Controllers
             SchoolTimetable stt = new SchoolTimetable(teachers, groups, rooms, lessons, 3, 3,config);
             stt.generateSchoolTimetable();
             stt.print();
+            Console.WriteLine("################");
+            SchoolTimetable stt2 = new SchoolTimetable(stt);
+            stt2.print();
 
             foreach (Lesson l in stt.getLessons()) {
                 Console.WriteLine(l.ToString());
@@ -220,7 +226,7 @@ namespace STG.Tests.Controllers
 
             Console.WriteLine(stt.isCorrect() + " " + stt.fitness());
 
-            stt.genWeb("subGroupTest");
+            //stt.genWeb("subGroupTest");
 
         }
 

@@ -47,7 +47,14 @@ namespace STG.Controllers.Engine
                 schoolTimeTables.Add(new SchoolTimetable(teachers, groups, rooms, lessons, numberOfDays,numberOfSlots,config));
                 schoolTimeTables[i].generateSchoolTimetable();
                 schoolTimeTables[i].fitness();
-                Console.WriteLine(i + ": " + schoolTimeTables[i].getFitnessValue());
+                while (schoolTimeTables[i].getErrorValue() > 0)
+                {
+                    schoolTimeTables.RemoveAt(i);
+                    schoolTimeTables.Add(new SchoolTimetable(teachers, groups, rooms, lessons, numberOfDays, numberOfSlots, config));
+                    schoolTimeTables[i].generateSchoolTimetable();
+                    schoolTimeTables[i].fitness();
+                }
+                Console.WriteLine(i + ": " + schoolTimeTables[i].getFitnessValue() + " EV: "  + schoolTimeTables[i].getErrorValue());
             }
         }
 
@@ -91,13 +98,19 @@ namespace STG.Controllers.Engine
                     schoolTimeTables_tmp[i].crossover(schoolTimeTables[rand.Next(0 , (int)(config.populationSize * 0.2) - 1)]);
                     if (rand.NextDouble() > config.probabilityOfMutation / 100)
                     {
-                       schoolTimeTables_tmp[i].mutate();
+                       //schoolTimeTables_tmp[i].mutate();
                     }
                 }
                 else
                 {
-                    schoolTimeTables_tmp.Add(new SchoolTimetable(teachers, groups,rooms,lessons,numberOfDays,numberOfSlots,config));
+                    schoolTimeTables_tmp.Add(new SchoolTimetable(teachers, groups, rooms, lessons, numberOfDays, numberOfSlots, config));
                     schoolTimeTables_tmp[i].generateSchoolTimetable();
+                    while (schoolTimeTables_tmp[i].getErrorValue() > 0)
+                    {
+                        schoolTimeTables_tmp.RemoveAt(i);
+                        schoolTimeTables_tmp.Add(new SchoolTimetable(teachers, groups, rooms, lessons, numberOfDays, numberOfSlots, config));
+                        schoolTimeTables_tmp[i].generateSchoolTimetable();
+                    }
                 }
 
                 schoolTimeTables_tmp[i].fitness();

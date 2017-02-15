@@ -20,6 +20,7 @@ namespace STG.Controllers.Engine
         private STGCfg config;
         private static Random rand = new Random();
         private int fitnessValue;
+        private int errorValue;
 
         public SchoolTimetable() {
             teachers = new List<Teacher>();
@@ -31,14 +32,74 @@ namespace STG.Controllers.Engine
             roomsTimetables = new List<Timetable>();
             config = null;
             fitnessValue = 0;
+            errorValue = 0;
         }
 
         public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons) : this()
         {
-            this.teachers = teachers;
-            this.groups = groups;
-            this.rooms = rooms;
-            this.lessons = lessons;
+
+            foreach (Group g in groups)
+            {
+                Group gr = new Group(g);
+                List<Group> sgr = new List<Group>();
+
+                if (g.getSubGroup().Count > 0)
+                {
+                    foreach (Group s in g.getSubGroup())
+                    {
+                        Group sg = new Group(s);
+                        sg.setParent(gr);
+                        sgr.Add(sg);
+                    }
+                }
+                gr.getSubGroup().AddRange(sgr);
+                this.groups.Add(gr);
+            }
+
+            foreach (Teacher t in teachers) {
+                this.teachers.Add(new Teacher(t.getName()));
+            }
+
+            foreach (Room r in rooms)
+            {
+                this.rooms.Add(new Room(r.getName(),r.getAmount(),r.getRoomType()));
+            }
+
+            foreach (Lesson l in lessons) {
+                Teacher te = null;
+                Group gr = null;
+
+                foreach (Group g in this.groups)
+                {
+                    if (g.Equals(l.getGroup()))
+                    {
+                        gr = g;
+                        break;
+                    } else {
+                        if (g.getSubGroup().Count > 0) {
+                            foreach (Group sg in g.getSubGroup())
+                            {
+                                if (sg.Equals(l.getGroup()))
+                                {
+                                    gr = sg;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                foreach (Teacher t in this.teachers)
+                {
+                    if (t.Equals(l.getTeacher())) {
+                        te = t;
+                        break;
+                    }
+                }
+
+                this.lessons.Add(new Lesson(te,gr,l.getSubject(),l.getRoomType(),l.getAmount(),l.getSize()));
+            }
         }
 
         public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons, int numberOfDays, int numberOfSlots, STGCfg config) : this(teachers, groups, rooms, lessons)
@@ -50,19 +111,34 @@ namespace STG.Controllers.Engine
 
         public SchoolTimetable(SchoolTimetable s) : this(s.getTeachers(), s.getGroups(), s.getRooms(), s.getLessons(), s.getNumberOfDays(), s.getNumberOfSlots() ,s.getConfig())
         {
-            foreach (Lesson l in this.lessons) {
-                List<TimeSlot> ts = l.getSlots();
-                
-                l.removeAllSlots();
+            generateGroupsTimetables(groups);
+            generateRoomsTimetables(rooms);
+            generateTeachersTimetables(teachers);
+            unlockAllSlots();
 
-                foreach (TimeSlot t in ts) {
-                    l.addLessonToTimetable(t.day, t.hour);
+            for (int i = 0; i < s.getLessons().Count; i++) {
+                List<TimeSlot> ts = s.getLessons()[i].getSlots();
+
+                if (s.getLessons()[i].getRoom() != null)
+                {
+                    Room room = this.rooms[s.getRooms().IndexOf(s.getLessons()[i].getRoom())];
+
+                    this.getLessons()[i].setRoom(room);
+                    foreach (TimeSlot t in ts)
+                    {
+                        this.getLessons()[i].addLessonToTimetable(t.day, t.hour);
+                    }
                 }
-            }      
+            }
+            
         }
 
         public int getFitnessValue() {
             return fitnessValue;
+        }
+
+        public int getErrorValue() {
+            return errorValue;
         }
 
         public STGCfg getConfig() {
@@ -143,13 +219,13 @@ namespace STG.Controllers.Engine
 
             sortLessons(tmpLessons);
 
-            //foreach (Lesson l in tmpLessons){
-            //    Console.WriteLine(l.ToString());
-            //}
-
             while (tmpLessons.Count > 0) {
                 choosenLesson.AddRange(findDifferentSubjectTheSameGroup(tmpLessons.Last(), tmpLessons));
-                //Console.WriteLine(tmpLessons.Count);
+
+                foreach (Lesson l in choosenLesson) {
+                    //Console.WriteLine(l.ToString());
+                }
+
                 findAndSetBestPositionToLessons(choosenLesson, tmpLessons);
 
                 foreach (Lesson l in choosenLesson) {
@@ -162,12 +238,6 @@ namespace STG.Controllers.Engine
 
         private void findAndSetBestPositionToLessons(List<Lesson> choosenLesson, List<Lesson> allLesson)
         {
-            //Console.WriteLine("=================================");
-            //foreach (Lesson l in choosenLesson)
-            //{
-            //    Console.WriteLine(l.ToString());
-            //}
-
             List<FreeSlotsToLesson> freeSlotsToLesson = new List<FreeSlotsToLesson>();
             Timetable currentTimeTable = new Timetable();
             List<TimeSlot> freeSlots = new List<TimeSlot>();
@@ -255,8 +325,9 @@ namespace STG.Controllers.Engine
                         }
                         else
                         {
-                            //allLesson.Add(fstl.lesson);
-                            Console.WriteLine("ERROR!!!!!!!!!!!!!!!!"); ////////////////////////wystąpił???!
+                            allLesson.Add(fstl.lesson);
+                            errorValue += 1000;
+                            Console.WriteLine("ERROR!!!!!!!!!!!!!!!! "+ fstl.lesson.ToString()); ////////////////////////wystąpił???!
                         }
                     }
 
@@ -278,6 +349,7 @@ namespace STG.Controllers.Engine
                     Console.WriteLine("REMOVE " + fstl.lesson);
                     if (!removeLessonsAndFindNewPosition3(fstl.lesson, ref allLesson))
                     {
+                        errorValue += 1000;
                         Console.WriteLine(" nie znaleziono ");
                     }
                 }
@@ -287,8 +359,19 @@ namespace STG.Controllers.Engine
 
         public bool removeLessonsAndFindNewPosition3(Lesson lesson, ref List<Lesson> allLesson, int level = 1)
         {
-            Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition");
-            Console.WriteLine("start " + lesson.ToString() + " level " + level);
+            //Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition");
+            //Console.WriteLine("start " + lesson.ToString() + " level " + level);
+
+            //Console.WriteLine(lesson.getGroup().getTimetable().ToString());
+            //Console.WriteLine(lesson.getTeacher().getTimetable().ToString());
+            foreach (Timetable r in roomsTimetables) {
+                if (r.getRoom().getRoomType().Equals(lesson.getRoomType())) {
+                    //Console.WriteLine(r.ToString());
+                }
+            }
+
+            //Console.WriteLine(lesson.getGroup().getTimetable().ToString());
+
             bool result = false;
             Timetable groupTT = lesson.getGroup().getTimetable();
             //List<TimeSlot> groupFreeSlots = groupTT.getFreeSlotsToLesson(lesson);
@@ -323,7 +406,7 @@ namespace STG.Controllers.Engine
                     }
                 }
                 if (!result) {
-                    Console.WriteLine("error : freeSlotsToLesson.slots.Count = 0");
+                    //Console.WriteLine("error : freeSlotsToLesson.slots.Count = 0");
                     return result;
                 }
                 freeSlotsToLesson.slots.Add(slotToChange);
@@ -376,7 +459,7 @@ namespace STG.Controllers.Engine
                 if (freeSlotsToLessonTMP.slots.Count > 0) {
                     Room bestRoom = null;
                     TimeSlot bestSlot = this.getBestTimeSlot(freeSlotsToLessonTMP.slots, freeSlotsToLessonTMP.roomSlots, ref bestRoom);
-                    Console.WriteLine("found : " + lessonToChange.ToString());
+                    //Console.WriteLine("found : " + lessonToChange.ToString());
                     lessonToChange.setRoom(bestRoom);
                     lessonToChange.addLessonToTimetableAndBlockSlot(bestSlot.day, bestSlot.hour);
                     lessonToChange.removeLessonFromTimetable(slot.day, slot.hour);
@@ -403,7 +486,7 @@ namespace STG.Controllers.Engine
 
 
 
-            Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition");
+            //Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition");
             return result;
         }
 
@@ -601,7 +684,7 @@ namespace STG.Controllers.Engine
                 if (g.getSubGroup().Count > 0) {
                     foreach (Group sg in g.getSubGroup())
                     {
-                        Console.WriteLine(sg.getTimetable().ToString());
+                        //Console.WriteLine(sg.getTimetable().ToString());
                     }
                 }
             }
@@ -622,7 +705,13 @@ namespace STG.Controllers.Engine
             {
                 value += tt.fitness();
             }
-            fitnessValue = value;
+
+            fitnessValue = value + errorValue;
+
+            if (isCorrect()) {
+                fitnessValue += 1000;
+            }
+            
             return value;
         }
 
@@ -656,34 +745,70 @@ namespace STG.Controllers.Engine
 
         public void crossover(SchoolTimetable stt) {
             List<Lesson> tmp_lessons = new List<Lesson>();
+            int counter = 0;
 
-            foreach (Timetable tt in groupsTimetables) {
-                List<TimeSlot> slots = tt.getSlotsWithLesson();
-                Group gr = null;
+            for(int i = 0; i < this.groupsTimetables.Count; i++) {
+                if (this.groupsTimetables[i].getGroup().getParent() == null) {
 
-                foreach (Group g in groups)
-                {
-                    if (tt.getGroup().getName().Equals(g.getName())) {
-                        gr = g;
-                        break;
-                    }
-                }
-
-                foreach (TimeSlot ts in slots) {
-                    if (tt.getLessons(ts.day, ts.hour).Count > 1 || 
-                        !tt.getLessons(ts.day,ts.hour)[0].getSubject().Equals(gr.getTimetable().getLessons(ts.day, ts.hour)[0].getSubject()) )
+                    foreach (TimeSlot ts in this.groupsTimetables[i].getSlotsWithLesson())
                     {
-                        tmp_lessons.AddRange(tt.getLessons(ts.day, ts.hour));
-
-                        foreach (Lesson l in tt.getLessons(ts.day, ts.hour)) {
-                            l.removeLessonFromTimetable(ts.day, ts.hour);
+                        if (this.groupsTimetables[i].getLessons(ts.day, ts.hour).Count == 1 &&
+                            stt.groupsTimetables[i].getLessons(ts.day, ts.hour).Count == 1 &&
+                            this.groupsTimetables[i].getLessons(ts.day, ts.hour)[0].getSize() == 1 &&
+                            this.groupsTimetables[i].getLessons(ts.day, ts.hour)[0].getSubject().Equals(
+                                stt.groupsTimetables[i].getLessons(ts.day, ts.hour)[0].getSubject()
+                                )
+                            )
+                        {
+                            counter++;
+                            //Console.Write(this.groupsTimetables[i].getLessons(ts.day, ts.hour)[0].ToString() + " <=> ");
+                            //Console.WriteLine(stt.groupsTimetables[i].getLessons(ts.day, ts.hour)[0].ToString());
+                            this.groupsTimetables[i].getLessons(ts.day, ts.hour)[0].lockSlots(ts.day, ts.hour);
                         }
+                        else
+                        {
+                            if (this.groupsTimetables[i].getLessons(ts.day, ts.hour).Count > 0)
+                            {
+                                //Console.WriteLine("x: " + this.groupsTimetables[i].getLessons(ts.day, ts.hour)[0].ToString());
+                                if (ts.Equals(this.groupsTimetables[i].getLessons(ts.day, ts.hour)[0].getSlots()[0])) {
+                                    tmp_lessons.AddRange(this.groupsTimetables[i].getLessons(ts.day, ts.hour));
+                                }
+                                
 
+                            }
+                        }
                     }
                 }
             }
 
-            //this.genereteTimetable(tmp_lessons);
+            foreach (Lesson l in tmp_lessons)
+            {
+                //Console.WriteLine("rem : "+ l.ToString());
+                for (int i = 0; i < l.getSize(); i++) {
+                    if (l.getSlots().Count > 0 && l.getSlots()[0] != null)
+                    {
+                        //Console.WriteLine(l.getSlots()[0].day + ":" + l.getSlots()[0].hour);
+                        l.removeLessonFromTimetable(l.getSlots()[0].day, l.getSlots()[0].hour);
+                    }
+                }
+                
+                l.getSlots().Clear();
+                l.setRoom(null);
+            }
+
+            sortLessons(tmp_lessons);
+            //Console.WriteLine("============ do wstawienia =========");
+            foreach (Lesson l in tmp_lessons)
+            {
+                //Console.WriteLine("d : " + l.ToString());
+            }
+
+            //print();
+
+            //Console.WriteLine("====================================");
+
+
+            this.genereteTimetable(tmp_lessons);
         }
 
         public void mutate() {
@@ -697,14 +822,19 @@ namespace STG.Controllers.Engine
                 for (int i = 0; i < amoutToChange; i++)
                 {
                     TimeSlot tmp_slot = tmpTimeSlots[rand.Next(tmpTimeSlots.Count() - 1)];
-                    if (tt.getLessons(tmp_slot.day, tmp_slot.hour).Count == 1)
+
+                    if (
+                        tt.getLessons(tmp_slot.day, tmp_slot.hour).Count == 1 && 
+                        tt.getLessons(tmp_slot.day, tmp_slot.hour)[0].getSize() == 1 &&
+                        tt.getLessons(tmp_slot.day, tmp_slot.hour)[0].getGroup().getParent() == null
+                        )
                     {
                         Lesson tmp_lesson = tt.getLessons(tmp_slot.day, tmp_slot.hour)[0];
 
                         lessonsToChange.Add(tmp_lesson);
                         tmpTimeSlots.Remove(tmp_slot);
 
-                        tmp_lesson.removeLessonFromTimetable(tmp_slot.day, tmp_slot.hour);
+                        //tmp_lesson.removeLessonFromTimetable(tmp_slot.day, tmp_slot.hour);
                     }
                     else
                     {
@@ -714,7 +844,28 @@ namespace STG.Controllers.Engine
                 }
             }
 
-            lessons = lessonsToChange;
+            //lessons = lessonsToChange;
+
+            foreach (Lesson l in lessonsToChange)
+            {
+                
+                //Console.WriteLine("rem : " + l.ToString());
+                for (int i = 0; i < l.getSize(); i++)
+                {
+                    //Console.WriteLine(l.getSlots()[0].day + ":" + l.getSlots()[0].hour);
+                    l.removeLessonFromTimetable(l.getSlots()[0].day, l.getSlots()[0].hour);
+                }
+
+                l.getSlots().Clear();
+                l.setRoom(null);
+            }
+
+            sortLessons(lessonsToChange);
+            //Console.WriteLine("============ do wstawienia =========");
+            foreach (Lesson l in lessonsToChange)
+            {
+                //Console.WriteLine("d : " + l.ToString());
+            }
 
             this.genereteTimetable(lessonsToChange);
         }

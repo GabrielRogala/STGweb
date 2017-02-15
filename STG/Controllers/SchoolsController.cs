@@ -155,7 +155,8 @@ namespace STG.Controllers
 
             List<Lesson> lessons = getLessons(school,subjects,roomTypes,groups,teachers);
             Population population = new Population(lessons,teachers,groups,rooms,school.NumberOfDays,school.NumberOfHours, config);
-
+            population.start();
+            population.getBestSchoolTimeTable().genWeb("ouuuuut");
         }
 
         private STGCfg getSTGCfg(Schools school)
@@ -377,7 +378,7 @@ namespace STG.Controllers
                 List<Int32> schedule = new List<Int32>();
                 int amount = 0;
                 for (int i = 0; i < l.Schedule.Count(); i++) {
-                    if (l.Schedule[i] != '-') {
+                    if (l.Schedule[i] != '.') {
                         schedule.Add(Int32.Parse(l.Schedule[i].ToString()));
                         amount += schedule.Last();
                         //if (Int32.TryParse(l.Schedule[i].ToString(),out size)) {

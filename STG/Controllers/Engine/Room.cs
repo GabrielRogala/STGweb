@@ -50,6 +50,11 @@ namespace STG.Controllers.Engine
             return timetable;
         }
 
+        public override bool Equals(object obj)
+        {
+            return name.Equals(((Room)obj).getName());
+        }
+
         public override string ToString()
         {
             return name+"("+amount+"/"+roomType.getName()+")";

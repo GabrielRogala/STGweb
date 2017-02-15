@@ -180,21 +180,83 @@ namespace STG.Controllers.Engine
         public List<TimeSlot> getFreeSlotsToLesson(Lesson lesson)
         {
             List<TimeSlot> freeSlots = new List<TimeSlot>();
-            
-            if (group != null && group.getParent() != null) {
 
-                Console.WriteLine(group.ToString() + " / " + group.getParent().ToString());
+            if (group != null && group.getParent() != null)
+            {       
+                List<TimeSlot> fs = group.getTimetable().getFreeSlots(lesson);
+                List<TimeSlot> es = group.getTimetable().getSlotsWithLesson();
+                List<TimeSlot> groupFS = this.getFreeSlotsWithSubGroupLessons(lesson);
+                
+                freeSlots = groupFS;
 
-                freeSlots.Add(group.getSubGroupFreeSlotToLesson(lesson));
-                if (freeSlots.Count > 0 && freeSlots[0] != null) {
+                //int counter = 0;
+                foreach (Group g in group.getParent().getSubGroup())
+                {
+                    if (group.getSubGroupsIndex() == g.getSubGroupsIndex())
+                    {
 
-                    foreach (TimeSlot ts in freeSlots) {
-                        Console.WriteLine(ts.ToString());
+                        List<TimeSlot> fsT = g.getTimetable().getFreeSlots(lesson);
+                        List<TimeSlot> esT = g.getTimetable().getSlotsWithLesson();
+
+                        if (group == g)
+                        {
+                            freeSlots = this.getTheSameSlots(freeSlots,fs);
+                        } else {
+                            if (esT.Count > es.Count)
+                            {
+                                freeSlots = this.getTheSameSlots(freeSlots, esT);
+                            } else {
+                                freeSlots = this.getTheSameSlots(freeSlots, fsT);
+                            }
+                        }
+
+
+
+                        //List<TimeSlot> freeslotsTMP = new List<TimeSlot>();
+
+                        //if (counter > 0)
+                        //{
+                        //    List<TimeSlot> slots = this.getSlotsWithLesson();
+                        //    if (slots.Count > 0)
+                        //    {
+                        //        freeslotsTMP = getTheSameSlots(slots, group.getParent().getTimetable().getFreeSlotsToLesson(lesson));
+                        //    }
+                        //    else
+                        //    {
+                        //        freeslotsTMP = group.getParent().getTimetable().getFreeSlotsToLesson(lesson);
+                        //    }
+
+                        //    freeSlots = this.getTheSameSlots(freeSlots, freeslotsTMP);
+
+                        //}
+                        //else
+                        //{
+                        //    List<TimeSlot> slots = this.getSlotsWithLesson();
+                        //    if (slots.Count > 0)
+                        //    {
+                        //        freeSlots = getTheSameSlots(slots, group.getParent().getTimetable().getFreeSlotsToLesson(lesson));
+                        //    }
+                        //    else
+                        //    {
+                        //        freeSlots = group.getParent().getTimetable().getFreeSlotsToLesson(lesson);
+                        //    }
+                        //}
+                        //
+                        //counter++;
                     }
-                    
-                    return freeSlots;
+
                 }
+            } else {
+                freeSlots = getFreeSlots(lesson);
             }
+
+
+            return freeSlots;
+        }
+
+        public List<TimeSlot> getFreeSlots(Lesson lesson)
+        {
+            List<TimeSlot> freeSlots = new List<TimeSlot>();
 
             for (int h = 0; h < numberOfSlots - (lesson.getSize() - 1); ++h)
             {
@@ -204,12 +266,32 @@ namespace STG.Controllers.Engine
                     bool result = true;
 
                     for (int i = 0; i < lesson.getSize(); ++i)
-                    { 
+                    {
                         result = result && days[d].getSlot(h + i).isEmpty() && !days[d].getSlot(h + i).isLocked();
                     }
 
                     if (result)
                     {
+                        freeSlots.Add(new TimeSlot(d, h));
+                    }
+                }
+            }
+
+            return freeSlots;
+        }
+
+        public List<TimeSlot> getFreeSlotsWithSubGroupLessons(Lesson lesson)
+        {
+            List<TimeSlot> freeSlots = new List<TimeSlot>();
+
+            for (int h = 0; h < numberOfSlots; ++h)
+            {
+                for (int d = 0; d < numberOfDays; ++d)
+                {
+                    if((days[d].getSlot(h).isEmpty() 
+                        || ( getLessons(d,h)[0].getGroup().getParent()!=null 
+                        && getLessons(d, h)[0].getGroup().getSubGroupsIndex() == lesson.getGroup().getSubGroupsIndex()) ) 
+                        && !days[d].getSlot(h).isLocked()) {
                         freeSlots.Add(new TimeSlot(d, h));
                     }
                 }
@@ -358,6 +440,38 @@ namespace STG.Controllers.Engine
                 for (int d = 0; d < numberOfDays; ++d)
                 {
                     if (!days[d].getSlot(h).isEmpty() && !days[d].getSlot(h).isLocked() && days[d].getSlot(h).getLesson(0).getSize() == 1)
+                    {
+                        slots.Add(new TimeSlot(d, h));
+                    }
+                }
+            }
+
+            return slots;
+        }
+
+        public List<TimeSlot> getTheSameSlots(List<TimeSlot> freeSlots1, List<TimeSlot> freeSlots2)
+        {
+            List<TimeSlot> freeSlot = new List<TimeSlot>();
+
+            foreach (TimeSlot ts in freeSlots1)
+            {
+                if (freeSlots2.Contains(ts))
+                {
+                    freeSlot.Add(new TimeSlot(ts.day, ts.hour));
+                }
+            }
+
+            return freeSlot;
+        }
+
+        public List<TimeSlot> getSlotsWithLesson()
+        {
+            List<TimeSlot> slots = new List<TimeSlot>();
+            for (int d = 0; d < numberOfDays; ++d)
+            {
+                for (int h = 0; h < numberOfSlots; ++h)
+                {
+                    if (this.getLessons(d, h).Count > 0 && this.getLessons(d, h)[0] != null)
                     {
                         slots.Add(new TimeSlot(d, h));
                     }

@@ -1,0 +1,75 @@
+﻿@model STG.Models.Lessons
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lessons</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Schedule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Schedule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subjects.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subjects.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teachers.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teachers.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Groups.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Groups.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rooms.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rooms.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomTypes.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomTypes.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Schools.AspNetUsersId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Schools.AspNetUsersId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

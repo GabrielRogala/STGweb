@@ -1,0 +1,67 @@
+﻿@model STG.Models.STGConfig
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>STGConfig</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PopulationSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PopulationSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EpocheSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EpocheSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfLessonToPositioning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfLessonToPositioning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BottomBorderOfBestSlots)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BottomBorderOfBestSlots)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TopBorderOfBestSlots)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TopBorderOfBestSlots)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProbabilityOfMutation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProbabilityOfMutation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

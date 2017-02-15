@@ -44,6 +44,15 @@ namespace STG.Controllers.Engine
             }
         }
 
+        public Group(Group gr):this(gr.getName(),gr.getAmount(),gr.getSubGroupsIndex(),gr.getSubGroupId())
+        {
+
+        }
+
+        public void setName(string name) {
+            this.name = name;
+        }
+
         public List<Group> getSubGroup() {
             return subGroup;
         }
@@ -61,15 +70,20 @@ namespace STG.Controllers.Engine
             if (parent != null)
             {
                 foreach (Group g in parent.getSubGroup()) {
-                    if (lesson.getGroup().getSubGroupsIndex() == g.getSubGroupsIndex() && !g.Equals(lesson.getGroup())) {
-                        if (g.getTimetable().getSlotsWithLesson(lesson.getSize()).Count > 0) {
-                            foreach(TimeSlot ts in g.getTimetable().getSlotsWithLesson(lesson.getSize()))
+
+                    if (lesson.getGroup().getSubGroupsIndex() == g.getSubGroupsIndex() && 
+                        !g.Equals(lesson.getGroup())) {
+                        // podgrupy tejsamej kalegorii
+
+                        if (g.getTimetable().getSlotsWithLesson().Count > 0) {
+                            foreach(TimeSlot ts in g.getTimetable().getSlotsWithLesson() )
                             {
                                 if (lesson.getGroup().getTimetable().getLessons(ts.day,ts.hour).Count == 0) {
                                     return ts;
                                 }
                             }
                         }
+
                     }
                 }
             }
