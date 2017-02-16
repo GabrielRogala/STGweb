@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using STG.Models;
+using Microsoft.AspNet.Identity;
 
 namespace STG.Controllers
 {
+    [Authorize]
     public class LessonsController : Controller
     {
         private Entities db = new Entities();
@@ -17,8 +19,22 @@ namespace STG.Controllers
         // GET: Lessons
         public ActionResult Index()
         {
-            var lessons = db.Lessons.Include(l => l.Subjects).Include(l => l.Teachers).Include(l => l.Groups).Include(l => l.Rooms).Include(l => l.RoomTypes).Include(l => l.Schools);
-            return View(lessons.ToList());
+            List<Lessons> list = new List<Lessons>();
+            var user = User.Identity.GetUserId();
+            Schools school = (from b in db.Schools
+                              where b.AspNetUsersId.Equals(user)
+                              select b).FirstOrDefault();
+            if (school != null)
+            {
+                list = (from b in db.Lessons
+                        where b.SchoolsId.Equals(school.Id)
+                        select b).ToList();
+            }
+
+            return View(list);
+
+            //var lessons = db.Lessons.Include(l => l.Subjects).Include(l => l.Teachers).Include(l => l.Groups).Include(l => l.Rooms).Include(l => l.RoomTypes).Include(l => l.Schools);
+            //return View(lessons.ToList());
         }
 
         // GET: Lessons/Details/5
@@ -39,12 +55,19 @@ namespace STG.Controllers
         // GET: Lessons/Create
         public ActionResult Create()
         {
-            ViewBag.SubjectsId = new SelectList(db.Subjects, "Id", "Name");
-            ViewBag.TeachersId = new SelectList(db.Teachers, "Id", "Name");
-            ViewBag.GroupsId = new SelectList(db.Groups, "Id", "Name");
-            ViewBag.RoomsId = new SelectList(db.Rooms, "Id", "Name");
-            ViewBag.RoomTypesId = new SelectList(db.RoomTypes, "Id", "Name");
-            ViewBag.SchoolsId = new SelectList(db.Schools, "Id", "AspNetUsersId");
+
+            List<Schools> list = new List<Schools>();
+            var user = User.Identity.GetUserId();
+            list = (from b in db.Schools
+                    where b.AspNetUsersId.Equals(user)
+                    select b).ToList();
+
+            ViewBag.SubjectsId = new SelectList(db.Subjects.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name");
+            ViewBag.TeachersId = new SelectList(db.Teachers.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name");
+            ViewBag.GroupsId = new SelectList(db.Groups.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name");
+            ViewBag.RoomsId = new SelectList(db.Rooms.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name");
+            ViewBag.RoomTypesId = new SelectList(db.RoomTypes.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name");
+            ViewBag.SchoolsId = new SelectList(list, "Id", "AspNetUsersId");
             return View();
         }
 
@@ -62,12 +85,18 @@ namespace STG.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SubjectsId = new SelectList(db.Subjects, "Id", "Name", lessons.SubjectsId);
-            ViewBag.TeachersId = new SelectList(db.Teachers, "Id", "Name", lessons.TeachersId);
-            ViewBag.GroupsId = new SelectList(db.Groups, "Id", "Name", lessons.GroupsId);
-            ViewBag.RoomsId = new SelectList(db.Rooms, "Id", "Name", lessons.RoomsId);
-            ViewBag.RoomTypesId = new SelectList(db.RoomTypes, "Id", "Name", lessons.RoomTypesId);
-            ViewBag.SchoolsId = new SelectList(db.Schools, "Id", "AspNetUsersId", lessons.SchoolsId);
+            List<Schools> list = new List<Schools>();
+            var user = User.Identity.GetUserId();
+            list = (from b in db.Schools
+                    where b.AspNetUsersId.Equals(user)
+                    select b).ToList();
+
+            ViewBag.SubjectsId = new SelectList(db.Subjects.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name", lessons.SubjectsId);
+            ViewBag.TeachersId = new SelectList(db.Teachers.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name", lessons.TeachersId);
+            ViewBag.GroupsId = new SelectList(db.Groups.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name", lessons.GroupsId);
+            ViewBag.RoomsId = new SelectList(db.Rooms.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name", lessons.RoomsId);
+            ViewBag.RoomTypesId = new SelectList(db.RoomTypes.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name", lessons.RoomTypesId);
+            ViewBag.SchoolsId = new SelectList(list, "Id", "AspNetUsersId", lessons.SchoolsId);
             return View(lessons);
         }
 

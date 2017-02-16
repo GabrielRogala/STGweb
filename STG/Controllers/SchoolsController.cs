@@ -8,9 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using STG.Models;
 using STG.Controllers.Engine;
+using Microsoft.AspNet.Identity;
 
 namespace STG.Controllers
 {
+    [Authorize]
     public class SchoolsController : Controller
     {
         private Entities db = new Entities();
@@ -18,11 +20,19 @@ namespace STG.Controllers
         // GET: Schools
         public ActionResult Index()
         {
-            var schools = db.Schools.Include(s => s.AspNetUsers).Include(s => s.STGConfig);
 
-            GenerateObjectWithDataBase();
+            List<Schools> list = new List<Schools>();
+            var user = User.Identity.GetUserId();
+            list = (from b in db.Schools
+                    where b.AspNetUsersId.Equals(user)
+                    select b).ToList();
+            
 
-            return View(schools.ToList());
+            return View(list);
+
+            //var schools = db.Schools.Include(s => s.AspNetUsers).Include(s => s.STGConfig);
+
+            //return View(schools.ToList());
         }
 
         // GET: Schools/Details/5
@@ -40,10 +50,32 @@ namespace STG.Controllers
             return View(schools);
         }
 
+        // GET: Schools/Generate/5
+        public ActionResult Generate(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Schools schools = db.Schools.Find(id);
+            if (schools == null)
+            {
+                return HttpNotFound();
+            }
+
+            //GenerateObjectWithDataBase(schools);
+
+            return View(schools);
+        }
+
         // GET: Schools/Create
         public ActionResult Create()
         {
-            ViewBag.AspNetUsersId = new SelectList(db.AspNetUsers, "Id", "Email");
+            var user = User.Identity.GetUserId();
+            List<AspNetUsers> userList = new List<AspNetUsers>();
+            userList.Add(db.AspNetUsers.Find(user));
+
+            ViewBag.AspNetUsersId = new SelectList(userList, "Id", "Email");
             ViewBag.STGConfigId = new SelectList(db.STGConfig, "Id", "Id");
             return View();
         }
@@ -139,9 +171,8 @@ namespace STG.Controllers
 
 
         //-------------------------------------------
-        public void GenerateObjectWithDataBase()
+        public void GenerateObjectWithDataBase(Schools school)
         {
-            Schools school = db.Schools.Find(1);
             STGCfg config = getSTGCfg(school);
             List<Teacher> teachers = getTeachers(school);
 
@@ -156,7 +187,88 @@ namespace STG.Controllers
             List<Lesson> lessons = getLessons(school,subjects,roomTypes,groups,teachers);
             Population population = new Population(lessons,teachers,groups,rooms,school.NumberOfDays,school.NumberOfHours, config);
             population.start();
-            population.getBestSchoolTimeTable().genWeb("ouuuuut");
+            //population.getBestSchoolTimeTable().genWeb("ouuuuut");
+        }
+
+        private void setSchoolTimetableToDAtaBaseTimetable(Schools school, SchoolTimetable stt) {
+            foreach (Lesson l in stt.getLessons()) {
+
+                //--------------------------------
+                Groups gr = null;
+                List<Groups> groups = (from b in db.Groups
+                                      where b.SchoolsId.Equals(school.Id)
+                                      select b).ToList();
+                foreach (Groups g in groups) {
+                    if (g.Name.Equals(l.getGroup().getName())) {
+                        gr = g;
+                        break;
+                    }
+                }
+                //--------------------------------
+
+                //--------------------------------
+                Teachers te = null;
+                List<Teachers> teachers = (from b in db.Teachers
+                                       where b.SchoolsId.Equals(school.Id)
+                                       select b).ToList();
+                foreach (Teachers t in teachers)
+                {
+                    if (t.Name.Equals(l.getTeacher().getName()))
+                    {
+                        te = t;
+                        break;
+                    }
+                }
+                //--------------------------------
+
+                //--------------------------------
+                Rooms ro = null;
+                List<Rooms> rooms = (from b in db.Rooms
+                                           where b.SchoolsId.Equals(school.Id)
+                                           select b).ToList();
+                foreach (Rooms r in rooms)
+                {
+                    if (r.Name.Equals(l.getRoom().getName()))
+                    {
+                        ro = r;
+                        break;
+                    }
+                }
+                //--------------------------------
+
+                //--------------------------------
+                Lessons le = null;
+                List<Lessons> lessons = (from b in db.Lessons
+                                     where b.SchoolsId.Equals(school.Id)
+                                     select b).ToList();
+                foreach (Lessons ls in lessons)
+                {
+                    if (ls.Groups.Equals(gr) && 
+                        ls.Teachers.Equals(te) && 
+                        le.Subjects.Name.Equals(l.getSubject().getName())
+                        )
+                    {
+                        le = ls;
+                        break;
+                    }
+                }
+                //--------------------------------
+
+                for (int i = 0; i<l.getSize();i++) {
+                    Timetables timetable = new Timetables();
+                    timetable.Hour = l.getSlots()[i].hour;
+                    timetable.Day = l.getSlots()[i].day;
+                    timetable.LessonsId = le.Id;
+                    timetable.Part = i+1;
+                    timetable.SchoolsId = school.Id;
+                    timetable.RoomsId = ro.Id;
+                    timetable.Size = l.getSize();
+               
+                    db.Timetables.Add(timetable);
+                    db.SaveChanges();
+                }
+
+            }
         }
 
         private STGCfg getSTGCfg(Schools school)

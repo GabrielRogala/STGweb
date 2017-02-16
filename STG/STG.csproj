@@ -218,8 +218,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
+    <Compile Include="Controllers\RoomTypesController.cs" />
     <Compile Include="Controllers\SchoolsController.cs" />
     <Compile Include="Controllers\STGConfigsController.cs" />
+    <Compile Include="Controllers\SubGroupTypesController.cs" />
+    <Compile Include="Controllers\SubjectsController.cs" />
+    <Compile Include="Controllers\SubjectTypesController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
+    <Compile Include="Controllers\TimetablesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -395,6 +402,42 @@
     <Content Include="Views\Lessons\Details.cshtml" />
     <Content Include="Views\Lessons\Edit.cshtml" />
     <Content Include="Views\Lessons\Index.cshtml" />
+    <Content Include="Views\Schools\Generate.cshtml" />
+    <Content Include="Views\Subjects\Create.cshtml" />
+    <Content Include="Views\Subjects\Delete.cshtml" />
+    <Content Include="Views\Subjects\Details.cshtml" />
+    <Content Include="Views\Subjects\Edit.cshtml" />
+    <Content Include="Views\Subjects\Index.cshtml" />
+    <Content Include="Views\RoomTypes\Create.cshtml" />
+    <Content Include="Views\RoomTypes\Delete.cshtml" />
+    <Content Include="Views\RoomTypes\Details.cshtml" />
+    <Content Include="Views\RoomTypes\Edit.cshtml" />
+    <Content Include="Views\RoomTypes\Index.cshtml" />
+    <Content Include="Views\Timetables\Create.cshtml" />
+    <Content Include="Views\Timetables\Delete.cshtml" />
+    <Content Include="Views\Timetables\Details.cshtml" />
+    <Content Include="Views\Timetables\Edit.cshtml" />
+    <Content Include="Views\Timetables\Index.cshtml" />
+    <Content Include="Views\Teachers\Create.cshtml" />
+    <Content Include="Views\Teachers\Delete.cshtml" />
+    <Content Include="Views\Teachers\Details.cshtml" />
+    <Content Include="Views\Teachers\Edit.cshtml" />
+    <Content Include="Views\Teachers\Index.cshtml" />
+    <Content Include="Views\SubjectTypes\Create.cshtml" />
+    <Content Include="Views\SubjectTypes\Delete.cshtml" />
+    <Content Include="Views\SubjectTypes\Details.cshtml" />
+    <Content Include="Views\SubjectTypes\Edit.cshtml" />
+    <Content Include="Views\SubjectTypes\Index.cshtml" />
+    <Content Include="Views\SubGroupTypes\Create.cshtml" />
+    <Content Include="Views\SubGroupTypes\Delete.cshtml" />
+    <Content Include="Views\SubGroupTypes\Details.cshtml" />
+    <Content Include="Views\SubGroupTypes\Edit.cshtml" />
+    <Content Include="Views\SubGroupTypes\Index.cshtml" />
+    <Content Include="Views\Rooms\Create.cshtml" />
+    <Content Include="Views\Rooms\Delete.cshtml" />
+    <Content Include="Views\Rooms\Details.cshtml" />
+    <Content Include="Views\Rooms\Edit.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

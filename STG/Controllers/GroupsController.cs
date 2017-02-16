@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using STG.Models;
+using Microsoft.AspNet.Identity;
 
 namespace STG.Controllers
 {
+    [Authorize]
     public class GroupsController : Controller
     {
         private Entities db = new Entities();
@@ -17,8 +19,22 @@ namespace STG.Controllers
         // GET: Groups
         public ActionResult Index()
         {
-            var groups = db.Groups.Include(g => g.Schools).Include(g => g.Groups2).Include(g => g.SubGroupTypes1);
-            return View(groups.ToList());
+            List<Groups> list = new List<Groups>();
+            var user = User.Identity.GetUserId();
+            Schools school = (from b in db.Schools
+                              where b.AspNetUsersId.Equals(user)
+                              select b).FirstOrDefault();
+            if (school != null)
+            {
+                list = (from b in db.Groups
+                        where b.SchoolsId.Equals(school.Id)
+                        select b).ToList();
+            }
+
+            return View(list);
+
+            //var groups = db.Groups.Include(g => g.Schools).Include(g => g.Groups2).Include(g => g.SubGroupTypes1);
+            //return View(groups.ToList());
         }
 
         // GET: Groups/Details/5
@@ -39,9 +55,18 @@ namespace STG.Controllers
         // GET: Groups/Create
         public ActionResult Create()
         {
-            ViewBag.SchoolsId = new SelectList(db.Schools, "Id", "AspNetUsersId");
-            ViewBag.ParentGroup = new SelectList(db.Groups, "Id", "Name");
-            ViewBag.SubGroupTypesId = new SelectList(db.SubGroupTypes, "Id", "Name");
+            List<Schools> list = new List<Schools>();
+            var user = User.Identity.GetUserId();
+            list = (from b in db.Schools
+                    where b.AspNetUsersId.Equals(user)
+                    select b).ToList();
+
+            //   .Where(s => s.SchoolsId == list.First().Id).ToList()
+
+
+            ViewBag.SchoolsId = new SelectList(list, "Id", "AspNetUsersId");
+            ViewBag.ParentGroup = new SelectList(db.Groups.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name");
+            ViewBag.SubGroupTypesId = new SelectList(db.SubGroupTypes.Where(s => s.Groups.SchoolsId == list.First().Id).ToList(), "Id", "Name");
             return View();
         }
 
@@ -59,9 +84,18 @@ namespace STG.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SchoolsId = new SelectList(db.Schools, "Id", "AspNetUsersId", groups.SchoolsId);
-            ViewBag.ParentGroup = new SelectList(db.Groups, "Id", "Name", groups.ParentGroup);
-            ViewBag.SubGroupTypesId = new SelectList(db.SubGroupTypes, "Id", "Name", groups.SubGroupTypesId);
+            List<Schools> list = new List<Schools>();
+            var user = User.Identity.GetUserId();
+            list = (from b in db.Schools
+                    where b.AspNetUsersId.Equals(user)
+                    select b).ToList();
+
+            //   .Where(s => s.SchoolsId == list.First().Id).ToList()
+
+
+            ViewBag.SchoolsId = new SelectList(list, "Id", "AspNetUsersId", groups.SchoolsId);
+            ViewBag.ParentGroup = new SelectList(db.Groups.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name", groups.ParentGroup);
+            ViewBag.SubGroupTypesId = new SelectList(db.SubGroupTypes.Where(s => s.Groups.SchoolsId == list.First().Id).ToList(), "Id", "Name", groups.SubGroupTypesId);
             return View(groups);
         }
 

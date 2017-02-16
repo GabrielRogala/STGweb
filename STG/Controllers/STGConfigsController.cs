@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using STG.Models;
+using Microsoft.AspNet.Identity;
 
 namespace STG.Controllers
 {
+    [Authorize]
     public class STGConfigsController : Controller
     {
         private Entities db = new Entities();
@@ -17,7 +19,17 @@ namespace STG.Controllers
         // GET: STGConfigs
         public ActionResult Index()
         {
-            return View(db.STGConfig.ToList());
+
+            var user = User.Identity.GetUserId();
+            Schools school = (from b in db.Schools
+                              where b.AspNetUsersId.Equals(user)
+                              select b).FirstOrDefault();
+
+            List<STGConfig> list = new List<STGConfig>();
+            list.Add(school.STGConfig);
+
+            return View(list);
+            //return View(db.STGConfig.ToList());
         }
 
         // GET: STGConfigs/Details/5

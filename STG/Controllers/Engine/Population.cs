@@ -47,13 +47,13 @@ namespace STG.Controllers.Engine
                 schoolTimeTables.Add(new SchoolTimetable(teachers, groups, rooms, lessons, numberOfDays,numberOfSlots,config));
                 schoolTimeTables[i].generateSchoolTimetable();
                 schoolTimeTables[i].fitness();
-                while (schoolTimeTables[i].getErrorValue() > 0)
-                {
-                    schoolTimeTables.RemoveAt(i);
-                    schoolTimeTables.Add(new SchoolTimetable(teachers, groups, rooms, lessons, numberOfDays, numberOfSlots, config));
-                    schoolTimeTables[i].generateSchoolTimetable();
-                    schoolTimeTables[i].fitness();
-                }
+               // while (schoolTimeTables[i].getErrorValue() > 0)
+               // {
+               //     schoolTimeTables.RemoveAt(i);
+               //     schoolTimeTables.Add(new SchoolTimetable(teachers, groups, rooms, lessons, numberOfDays, numberOfSlots, config));
+               //     schoolTimeTables[i].generateSchoolTimetable();
+               //     schoolTimeTables[i].fitness();
+               // }
                 Console.WriteLine(i + ": " + schoolTimeTables[i].getFitnessValue() + " EV: "  + schoolTimeTables[i].getErrorValue());
             }
         }
