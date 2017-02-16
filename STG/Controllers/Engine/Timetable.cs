@@ -303,12 +303,16 @@ namespace STG.Controllers.Engine
         public int fitness()
         {
             int value = 0;
-            value += fitnessFreeSlots();
+            if (teacher != null)
+            {
+                value += fitnessFreeSlots();
+            }
 
             if (group != null)
             {
                 value += fitnessType();
                 value += fitnessSubject();
+                value += fitnessFreeSlots();
             }
 
             return value;
@@ -343,7 +347,8 @@ namespace STG.Controllers.Engine
             if (this.group != null)
             {
                 foreach (Day d in days)
-                {
+                {                
+
                     maps.Add(new Dictionary<SubjectType, int>());
                     
                     for (int i = 0; i < d.getSlots().Count;)
@@ -384,7 +389,8 @@ namespace STG.Controllers.Engine
                     {
                         if (m.Value > 0)
                         {
-                            value += (int)Math.Pow(1, Math.Abs(m.Value - (mapsAll[m.Key]/days.Count) ));
+                            
+                            value += (int)Math.Pow(2, Math.Abs(m.Value - (mapsAll[m.Key]/days.Count) )) - 1;
                         }
                     }
                 }
@@ -421,7 +427,7 @@ namespace STG.Controllers.Engine
 
                 foreach (KeyValuePair<Subject,int> map in maps) {
                     if (map.Value > 0) {
-                        value += (int)Math.Pow(5,map.Value);
+                        value += (int)Math.Pow(10,map.Value);
                     }
                 }
 

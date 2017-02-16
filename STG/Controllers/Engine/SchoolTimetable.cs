@@ -226,7 +226,7 @@ namespace STG.Controllers.Engine
                     //Console.WriteLine(l.ToString());
                 }
 
-                findAndSetBestPositionToLessons(choosenLesson, tmpLessons);
+                findAndSetLessonsInBestPosition(choosenLesson, tmpLessons);
 
                 foreach (Lesson l in choosenLesson) {
                     tmpLessons.Remove(l);
@@ -236,7 +236,7 @@ namespace STG.Controllers.Engine
 
         }
 
-        private void findAndSetBestPositionToLessons(List<Lesson> choosenLesson, List<Lesson> allLesson)
+        private void findAndSetLessonsInBestPosition(List<Lesson> choosenLesson, List<Lesson> allLesson)
         {
             List<FreeSlotsToLesson> freeSlotsToLesson = new List<FreeSlotsToLesson>();
             Timetable currentTimeTable = new Timetable();
@@ -269,6 +269,7 @@ namespace STG.Controllers.Engine
                 freeSlotsToLesson.Add(new FreeSlotsToLesson(theSameSlots, l, freeSlotsInRoomToLesson));
 
                 // przygotowanie planu lekcji z wszystkimi wolnymi slotami dla wybranych lekcji
+                //foreach(TimeSlot ts in freeSlotsToLesson.Last().getSlots())
                 foreach (TimeSlot ts in theSameSlots)
                 {
                     currentTimeTable.addLesson(l, ts.day, ts.hour);
@@ -294,7 +295,7 @@ namespace STG.Controllers.Engine
                     foreach (TimeSlot ts in fstl.slots)
                     {
                         int currentTiteTableSlotCount = currentTimeTable.getLessons(ts.day,ts.hour).Count;
-                        if (max < currentTiteTableSlotCount)
+                        if (max > currentTiteTableSlotCount)
                         {
                             max = currentTiteTableSlotCount;
                         }
@@ -311,7 +312,7 @@ namespace STG.Controllers.Engine
 
                     ////////////////////////
                     Room bestRoom = null;
-                    TimeSlot bestSlot = getBestTimeSlot(fstl.slots, fstl.roomSlots, ref bestRoom);
+                    TimeSlot bestSlot = getBestTimeSlot(fstl.slots, fstl.roomSlots, ref bestRoom, indexOfSlotsWithMaxCount);
                     // znajdywanie najlepszego slotu
                     for (int i = 0; i < fstl.lesson.getSize(); ++i)
                     {
@@ -326,7 +327,7 @@ namespace STG.Controllers.Engine
                         else
                         {
                             allLesson.Add(fstl.lesson);
-                            errorValue += 1000;
+                            //errorValue += 1000;
                             Console.WriteLine("ERROR!!!!!!!!!!!!!!!! "+ fstl.lesson.ToString()); ////////////////////////wystąpił???!
                         }
                     }
@@ -359,18 +360,8 @@ namespace STG.Controllers.Engine
 
         public bool removeLessonsAndFindNewPosition3(Lesson lesson, ref List<Lesson> allLesson, int level = 1)
         {
-            //Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition");
-            //Console.WriteLine("start " + lesson.ToString() + " level " + level);
-
-            //Console.WriteLine(lesson.getGroup().getTimetable().ToString());
-            //Console.WriteLine(lesson.getTeacher().getTimetable().ToString());
-            foreach (Timetable r in roomsTimetables) {
-                if (r.getRoom().getRoomType().Equals(lesson.getRoomType())) {
-                    //Console.WriteLine(r.ToString());
-                }
-            }
-
-            //Console.WriteLine(lesson.getGroup().getTimetable().ToString());
+            Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition");
+            Console.WriteLine("start " + lesson.ToString() + " level " + level);
 
             bool result = false;
             Timetable groupTT = lesson.getGroup().getTimetable();
@@ -406,7 +397,7 @@ namespace STG.Controllers.Engine
                     }
                 }
                 if (!result) {
-                    //Console.WriteLine("error : freeSlotsToLesson.slots.Count = 0");
+                    Console.WriteLine("error : freeSlotsToLesson.slots.Count = 0");
                     return result;
                 }
                 freeSlotsToLesson.slots.Add(slotToChange);
@@ -475,9 +466,11 @@ namespace STG.Controllers.Engine
 
 
 
-
-            if (!result) {
-                Lesson lessonToChange = null;
+            int i = 0; ;
+            while (!result && slots.Count > i) {
+                
+                TimeSlot slot = slots[i];
+                Lesson lessonToChange = groupTT.getLessons(slot.day, slot.hour)[0];
                 if (level < 5)
                 {
                     result = removeLessonsAndFindNewPosition3(lessonToChange, ref allLesson, 3);
@@ -486,7 +479,7 @@ namespace STG.Controllers.Engine
 
 
 
-            //Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition");
+            Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition");
             return result;
         }
 
@@ -505,7 +498,7 @@ namespace STG.Controllers.Engine
             return freeSlot;
         }
 
-        private TimeSlot getBestTimeSlot(List<TimeSlot> slots, List<FreeSlotsInRoomToLesson> roomSlots, ref Room bestRoom)
+        private TimeSlot getBestTimeSlot(List<TimeSlot> slots, List<FreeSlotsInRoomToLesson> roomSlots, ref Room bestRoom, List<int> indexOfSlotsWithMaxCount = null)
         {
             List<TimeSlot> bestTimeSlots = new List<TimeSlot>();//lista najlepszych slotów
             List<TimeSlot> worstTimeSlots = new List<TimeSlot>();//lista najgorszych slotów
