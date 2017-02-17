@@ -62,9 +62,14 @@ namespace STG.Controllers
                     where b.AspNetUsersId.Equals(user)
                     select b).ToList();
 
-            //   .Where(s => s.SchoolsId == list.First().Id).ToList()
+            var roomTypes = (from r in db.RoomTypes
+                             where r.SchoolsId.Equals(list.First().Id)
+                             select r).ToList();
 
-            ViewBag.RoomTypesId = new SelectList(db.RoomTypes.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name");
+            //   .Where(s => s.SchoolsId == list.First().Id).ToList()
+            ViewBag.RoomTypesId = new SelectList(roomTypes, "Id", "Name");
+
+            //ViewBag.RoomTypesId = new SelectList(db.RoomTypes.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name");
             ViewBag.SchoolsId = new SelectList(list, "Id", "AspNetUsersId");
             return View();
         }

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<STG.Controllers.SchoolBoard>
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+@foreach (var item in Model)
+{
+    <div>
+        <h3>@item.name</h3>
+        <table class="table">
+            <tr class="info">
+                <td></td>
+                @for (int i = 1; i< item.days[0].hours.Count + 1; i++) {
+                    <td>day @i</td>
+                }
+            </tr>
+            @foreach (var day in item.days)
+            {
+            <tr>
+                <td class="info">
+                    @(item.days.IndexOf(day) + 1)
+                </td>
+
+                @foreach (var hour in day.hours)
+                {
+
+                    <td>
+                        @if (hour.lessons.Count > 0)
+                        {
+                            <span>
+                                @foreach (var l in hour.lessons)
+                            {
+                                    <ul>
+                                        <li>@l.lesson.Groups.Name</li>
+                                        <li>@l.lesson.Teachers.Name</li>
+                                        <li>@l.room.Name</li>
+                                        <li>@l.lesson.Subjects.Name</li>
+                                    </ul>
+                                    if (hour.lessons.IndexOf(l) > 0)
+                                    {
+                                        <hr>
+                                    }
+
+                                }
+                            </span>
+                        }
+                    </td>
+                }
+            </tr>
+            }
+        </table>
+    </div>
+
+}
+

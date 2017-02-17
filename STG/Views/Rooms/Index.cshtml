@@ -19,13 +19,7 @@
             @Html.DisplayNameFor(model => model.Amount)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BlockedHours)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RoomTypes.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Schools.AspNetUsersId)
+            Room type
         </th>
         <th></th>
     </tr>
@@ -39,13 +33,7 @@
             @Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BlockedHours)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.RoomTypes.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Schools.AspNetUsersId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

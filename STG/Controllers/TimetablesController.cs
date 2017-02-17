@@ -38,6 +38,56 @@ namespace STG.Controllers
             //return View(timetables.ToList());
         }
 
+        // GET: Timetables/School
+        public ActionResult School()
+        {
+
+            List<Timetables> list = new List<Timetables>();
+            var user = User.Identity.GetUserId();
+            Schools school = (from b in db.Schools
+                              where b.AspNetUsersId.Equals(user)
+                              select b).FirstOrDefault();
+            if (school != null)
+            {
+                list = (from b in db.Timetables
+                        where b.SchoolsId.Equals(school.Id)
+                        select b).ToList();
+            }
+
+            List<SchoolBoard> stt = new List<SchoolBoard>();
+
+            foreach (Groups g in school.Groups) {
+                stt.Add(new SchoolBoard(school.NumberOfDays, school.NumberOfHours, g.Name, "g"));
+                foreach (Timetables tt in list.Where(t => t.Lessons.Groups == g).ToList()) {
+                    stt.Last().addLesson(tt);
+                }
+            }
+
+            foreach (Teachers g in school.Teachers)
+            {
+                stt.Add(new SchoolBoard(school.NumberOfDays, school.NumberOfHours, g.Name, "t"));
+                foreach (Timetables tt in list.Where(t => t.Lessons.Teachers == g).ToList())
+                {
+                    stt.Last().addLesson(tt);
+                }
+            }
+
+            foreach (Rooms g in school.Rooms)
+            {
+                stt.Add(new SchoolBoard(school.NumberOfDays, school.NumberOfHours, g.Name, "r"));
+                foreach (Timetables tt in list.Where(t => t.Rooms == g).ToList())
+                {
+                    stt.Last().addLesson(tt);
+                }
+            }
+
+
+            return View(stt);
+
+            //var timetables = db.Timetables.Include(t => t.Schools).Include(t => t.Lessons).Include(t => t.Rooms);
+            //return View(timetables.ToList());
+        }
+
         // GET: Timetables/Details/5
         public ActionResult Details(int? id)
         {
@@ -170,6 +220,55 @@ namespace STG.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+    }
+
+
+    public class SchoolBoard
+    {
+        public String type;
+        public String name;
+        public List<BoardDay> days;
+
+        public SchoolBoard(int day, int hour, string name, string type) {
+            this.type = type;
+            this.name = name;
+            days = new List<BoardDay>();
+            for (int i = 0; i < hour; i++)
+            {
+                days.Add(new BoardDay(day));
+            }
+        }
+
+        public void addLesson(Timetables tt) {
+            days[tt.Hour].hours[tt.Day].lessons.Add(new LessonsAndRoom(tt.Lessons,tt.Rooms));
+        }
+    }
+
+    public class BoardDay
+    {
+        public List<BoardHour> hours;
+        public BoardDay(int size) {
+            hours = new List<BoardHour>();
+            for (int i = 0; i < size; i++) {
+                hours.Add(new BoardHour());
+            }
+        }
+    }
+
+    public class BoardHour {
+        public List<LessonsAndRoom> lessons;
+        public BoardHour() {
+            lessons = new List<LessonsAndRoom>();
+        }
+    }
+
+    public class LessonsAndRoom{
+        public Lessons lesson;
+        public Rooms room;
+        public LessonsAndRoom(Lessons lesson, Rooms room) {
+            this.lesson = lesson;
+            this.room = room;
         }
     }
 }

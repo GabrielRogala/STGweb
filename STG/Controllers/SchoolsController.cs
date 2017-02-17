@@ -62,8 +62,22 @@ namespace STG.Controllers
             {
                 return HttpNotFound();
             }
-
-            //GenerateObjectWithDataBase(schools);
+            //---------------
+            List<Timetables> list = new List<Timetables>();
+            var user = User.Identity.GetUserId();
+            Schools school = (from b in db.Schools
+                              where b.AspNetUsersId.Equals(user)
+                              select b).FirstOrDefault();
+            if (school != null)
+            {
+                list = (from b in db.Timetables
+                        where b.SchoolsId.Equals(school.Id)
+                        select b).ToList();
+            }
+            db.Timetables.RemoveRange(list);
+            db.SaveChanges();
+            //-----------------------
+            GenerateObjectWithDataBase(schools);
 
             return View(schools);
         }
@@ -188,6 +202,7 @@ namespace STG.Controllers
             Population population = new Population(lessons,teachers,groups,rooms,school.NumberOfDays,school.NumberOfHours, config);
             population.start();
             //population.getBestSchoolTimeTable().genWeb("ouuuuut");
+            setSchoolTimetableToDAtaBaseTimetable(school,population.getBestSchoolTimeTable());
         }
 
         private void setSchoolTimetableToDAtaBaseTimetable(Schools school, SchoolTimetable stt) {
@@ -245,7 +260,7 @@ namespace STG.Controllers
                 {
                     if (ls.Groups.Equals(gr) && 
                         ls.Teachers.Equals(te) && 
-                        le.Subjects.Name.Equals(l.getSubject().getName())
+                        ls.Subjects.Name.Equals(l.getSubject().getName())
                         )
                     {
                         le = ls;
