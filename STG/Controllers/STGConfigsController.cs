@@ -20,16 +20,16 @@ namespace STG.Controllers
         public ActionResult Index()
         {
 
-            var user = User.Identity.GetUserId();
-            Schools school = (from b in db.Schools
-                              where b.AspNetUsersId.Equals(user)
-                              select b).FirstOrDefault();
+            //var user = User.Identity.GetUserId();
+            //Schools school = (from b in db.Schools
+            //                  where b.AspNetUsersId.Equals(user)
+            //                  select b).FirstOrDefault();
 
-            List<STGConfig> list = new List<STGConfig>();
-            list.Add(school.STGConfig);
+            //List<STGConfig> list = new List<STGConfig>();
+            //list.Add(school.STGConfig);
 
-            return View(list);
-            //return View(db.STGConfig.ToList());
+            //return View(list);
+            return View(db.STGConfig.ToList());
         }
 
         // GET: STGConfigs/Details/5

@@ -50,19 +50,9 @@ namespace STG.Controllers
             return View(schools);
         }
 
-        // GET: Schools/Generate/5
-        public ActionResult Generate(int? id)
+        // GET: Schools/Generate
+        public ActionResult Generate()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Schools schools = db.Schools.Find(id);
-            if (schools == null)
-            {
-                return HttpNotFound();
-            }
-            //---------------
             List<Timetables> list = new List<Timetables>();
             var user = User.Identity.GetUserId();
             Schools school = (from b in db.Schools
@@ -77,9 +67,9 @@ namespace STG.Controllers
             db.Timetables.RemoveRange(list);
             db.SaveChanges();
             //-----------------------
-            GenerateObjectWithDataBase(schools);
+            GenerateObjectWithDataBase(school);
 
-            return View(schools);
+            return View(school);
         }
 
         // GET: Schools/Create

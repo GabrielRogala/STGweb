@@ -62,10 +62,13 @@ namespace STG.Controllers
                     select b).ToList();
 
             //   .Where(s => s.SchoolsId == list.First().Id).ToList()
-
+            var gr = db.Groups.Where(s => s.SchoolsId == list.First().Id).ToList();
+            gr.Add(null);
+            var sgr = db.SubGroupTypes.Where(s => s.Groups.SchoolsId == list.First().Id).ToList();
+            sgr.Add(null);
 
             ViewBag.SchoolsId = new SelectList(list, "Id", "AspNetUsersId");
-            ViewBag.ParentGroup = new SelectList(db.Groups.Where(s => s.SchoolsId == list.First().Id).ToList(), "Id", "Name");
+            ViewBag.ParentGroup = new SelectList(gr, "Id", "Name");
             ViewBag.SubGroupTypesId = new SelectList(db.SubGroupTypes.Where(s => s.Groups.SchoolsId == list.First().Id).ToList(), "Id", "Name");
             return View();
         }
