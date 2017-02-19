@@ -67,7 +67,10 @@ namespace STG.Controllers
             db.Timetables.RemoveRange(list);
             db.SaveChanges();
             //-----------------------
+            long milliseconds = DateTime.Now.Ticks;
             GenerateObjectWithDataBase(school);
+            long milliseconds2 = DateTime.Now.Ticks;
+            long milliseconds3 = milliseconds2 -  milliseconds;
 
             return View(school);
         }
@@ -480,6 +483,17 @@ namespace STG.Controllers
                     {
                         group = g;
                         break;
+                    }
+                    else if (g.getSubGroup().Count > 0)
+                    {
+                        foreach (Group sg in g.getSubGroup())
+                        {
+                            if (sg.getName().Equals(l.Groups.Name))
+                            {
+                                group = sg;
+                                break;
+                            }
+                        }
                     }
                 }
 

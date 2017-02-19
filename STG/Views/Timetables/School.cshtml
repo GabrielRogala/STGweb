@@ -36,20 +36,21 @@
 
                                 <td>
                                     @if (hour.lessons.Count > 0)
-                        {
+                                    {
                                         <span>
                                             @foreach (var l in hour.lessons)
-                            {
+                                            {
+                                                if (hour.lessons.IndexOf(l) > 0)
+                                                {
+                                                   <hr>
+                                                }
                                                 <ul>
                                                     <li>@l.lesson.Groups.Name</li>
                                                     <li>@l.lesson.Teachers.Name</li>
                                                     <li>@l.room.Name</li>
                                                     <li>@l.lesson.Subjects.Name</li>
                                                 </ul>
-                                                if (hour.lessons.IndexOf(l) > 0)
-                                                {
-                                                    <hr>
-                                                }
+                                                
 
                                             }
                                         </span>

@@ -57,9 +57,17 @@ namespace STG.Controllers
             List<SchoolBoard> stt = new List<SchoolBoard>();
 
             foreach (Groups g in school.Groups) {
-                stt.Add(new SchoolBoard(school.NumberOfDays, school.NumberOfHours, g.Name, "g"));
-                foreach (Timetables tt in list.Where(t => t.Lessons.Groups == g).ToList()) {
-                    stt.Last().addLesson(tt);
+                if (g.ParentGroup == null)
+                {
+                    stt.Add(new SchoolBoard(school.NumberOfDays, school.NumberOfHours, g.Name, "g"));
+                    foreach (Timetables tt in list.Where(t => t.Lessons.Groups == g).ToList())
+                    {
+                        stt.Last().addLesson(tt);
+                    }
+                    foreach (Timetables tt in list.Where(t => t.Lessons.Groups.ParentGroup == g.Id).ToList())
+                    {
+                        stt.Last().addLesson(tt);
+                    }
                 }
             }
 

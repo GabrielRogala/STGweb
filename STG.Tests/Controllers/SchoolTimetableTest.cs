@@ -226,7 +226,7 @@ namespace STG.Tests.Controllers
 
             Console.WriteLine(stt.isCorrect() + " " + stt.fitness());
 
-            //stt.genWeb("subGroupTest");
+            stt.genWeb("subGroupTest");
 
         }
 
