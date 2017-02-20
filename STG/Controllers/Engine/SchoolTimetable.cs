@@ -35,6 +35,16 @@ namespace STG.Controllers.Engine
             errorValue = 0;
         }
 
+        public void Free() {
+            teachers.Clear();
+            groups.Clear();
+            rooms.Clear();
+            lessons.Clear();
+            teachersTimetables.Clear();
+            groupsTimetables.Clear();
+            roomsTimetables.Clear();
+        }
+
         public SchoolTimetable(List<Teacher> teachers, List<Group> groups, List<Room> rooms, List<Lesson> lessons) : this()
         {
 
@@ -56,14 +66,19 @@ namespace STG.Controllers.Engine
                 this.groups.Add(gr);
             }
 
-            foreach (Teacher t in teachers) {
+            foreach (Teacher t in teachers)
+            {
                 this.teachers.Add(new Teacher(t.getName()));
             }
 
             foreach (Room r in rooms)
             {
-                this.rooms.Add(new Room(r.getName(),r.getAmount(),r.getRoomType()));
+                this.rooms.Add(new Room(r.getName(), r.getAmount(), r.getRoomType()));
             }
+
+            //this.groups = groups;
+            //this.teachers = teachers;
+            //this.rooms = rooms;
 
             foreach (Lesson l in lessons) {
                 Teacher te = null;
@@ -328,7 +343,7 @@ namespace STG.Controllers.Engine
                         {
                             allLesson.Add(fstl.lesson);
                             //errorValue += 1000;
-                            Console.WriteLine("ERROR!!!!!!!!!!!!!!!! "+ fstl.lesson.ToString()); ////////////////////////wystąpił???!
+                            //Console.WriteLine("ERROR!!!!!!!!!!!!!!!! "+ fstl.lesson.ToString()); ////////////////////////wystąpił???!
                         }
                     }
 
@@ -347,11 +362,11 @@ namespace STG.Controllers.Engine
 
                 } else {
 
-                    Console.WriteLine("REMOVE " + fstl.lesson);
+                    //Console.WriteLine("REMOVE " + fstl.lesson);
                     if (!removeLessonsAndFindNewPosition3(fstl.lesson, ref allLesson))
                     {
                         errorValue += 1000;
-                        Console.WriteLine(" nie znaleziono ");
+                        //Console.WriteLine(" nie znaleziono ");
                     }
                 }
             }
@@ -360,8 +375,8 @@ namespace STG.Controllers.Engine
 
         public bool removeLessonsAndFindNewPosition3(Lesson lesson, ref List<Lesson> allLesson, int level = 1)
         {
-            Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition");
-            Console.WriteLine("start " + lesson.ToString() + " level " + level);
+            //Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition");
+            //Console.WriteLine("start " + lesson.ToString() + " level " + level);
 
             bool result = false;
             Timetable groupTT = lesson.getGroup().getTimetable();
@@ -387,17 +402,19 @@ namespace STG.Controllers.Engine
                 TimeSlot slotToChange = null;
                 result = false;
                 foreach (TimeSlot rts in freeSlotsToLesson.getSlotsFromRoomLists()) {
-                    Lesson lessonToChange = teacherTT.getLessons(rts.day, rts.hour)[0];
-                    if (level < 5) {
-                        result = removeLessonsAndFindNewPosition3(lessonToChange, ref allLesson, 4);
-                    }
-                    if (result) {
-                        slotToChange = rts;
-                        break;
+                    if(teacherTT.getLessons(rts.day, rts.hour).Count == 1) { 
+                        Lesson lessonToChange = teacherTT.getLessons(rts.day, rts.hour)[0];
+                        if (level < 5) {
+                            result = removeLessonsAndFindNewPosition3(lessonToChange, ref allLesson, 4);
+                        }
+                        if (result) {
+                            slotToChange = rts;
+                            break;
+                        }
                     }
                 }
                 if (!result) {
-                    Console.WriteLine("error : freeSlotsToLesson.slots.Count = 0");
+                    //Console.WriteLine("error : freeSlotsToLesson.slots.Count = 0");
                     return result;
                 }
                 freeSlotsToLesson.slots.Add(slotToChange);
@@ -479,7 +496,7 @@ namespace STG.Controllers.Engine
 
 
 
-            Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition");
+            //Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition");
             return result;
         }
 
@@ -727,7 +744,7 @@ namespace STG.Controllers.Engine
                     if (lessonsInGroupTimetable.Contains(l)) {
                         lessonsInGroupTimetable.Remove(l);
                     } else {
-                        Console.WriteLine(l.ToString() + ": does not exist in timetable");
+                        //Console.WriteLine(l.ToString() + ": does not exist in timetable");
                         return false;
                     }
                 }

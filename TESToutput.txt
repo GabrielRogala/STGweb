@@ -1,0 +1,1509 @@
+Test Name:	TestGenerating
+Test Outcome:	Passed
+Result StandardOutput:	
+School timetable size : 9/5
+-------CONFIG------
+Population size = 1
+Process time = 1
+Probability of mutation = 10
+Number of lesson to positioning = 5
+-------OBJECTS-----
+Teachers count = 16
+Groups count = 9
+Rooms count = 16
+Lessons count = 252
+==============================================================
+Time : 0
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+0: 4859 EV: 0 True
+Best value = 4859
+===========================================
+TIME : 40953530 ms
+########################################################################################################
+
+
+
+##############################################################################################
+Test Name:	TestGenerating
+Test Outcome:	Passed
+Result StandardOutput:	
+School timetable size : 9/5
+-------CONFIG------
+Population size = 100
+Process time = 1
+Probability of mutation = 5
+Number of lesson to positioning = 5
+-------OBJECTS-----
+Teachers count = 16
+Groups count = 9
+Rooms count = 16
+Lessons count = 252
+==============================================================
+Time : 0
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+0: 3878 EV: 0 True
+REMOVE 1 A(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 A(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+1: 3993 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+2: 4439 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+3: 4052 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+4: 3970 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+5: 6303 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+6: 4205 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+7: 4638 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+8: 5825 EV: 0 True
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+9: 4316 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+10: 5426 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+11: 4710 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+12: 4706 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+13: 4673 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+14: 4037 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+15: 4719 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+16: 5764 EV: 0 True
+REMOVE 1 A(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 A(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+17: 4413 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+18: 4617 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+19: 4857 EV: 0 True
+REMOVE 1 A(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 A(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+20: 4844 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+21: 4492 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+22: 4599 EV: 0 True
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+23: 4752 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+24: 4587 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+25: 4053 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+26: 4306 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+27: 6217 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+28: 5266 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+29: 5727 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+30: 4496 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+31: 4166 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+32: 4271 EV: 0 True
+REMOVE 1 A(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 A(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+33: 6208 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+34: 5142 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+35: 6806 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+36: 4202 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+37: 4472 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+38: 5572 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+39: 4893 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+40: 4330 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+41: 3845 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+42: 6260 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+43: 4282 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+44: 4731 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+45: 5146 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+46: 4066 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+47: 3366 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+48: 4491 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+49: 4064 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+50: 5190 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+51: 4405 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+52: 4440 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+53: 4180 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+54: 4547 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+55: 4231 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+56: 4284 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+57: 4084 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+58: 4166 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+59: 4751 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+60: 5566 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+61: 4667 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+62: 4489 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+63: 5061 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+64: 5417 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+65: 4154 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+66: 4664 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+67: 5374 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+68: 4446 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+69: 5179 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+70: 4562 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+71: 4425 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+72: 4144 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+73: 4754 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+74: 4626 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+75: 5280 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+76: 5246 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+77: 3837 EV: 0 True
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+78: 4203 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+79: 4581 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+80: 4369 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+81: 4382 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+82: 4004 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+83: 4348 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+84: 4760 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+85: 5375 EV: 0 True
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+86: 4037 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+87: 4472 EV: 0 True
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+88: 4396 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+89: 4434 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+90: 4122 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+91: 4416 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+92: 4376 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+93: 5259 EV: 0 True
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+94: 5159 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+95: 4551 EV: 0 True
+REMOVE 1 A(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 A(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+96: 4879 EV: 0 True
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+97: 5447 EV: 0 True
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+98: 4871 EV: 0 True
+REMOVE 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 C(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 B(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 3 A(30)/Zbigniew Nowakowski/Chemia(SCI)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+REMOVE 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>removeLessonsAndFindNewPosition
+start 1 C(30)/Zbigniew Nowakowski/Historia(HUM)(2/1):all level 1
+<<<<<<<<<<<<<<<<<<<<<<<<<<<removeLessonsAndFindNewPosition
+99: 4641 EV: 0 True
+------------------------------
+0 : 3366 EV: 0 True
+1 : 3837 EV: 0 True
+2 : 3845 EV: 0 True
+3 : 3878 EV: 0 True
+4 : 3970 EV: 0 True
+5 : 3993 EV: 0 True
+6 : 4004 EV: 0 True
+7 : 4037 EV: 0 True
+8 : 4037 EV: 0 True
+9 : 4052 EV: 0 True
+10 : 4053 EV: 0 True
+11 : 4064 EV: 0 True
+12 : 4066 EV: 0 True
+13 : 4084 EV: 0 True
+14 : 4122 EV: 0 True
+15 : 4144 EV: 0 True
+16 : 4154 EV: 0 True
+17 : 4166 EV: 0 True
+18 : 4166 EV: 0 True
+19 : 4180 EV: 0 True
+20 : 4202 EV: 0 True
+21 : 4203 EV: 0 True
+22 : 4205 EV: 0 True
+23 : 4231 EV: 0 True
+24 : 4271 EV: 0 True
+25 : 4282 EV: 0 True
+26 : 4284 EV: 0 True
+27 : 4306 EV: 0 True
+28 : 4316 EV: 0 True
+29 : 4330 EV: 0 True
+30 : 4348 EV: 0 True
+31 : 4369 EV: 0 True
+32 : 4376 EV: 0 True
+33 : 4382 EV: 0 True
+34 : 4396 EV: 0 True
+35 : 4405 EV: 0 True
+36 : 4413 EV: 0 True
+37 : 4416 EV: 0 True
+38 : 4425 EV: 0 True
+39 : 4434 EV: 0 True
+40 : 4439 EV: 0 True
+41 : 4440 EV: 0 True
+42 : 4446 EV: 0 True
+43 : 4472 EV: 0 True
+44 : 4472 EV: 0 True
+45 : 4489 EV: 0 True
+46 : 4491 EV: 0 True
+47 : 4492 EV: 0 True
+48 : 4496 EV: 0 True
+49 : 4547 EV: 0 True
+50 : 4551 EV: 0 True
+51 : 4562 EV: 0 True
+52 : 4581 EV: 0 True
+53 : 4587 EV: 0 True
+54 : 4599 EV: 0 True
+55 : 4617 EV: 0 True
+56 : 4626 EV: 0 True
+57 : 4638 EV: 0 True
+58 : 4641 EV: 0 True
+59 : 4664 EV: 0 True
+60 : 4667 EV: 0 True
+61 : 4673 EV: 0 True
+62 : 4706 EV: 0 True
+63 : 4710 EV: 0 True
+64 : 4719 EV: 0 True
+65 : 4731 EV: 0 True
+66 : 4751 EV: 0 True
+67 : 4752 EV: 0 True
+68 : 4754 EV: 0 True
+69 : 4760 EV: 0 True
+70 : 4844 EV: 0 True
+71 : 4857 EV: 0 True
+72 : 4871 EV: 0 True
+73 : 4879 EV: 0 True
+74 : 4893 EV: 0 True
+75 : 5061 EV: 0 True
+76 : 5142 EV: 0 True
+77 : 5146 EV: 0 True
+78 : 5159 EV: 0 True
+79 : 5179 EV: 0 True
+80 : 5190 EV: 0 True
+81 : 5246 EV: 0 True
+82 : 5259 EV: 0 True
+83 : 5266 EV: 0 True
+84 : 5280 EV: 0 True
+85 : 5374 EV: 0 True
+86 : 5375 EV: 0 True
+87 : 5417 EV: 0 True
+88 : 5426 EV: 0 True
+89 : 5447 EV: 0 True
+90 : 5566 EV: 0 True
+91 : 5572 EV: 0 True
+92 : 5727 EV: 0 True
+93 : 5764 EV: 0 True
+94 : 5825 EV: 0 True
+95 : 6208 EV: 0 True
+96 : 6217 EV: 0 True
+97 : 6260 EV: 0 True
+98 : 6303 EV: 0 True
+99 : 6806 EV: 0 True
+------------------------------
+Best value = 3366
+===========================================
+TIME : 68210090 ms
+
+
+

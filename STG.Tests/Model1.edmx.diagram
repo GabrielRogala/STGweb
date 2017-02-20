@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69208f07c543498c97a597a290af2e12" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AspNetRoles" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUserClaims" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUserLogins" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUsers" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Groups" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Lessons" Width="1.5" PointX="12.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Rooms" Width="1.5" PointX="10.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RoomTypes" Width="1.5" PointX="8.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Schools" Width="1.5" PointX="6" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.STGConfig" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SubGroupTypes" Width="1.5" PointX="10.5" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Subjects" Width="1.5" PointX="10.5" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SubjectTypes" Width="1.5" PointX="8.25" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Teachers" Width="1.5" PointX="8.25" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Timetables" Width="1.5" PointX="15" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUserRoles" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_AspNetUsersSchools" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupsGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupsLessons" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GroupsSubGroupTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SchoolsGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SubGroupTypesGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_LessonsTimetables" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_RoomsLessons" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_RoomTypesLessons" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SchoolsLessons" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SubjectsLessons" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TeachersLessons" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_RoomsTimetables" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_RoomTypesRooms" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SchoolsRooms" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SchoolsRoomTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SchoolsSubjects" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SchoolsSubjectTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SchoolsTeachers" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SchoolsTimetables" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_STGConfigSchools" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SubjectTypesSubjects" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

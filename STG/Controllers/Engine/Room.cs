@@ -57,7 +57,8 @@ namespace STG.Controllers.Engine
 
         public override string ToString()
         {
-            return name+"("+amount+"/"+roomType.getName()+")";
+            return name;
+            //return name+"("+amount+"/"+roomType.getName()+")";
         }
     }
 }

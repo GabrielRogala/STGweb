@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("STG.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ericsson")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("STG.Tests")]
-[assembly: AssemblyCopyright("Copyright © Ericsson 2017")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

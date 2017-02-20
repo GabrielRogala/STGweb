@@ -50,14 +50,17 @@ namespace STG.Controllers
             return View(schools);
         }
 
-        // GET: Schools/Generate
-        public ActionResult Generate()
+        // GET: Schools/Generate/5
+        public ActionResult Generate(int? id)
         {
             List<Timetables> list = new List<Timetables>();
-            var user = User.Identity.GetUserId();
-            Schools school = (from b in db.Schools
-                              where b.AspNetUsersId.Equals(user)
-                              select b).FirstOrDefault();
+            //var user = User.Identity.GetUserId();
+            //Schools school = (from b in db.Schools
+            //                  where b.AspNetUsersId.Equals(user)
+            //                  select b).FirstOrDefault();
+
+            Schools school = db.Schools.Find(id);
+
             if (school != null)
             {
                 list = (from b in db.Timetables
@@ -71,7 +74,7 @@ namespace STG.Controllers
             GenerateObjectWithDataBase(school);
             long milliseconds2 = DateTime.Now.Ticks;
             long milliseconds3 = milliseconds2 -  milliseconds;
-
+            Console.WriteLine("TIME : "+milliseconds3+" ms");
             return View(school);
         }
 
