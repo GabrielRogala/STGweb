@@ -7,7 +7,7 @@ namespace STG.Controllers.Engine
 {
     public class Group
     {
-        private String name;
+        private int name;
         private Timetable timetable;
         private int amount;
 
@@ -18,26 +18,26 @@ namespace STG.Controllers.Engine
 
         public Group()
         {
-            this.name = "NULL";
+            this.name = 0;
             this.amount = 0;
             this.subGroup = new List<Group>();
             this.subGroupsIndex = 0;
             this.subGroupId = 0;
         }
 
-        public Group(string name, int amount): this()
+        public Group(int name, int amount): this()
         {
             this.name = name;
             this.amount = amount;
         }
 
-        public Group(string name, int amount, int subGroupsIndex, int subGroupId) : this(name, amount)
+        public Group(int name, int amount, int subGroupsIndex, int subGroupId) : this(name, amount)
         {
             this.subGroupsIndex = subGroupsIndex;
             this.subGroupId = subGroupId;
         }
 
-        public Group(string name, int amount, List<Group> subGroup): this(name,amount) {
+        public Group(int name, int amount, List<Group> subGroup): this(name,amount) {
             this.subGroup = subGroup;
             foreach (Group g in this.subGroup) {
                 g.setParent(this);
@@ -49,7 +49,7 @@ namespace STG.Controllers.Engine
 
         }
 
-        public void setName(string name) {
+        public void setName(int name) {
             this.name = name;
         }
 
@@ -111,7 +111,7 @@ namespace STG.Controllers.Engine
             this.subGroupId = subGroupId;
         }
 
-        public String getName() {
+        public int getName() {
             return name;
         }
 
@@ -156,7 +156,7 @@ namespace STG.Controllers.Engine
             if (parent != null) {
                 tmp += subGroupsIndex + ":" + subGroupId;
             }
-            return name + "(" + amount + ")" + tmp;
+            return "g"+name + "(" + amount + ")" + tmp;
         }
 
         public override bool Equals(object obj)

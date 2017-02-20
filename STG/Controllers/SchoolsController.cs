@@ -224,7 +224,7 @@ namespace STG.Controllers
                                        select b).ToList();
                 foreach (Teachers t in teachers)
                 {
-                    if (t.Name.Equals(l.getTeacher().getName()))
+                    if (t.Id.Equals(l.getTeacher().getName()))
                     {
                         te = t;
                         break;
@@ -239,7 +239,7 @@ namespace STG.Controllers
                                            select b).ToList();
                 foreach (Rooms r in rooms)
                 {
-                    if (r.Name.Equals(l.getRoom().getName()))
+                    if (r.Id.Equals(l.getRoom().getName()))
                     {
                         ro = r;
                         break;
@@ -256,7 +256,7 @@ namespace STG.Controllers
                 {
                     if (ls.Groups.Equals(gr) && 
                         ls.Teachers.Equals(te) && 
-                        ls.Subjects.Name.Equals(l.getSubject().getName())
+                        ls.Subjects.Id.Equals(l.getSubject().getName())
                         )
                     {
                         le = ls;
@@ -315,7 +315,7 @@ namespace STG.Controllers
             List<Group> tmp = new List<Group>();
 
             foreach (Groups g in groups) {
-                tmp.Add(new Group(g.Name,g.Amount));
+                tmp.Add(new Group(g.Id,g.Amount));
             }
 
             List<SubGroupIndex> subGroupIndexs = new List<SubGroupIndex>();
@@ -327,7 +327,7 @@ namespace STG.Controllers
                     foreach (Group g in tmp) {
                         Groups parentGroup = db.Groups.Find(groups[i].ParentGroup);
 
-                        if (g.getName().Equals(parentGroup.Name)) {
+                        if (g.getName().Equals(parentGroup.Id)) {
                             parent = g;
                             break;
                         }
@@ -377,7 +377,7 @@ namespace STG.Controllers
             List<Teachers> teachers = db.Teachers.Where(g => g.SchoolsId == school.Id).ToList();
 
             foreach (Teachers t in teachers) {
-                tmp.Add(new Teacher(t.Name));
+                tmp.Add(new Teacher(t.Id));
             }
 
             return tmp;
@@ -391,12 +391,12 @@ namespace STG.Controllers
             foreach (Rooms r in rooms) {
                 RoomType type = null;
                 foreach (RoomType rt in roomTypes) {
-                    if (r.RoomTypes.Name.Equals(rt.getName())) {
+                    if (r.RoomTypes.Id.Equals(rt.getName())) {
                         type = rt;
                         break;
                     }
                 }
-                tmp.Add(new Room(r.Name,r.Amount,type));
+                tmp.Add(new Room(r.Id,r.Amount,type));
             }
 
             return tmp;
@@ -409,7 +409,7 @@ namespace STG.Controllers
 
             foreach (RoomTypes r in roomTypes)
             {
-                tmp.Add(new RoomType(r.Name));
+                tmp.Add(new RoomType(r.Id));
             }
 
             return tmp;
@@ -422,7 +422,7 @@ namespace STG.Controllers
 
             foreach (SubjectTypes s in subjectTypes)
             {
-                tmp.Add(new SubjectType(s.Name,s.Priority));
+                tmp.Add(new SubjectType(s.Id,s.Priority));
             }
 
             return tmp;
@@ -439,14 +439,14 @@ namespace STG.Controllers
                 SubjectType subjectType = null;
                 foreach (SubjectType st in subjectTypes)
                 {
-                    if (s.SubjectTypes.Name.Equals(st.getName()))
+                    if (s.SubjectTypes.Id.Equals(st.getName()))
                     {
                         subjectType = st;
                         break;
                     }
                 }
 
-                tmp.Add(new Subject(s.Name, subjectType));
+                tmp.Add(new Subject(s.Id, subjectType));
             }
 
 
@@ -466,7 +466,7 @@ namespace STG.Controllers
 
                 foreach (Subject s in subjects)
                 {
-                    if (s.getName().Equals(l.Subjects.Name))
+                    if (s.getName().Equals(l.Subjects.Id))
                     {
                         subject = s;
                         break;
@@ -474,7 +474,7 @@ namespace STG.Controllers
                 }
 
                 foreach (Teacher t in teachers) {
-                    if (t.getName().Equals(l.Teachers.Name)) {
+                    if (t.getName().Equals(l.Teachers.Id)) {
                         teacher = t;
                         break;
                     }
@@ -482,7 +482,7 @@ namespace STG.Controllers
 
                 foreach (Group g in groups)
                 {
-                    if (g.getName().Equals(l.Groups.Name))
+                    if (g.getName().Equals(l.Groups.Id))
                     {
                         group = g;
                         break;
@@ -491,7 +491,7 @@ namespace STG.Controllers
                     {
                         foreach (Group sg in g.getSubGroup())
                         {
-                            if (sg.getName().Equals(l.Groups.Name))
+                            if (sg.getName().Equals(l.Groups.Id))
                             {
                                 group = sg;
                                 break;
@@ -502,7 +502,7 @@ namespace STG.Controllers
 
                 foreach (RoomType rt in roomTypes)
                 {
-                    if (rt.getName().Equals(l.RoomTypes.Name))
+                    if (rt.getName().Equals(l.RoomTypes.Id))
                     {
                         roomType = rt;
                         break;

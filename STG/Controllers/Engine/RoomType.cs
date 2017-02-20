@@ -7,13 +7,13 @@ namespace STG.Controllers.Engine
 {
     public class RoomType
     {
-        private string name;
+        private int name;
 
-        public RoomType(string name) {
+        public RoomType(int name) {
             this.name = name;
         }
 
-        public string getName() {
+        public int getName() {
             return name;
         }
     }

@@ -7,22 +7,22 @@ namespace STG.Controllers.Engine
 {
     public class Subject
     {
-        private String name;
+        private int name;
         private SubjectType subjectType;
 
         public Subject()
         {
-            this.name = "name";
+            this.name = 0;
             this.subjectType = null;
         }
 
-        public Subject(string name, SubjectType subjectType) : this()
+        public Subject(int name, SubjectType subjectType) : this()
         {
             this.name = name;
             this.subjectType = subjectType;
         }
 
-        public String getName() {
+        public int getName() {
             return name;
         }
 
@@ -32,7 +32,7 @@ namespace STG.Controllers.Engine
 
         public override string ToString()
         {
-            return name + "(" +subjectType.getName()+ ")";
+            return "s"+name + "(" +"st"+subjectType.getName()+ ")";
         }
     }
 }

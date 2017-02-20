@@ -19,7 +19,7 @@ namespace STG.Controllers.Engine
         {
             days = new List<Day>();
             for (int i = 0; i < numberOfDays; ++i) {
-                days.Add(new Day("day"+(i+1), numberOfSlots));
+                days.Add(new Day((i+1), numberOfSlots));
             }
             group = null;
             teacher = null;
@@ -33,7 +33,7 @@ namespace STG.Controllers.Engine
             days = new List<Day>();
             for (int i = 0; i < this.numberOfDays; ++i)
             {
-                days.Add(new Day("day" + (i + 1), this.numberOfSlots));
+                days.Add(new Day((i + 1), this.numberOfSlots));
             }
             group = null;
             teacher = null;

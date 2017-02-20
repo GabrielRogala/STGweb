@@ -8,14 +8,14 @@ namespace STG.Controllers.Engine
     public class SubjectType
     {
         private int priority;
-        private string name;
+        private int name;
 
-        public SubjectType(string name, int priority) {
+        public SubjectType(int name, int priority) {
             this.name = name;
             this.priority = priority;
         }
 
-        public string getName() {
+        public int getName() {
             return name;
         }
 

@@ -73,7 +73,7 @@ namespace STG.Controllers.Engine
 
             foreach (Room r in rooms)
             {
-                this.rooms.Add(new Room(r.getName(), r.getAmount(), r.getRoomType()));
+                this.rooms.Add(new Room(r.getName(), r.getAmount(), new RoomType(r.getRoomType().getName())));
             }
 
             //this.groups = groups;
@@ -113,7 +113,23 @@ namespace STG.Controllers.Engine
                     }
                 }
 
-                this.lessons.Add(new Lesson(te,gr,l.getSubject(),l.getRoomType(),l.getAmount(),l.getSize()));
+                this.lessons.Add(
+                    new Lesson(
+                        te,
+                        gr,
+                        new Subject(
+                            l.getSubject().getName(),
+                            new SubjectType(
+                                l.getSubject().getSubjectType().getName(),
+                                l.getSubject().getSubjectType().getPriority()
+                            )
+                        ),
+                        new RoomType(
+                            l.getRoomType().getName()
+                        ),
+                        l.getAmount(),l.getSize()    
+                    )
+                );
             }
         }
 
@@ -236,10 +252,6 @@ namespace STG.Controllers.Engine
 
             while (tmpLessons.Count > 0) {
                 choosenLesson.AddRange(findDifferentSubjectTheSameGroup(tmpLessons.Last(), tmpLessons));
-
-                foreach (Lesson l in choosenLesson) {
-                    //Console.WriteLine(l.ToString());
-                }
 
                 findAndSetLessonsInBestPosition(choosenLesson, tmpLessons);
 

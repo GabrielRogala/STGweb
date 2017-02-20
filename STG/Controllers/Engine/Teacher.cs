@@ -7,20 +7,20 @@ namespace STG.Controllers.Engine
 {
     public class Teacher
     {
-        private String name;
+        private int name;
         private Timetable timetable;
 
         public Teacher()
         {
-            this.name = "NULL";
+            this.name = 0;
         }
 
-        public Teacher(string name) : this()
+        public Teacher(int name) : this()
         {
             this.name = name;
         }
 
-        public String getName()
+        public int getName()
         {
             return name;
         }
@@ -37,7 +37,7 @@ namespace STG.Controllers.Engine
 
         public override string ToString()
         {
-            return name;
+            return "t"+name;
         }
 
         public override bool Equals(object obj)

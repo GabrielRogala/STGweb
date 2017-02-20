@@ -7,10 +7,10 @@ namespace STG.Controllers.Engine
 {
     public class Day
     {
-        private String name;
+        private int name;
         private List<Slot> slots;
 
-        public Day(string name, int slotSize)
+        public Day(int name, int slotSize)
         {
             this.name = name;
             slots = new List<Slot>();
@@ -19,7 +19,7 @@ namespace STG.Controllers.Engine
             }
         }
 
-        public String getName() {
+        public int getName() {
             return name;
         }
 
