@@ -69,12 +69,9 @@ namespace STG.Controllers
             }
             db.Timetables.RemoveRange(list);
             db.SaveChanges();
-            //-----------------------
-            long milliseconds = DateTime.Now.Ticks;
+
             GenerateObjectWithDataBase(school);
-            long milliseconds2 = DateTime.Now.Ticks;
-            long milliseconds3 = milliseconds2 -  milliseconds;
-            Console.WriteLine("TIME : "+milliseconds3+" ms");
+           
             return View(school);
         }
 
@@ -205,46 +202,15 @@ namespace STG.Controllers
             foreach (Lesson l in stt.getLessons()) {
 
                 //--------------------------------
-                Groups gr = null;
-                List<Groups> groups = (from b in db.Groups
-                                      where b.SchoolsId.Equals(school.Id)
-                                      select b).ToList();
-                foreach (Groups g in groups) {
-                    if (g.Name.Equals(l.getGroup().getName())) {
-                        gr = g;
-                        break;
-                    }
-                }
+                Groups gr = db.Groups.Find(l.getGroup().getName());
                 //--------------------------------
 
                 //--------------------------------
-                Teachers te = null;
-                List<Teachers> teachers = (from b in db.Teachers
-                                       where b.SchoolsId.Equals(school.Id)
-                                       select b).ToList();
-                foreach (Teachers t in teachers)
-                {
-                    if (t.Id.Equals(l.getTeacher().getName()))
-                    {
-                        te = t;
-                        break;
-                    }
-                }
+                Teachers te = db.Teachers.Find(l.getTeacher().getName());
                 //--------------------------------
 
                 //--------------------------------
-                Rooms ro = null;
-                List<Rooms> rooms = (from b in db.Rooms
-                                           where b.SchoolsId.Equals(school.Id)
-                                           select b).ToList();
-                foreach (Rooms r in rooms)
-                {
-                    if (r.Id.Equals(l.getRoom().getName()))
-                    {
-                        ro = r;
-                        break;
-                    }
-                }
+                Rooms ro = db.Rooms.Find(l.getRoom().getName());
                 //--------------------------------
 
                 //--------------------------------
