@@ -895,7 +895,7 @@ namespace STG.Controllers.Engine
         public void genWeb(string fileName = "output")
         {
 
-            string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\..\Dropbox\INŻ\Projekt\STGweb\webExport";
+            string mydocpath = @"G:\Dropbox\INŻ\Projekt\STGweb\webExport";
             string beginStr = "";
             string endStr = "";
             string contentStr = "";

@@ -328,7 +328,10 @@ namespace STG.Controllers.Engine
                 {
                     if (!d.getSlot(i).isEmpty() || d.getSlot(i).isLocked())
                     {
-                        value += (int)Math.Pow((i - lastIndex - 1), 3);
+                        if (lastIndex >= 0)
+                        {
+                            value += (int)Math.Pow(2*(i - lastIndex - 1), 2);
+                        }
                         lastIndex = i;
                     }
 
@@ -389,8 +392,7 @@ namespace STG.Controllers.Engine
                     {
                         if (m.Value > 0)
                         {
-                            
-                            value += (int)Math.Pow(2, Math.Abs(m.Value - (mapsAll[m.Key]/days.Count) )) - 1;
+                            value += Math.Abs(m.Value - (mapsAll[m.Key]/days.Count) );
                         }
                     }
                 }

@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aspnet-STG-20170209064115.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="SchoolsId" Type="int" Nullable="false" />
+    <Property Name="ParentGroup" Type="int" />
+    <Property Name="SubGroupTypesId" Type="int" />
+    <Property Name="BlockedHours" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lessons">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectsId" Type="int" Nullable="false" />
+    <Property Name="TeachersId" Type="int" Nullable="false" />
+    <Property Name="GroupsId" Type="int" Nullable="false" />
+    <Property Name="RoomsId" Type="int" />
+    <Property Name="RoomTypesId" Type="int" Nullable="false" />
+    <Property Name="Schedule" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SchoolsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rooms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoomTypesId" Type="int" Nullable="false" />
+    <Property Name="SchoolsId" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="BlockedHours" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoomTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SchoolsId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Schools">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AspNetUsersId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="NumberOfDays" Type="int" Nullable="false" />
+    <Property Name="NumberOfHours" Type="int" Nullable="false" />
+    <Property Name="STGConfigId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STGConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PopulationSize" Type="int" Nullable="false" />
+    <Property Name="EpocheSize" Type="int" Nullable="false" />
+    <Property Name="NumberOfLessonToPositioning" Type="int" Nullable="false" />
+    <Property Name="BottomBorderOfBestSlots" Type="int" Nullable="false" />
+    <Property Name="TopBorderOfBestSlots" Type="int" Nullable="false" />
+    <Property Name="ProbabilityOfMutation" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubGroupTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GroupsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SchoolsId" Type="int" Nullable="false" />
+    <Property Name="SubjectTypesId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Priority" Type="int" Nullable="false" />
+    <Property Name="SchoolsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SchoolsId" Type="int" Nullable="false" />
+    <Property Name="BlockedHours" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Timetables">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SchoolsId" Type="int" Nullable="false" />
+    <Property Name="LessonsId" Type="int" Nullable="false" />
+    <Property Name="Day" Type="int" Nullable="false" />
+    <Property Name="Hour" Type="int" Nullable="false" />
+    <Property Name="RoomsId" Type="int" Nullable="false" />
+    <Property Name="Size" Type="int" Nullable="false" />
+    <Property Name="Part" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AspNetUsersSchools">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Schools" Type="Self.Schools" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schools">
+        <PropertyRef Name="AspNetUsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupsGroups">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="0..1" />
+    <End Role="Groups1" Type="Self.Groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Groups1">
+        <PropertyRef Name="ParentGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupsLessons">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="GroupsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupsSubGroupTypes">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+    <End Role="SubGroupTypes" Type="Self.SubGroupTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubGroupTypes">
+        <PropertyRef Name="GroupsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LessonsTimetables">
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="1" />
+    <End Role="Timetables" Type="Self.Timetables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lessons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Timetables">
+        <PropertyRef Name="LessonsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomsLessons">
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="RoomsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomsTimetables">
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+    <End Role="Timetables" Type="Self.Timetables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Timetables">
+        <PropertyRef Name="RoomsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomTypesLessons">
+    <End Role="RoomTypes" Type="Self.RoomTypes" Multiplicity="1" />
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="RoomTypesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomTypesRooms">
+    <End Role="RoomTypes" Type="Self.RoomTypes" Multiplicity="1" />
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rooms">
+        <PropertyRef Name="RoomTypesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolsGroups">
+    <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+    <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Groups">
+        <PropertyRef Name="SchoolsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolsLessons">
+    <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="SchoolsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolsRooms">
+    <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rooms">
+        <PropertyRef Name="SchoolsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolsRoomTypes">
+    <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+    <End Role="RoomTypes" Type="Self.RoomTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoomTypes">
+        <PropertyRef Name="SchoolsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolsSubjects">
+    <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subjects">
+        <PropertyRef Name="SchoolsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolsSubjectTypes">
+    <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+    <End Role="SubjectTypes" Type="Self.SubjectTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubjectTypes">
+        <PropertyRef Name="SchoolsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolsTeachers">
+    <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teachers">
+        <PropertyRef Name="SchoolsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolsTimetables">
+    <End Role="Schools" Type="Self.Schools" Multiplicity="1" />
+    <End Role="Timetables" Type="Self.Timetables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schools">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Timetables">
+        <PropertyRef Name="SchoolsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STGConfigSchools">
+    <End Role="STGConfig" Type="Self.STGConfig" Multiplicity="1" />
+    <End Role="Schools" Type="Self.Schools" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STGConfig">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schools">
+        <PropertyRef Name="STGConfigId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubGroupTypesGroups">
+    <End Role="SubGroupTypes" Type="Self.SubGroupTypes" Multiplicity="0..1" />
+    <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubGroupTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Groups">
+        <PropertyRef Name="SubGroupTypesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubjectsLessons">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="SubjectsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubjectTypesSubjects">
+    <End Role="SubjectTypes" Type="Self.SubjectTypes" Multiplicity="1" />
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subjects">
+        <PropertyRef Name="SubjectTypesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeachersLessons">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+    <End Role="Lessons" Type="Self.Lessons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lessons">
+        <PropertyRef Name="TeachersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lessons" EntityType="Self.Lessons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoomTypes" EntityType="Self.RoomTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schools" EntityType="Self.Schools" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STGConfig" EntityType="Self.STGConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubGroupTypes" EntityType="Self.SubGroupTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectTypes" EntityType="Self.SubjectTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Timetables" EntityType="Self.Timetables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AspNetUserRoles].[RoleId] AS [RoleId], 
+    [AspNetUserRoles].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserRoles] AS [AspNetUserRoles]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_AspNetUsersSchools" Association="Self.FK_AspNetUsersSchools">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Schools" EntitySet="Schools" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupsGroups" Association="Self.FK_GroupsGroups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Groups1" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupsLessons" Association="Self.FK_GroupsLessons">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupsSubGroupTypes" Association="Self.FK_GroupsSubGroupTypes">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="SubGroupTypes" EntitySet="SubGroupTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LessonsTimetables" Association="Self.FK_LessonsTimetables">
+      <End Role="Lessons" EntitySet="Lessons" />
+      <End Role="Timetables" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomsLessons" Association="Self.FK_RoomsLessons">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomsTimetables" Association="Self.FK_RoomsTimetables">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="Timetables" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomTypesLessons" Association="Self.FK_RoomTypesLessons">
+      <End Role="RoomTypes" EntitySet="RoomTypes" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomTypesRooms" Association="Self.FK_RoomTypesRooms">
+      <End Role="RoomTypes" EntitySet="RoomTypes" />
+      <End Role="Rooms" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolsGroups" Association="Self.FK_SchoolsGroups">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="Groups" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolsLessons" Association="Self.FK_SchoolsLessons">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolsRooms" Association="Self.FK_SchoolsRooms">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="Rooms" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolsRoomTypes" Association="Self.FK_SchoolsRoomTypes">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="RoomTypes" EntitySet="RoomTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolsSubjects" Association="Self.FK_SchoolsSubjects">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="Subjects" EntitySet="Subjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolsSubjectTypes" Association="Self.FK_SchoolsSubjectTypes">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="SubjectTypes" EntitySet="SubjectTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolsTeachers" Association="Self.FK_SchoolsTeachers">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="Teachers" EntitySet="Teachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolsTimetables" Association="Self.FK_SchoolsTimetables">
+      <End Role="Schools" EntitySet="Schools" />
+      <End Role="Timetables" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STGConfigSchools" Association="Self.FK_STGConfigSchools">
+      <End Role="STGConfig" EntitySet="STGConfig" />
+      <End Role="Schools" EntitySet="Schools" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubGroupTypesGroups" Association="Self.FK_SubGroupTypesGroups">
+      <End Role="SubGroupTypes" EntitySet="SubGroupTypes" />
+      <End Role="Groups" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubjectsLessons" Association="Self.FK_SubjectsLessons">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubjectTypesSubjects" Association="Self.FK_SubjectTypesSubjects">
+      <End Role="SubjectTypes" EntitySet="SubjectTypes" />
+      <End Role="Subjects" EntitySet="Subjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeachersLessons" Association="Self.FK_TeachersLessons">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Lessons" EntitySet="Lessons" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

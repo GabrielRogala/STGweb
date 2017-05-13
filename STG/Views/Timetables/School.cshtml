@@ -6,7 +6,13 @@
 
     <h2>Timetable</h2>
     <br>
-    <button class="btn alert-success">@Html.ActionLink("Generate", "Generate", "Schools")</button>
+    <button class="btn alert-success">
+        @Html.ActionLink(
+            "Generate", 
+            "Generate", 
+            "Schools"
+        )
+    </button>
     <hr>
 
 @foreach (var item in Model)

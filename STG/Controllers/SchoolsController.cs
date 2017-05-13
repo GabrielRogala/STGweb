@@ -54,12 +54,15 @@ namespace STG.Controllers
         public ActionResult Generate(int? id)
         {
             List<Timetables> list = new List<Timetables>();
-            //var user = User.Identity.GetUserId();
-            //Schools school = (from b in db.Schools
-            //                  where b.AspNetUsersId.Equals(user)
-            //                  select b).FirstOrDefault();
-
-            Schools school = db.Schools.Find(id);
+            Schools school;
+            if (id == null) {
+                var user = User.Identity.GetUserId();
+                school = (from b in db.Schools
+                        where b.AspNetUsersId.Equals(user)
+                        select b).FirstOrDefault();
+            }else{
+                school = db.Schools.Find(id);
+            }
 
             if (school != null)
             {
