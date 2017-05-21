@@ -290,6 +290,14 @@ namespace STG.Controllers.Engine
                 }
 
                 groupSlots = group.getTimetable().getFreeSlotsToLesson(l);
+
+                /*
+                if (group.getTimetable().getCountSubGroupLesson(l) > 0) {
+                    groupSlots.Clear();
+                    groupSlots = group.getTimetable().getFreeSlotsWithSubGroupLessons(l);
+                }
+                */
+
                 teacherSlots = teacher.getTimetable().getFreeSlotsToLesson(l);
                 theSameSlots = getTheSameSlots(groupSlots, teacherSlots);
 
@@ -612,11 +620,40 @@ namespace STG.Controllers.Engine
             return subGroupLessonComparator(l1, l2);
         }
 
+        public void subGroupSort(List<Lesson> tmpLessons) {
+            List<Lesson> subGroupsLessons = new List<Lesson>();
+
+            for (int i = tmpLessons.Count - 1; i >= 0; i--)
+            {
+                if (tmpLessons[i].getGroup().getParent() != null) {
+                    subGroupsLessons.Add(tmpLessons[i]);
+                    tmpLessons.RemoveAt(i);
+                }
+            }
+
+            for (int i = 1; i < subGroupsLessons.Count; )
+            {
+                Lesson tmp = subGroupsLessons[i];
+                subGroupsLessons[i] = subGroupsLessons[i + 1];
+                subGroupsLessons[i + 1] = tmp;
+                i += 4;
+            }
+
+            tmpLessons.AddRange(subGroupsLessons);
+
+        }
+
         public int subGroupLessonComparator(Lesson l1, Lesson l2)
         {
             if (l1.getGroup().getParent() != null) {
                 if (l2.getGroup().getParent() != null) {
-                    return l1.getGroup().getParent().GetHashCode() - l2.getGroup().getParent().GetHashCode();
+                    if (l1.getGroup().getParent().getName().CompareTo(l2.getGroup().getParent().getName()) == 0)
+                    {
+                        return l1.getGroup().getName().CompareTo(l2.getGroup().getName());
+                    }
+                    else {
+                        return l1.getGroup().getParent().getName().CompareTo(l2.getGroup().getParent().getName());
+                    }
                 } else {
                     return 1;
                 }

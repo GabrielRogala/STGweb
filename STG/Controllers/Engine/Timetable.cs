@@ -177,7 +177,7 @@ namespace STG.Controllers.Engine
             return days[day].getSlot(slot).getLesson(i);
         }
 
-        public List<TimeSlot> getFreeSlotsToLesson(Lesson lesson)
+        public List<TimeSlot> getFreeSlotsToLesson(Lesson lesson, bool? sub = false)
         {
             List<TimeSlot> freeSlots = new List<TimeSlot>();
 
@@ -280,19 +280,76 @@ namespace STG.Controllers.Engine
             return freeSlots;
         }
 
+        public int getCountSubGroupLesson(Lesson lesson)
+        {
+            int count = 0;
+            foreach (Day d in this.getGroup().getParent().getTimetable().getDays())
+            {
+                foreach (Slot s in d.getSlots())
+                {
+                    if (!s.isEmpty())
+                        if (s.getLesson(0).getGroup().getParent() != null)
+                            if (lesson.getGroup().getParent() != null)
+                                if (s.getLesson(0).getGroup().getSubGroupsIndex() != lesson.getGroup().getSubGroupsIndex())
+                                    if (s.getLesson(0).getGroup().getSubGroupId() == lesson.getGroup().getSubGroupId())
+                                        count++;
+
+                }
+            }
+            return count;
+        }
+
         public List<TimeSlot> getFreeSlotsWithSubGroupLessons(Lesson lesson)
         {
             List<TimeSlot> freeSlots = new List<TimeSlot>();
-
-            for (int h = 0; h < numberOfSlots; ++h)
+            int day = 0;
+            int hour = 0;
+            foreach (Day d in this.getGroup().getParent().getTimetable().getDays())
             {
-                for (int d = 0; d < numberOfDays; ++d)
+                foreach (Slot s in d.getSlots())
                 {
-                    if((days[d].getSlot(h).isEmpty() 
-                        || ( getLessons(d,h)[0].getGroup().getParent()!=null 
-                        && getLessons(d, h)[0].getGroup().getSubGroupsIndex() == lesson.getGroup().getSubGroupsIndex()) ) 
-                        && !days[d].getSlot(h).isLocked()) {
-                        freeSlots.Add(new TimeSlot(d, h));
+                    bool result = true;
+                    if (s.isEmpty()) {
+                        result = false;
+                    }
+
+                    foreach(Lesson l in s.getLessons()) {
+                        if (l.getGroup().getParent() != null) { 
+                            if (lesson.getGroup().getParent() != null)
+                                if (l.getGroup().getSubGroupsIndex() == lesson.getGroup().getSubGroupsIndex())
+                                    if (l.getGroup().getSubGroupId() == lesson.getGroup().getSubGroupId())
+                                    {
+                                        result = false;
+                                    }
+
+                        } else {
+                            result = false;
+                        }
+                    }
+
+                    if (result) {
+                        freeSlots.Add(new TimeSlot(day, hour));
+                    }
+
+                    hour++;
+                }
+                hour = 0;
+                day++;
+            }
+
+
+            if (freeSlots.Count == 0) {
+                for (int h = 0; h < numberOfSlots; ++h)
+                {
+                    for (int d = 0; d < numberOfDays; ++d)
+                    {
+                        if ((days[d].getSlot(h).isEmpty()
+                            || (getLessons(d, h)[0].getGroup().getParent() != null
+                            && getLessons(d, h)[0].getGroup().getSubGroupsIndex() == lesson.getGroup().getSubGroupsIndex()))
+                            && !days[d].getSlot(h).isLocked())
+                        {
+                            freeSlots.Add(new TimeSlot(d, h));
+                        }
                     }
                 }
             }
