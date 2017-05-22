@@ -22,12 +22,12 @@
         <div class="panel panel-default">
             <div class="panel-heading"><h3>@item.name</h3></div>
             <div class="panel-body">
-                <table class="table">
+                <table class="table" rules="cols">
                     <tr class="info">
                         <td></td>
                         @for (int i = 1; i < item.days[0].hours.Count + 1; i++)
                         {
-                            <td>day @i</td>
+                            <td><center>day @i</center></td>
                         }
                     </tr>
                     @foreach (var day in item.days)
@@ -51,6 +51,10 @@
                                                    <hr>
                                                 }
                                                 <ul>
+                                                    @*@if (!item.name.Equals(l.lesson.Groups.Name))
+                                                    {
+                                                        <li>@l.lesson.Groups.Name</li>
+                                                    }*@
                                                     <li>@l.lesson.Groups.Name</li>
                                                     <li>@l.lesson.Teachers.Name</li>
                                                     <li>@l.room.Name</li>
